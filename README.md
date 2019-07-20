@@ -5,9 +5,9 @@ CSS Library for Utility classes. For any CSS-framework.
 Use the most suitable option for your favorite css-framework.
 
 - `berry.css` - no normalize, no colors classes
-- `berry-with-color.css` - no normalize, included colors
-- `berry-with-normalize.css` - included normalize, no colors classes
-- `berry-with-normalize-and-colors.css` - included normalize, included colors
+- `berry-color.css` - no normalize, included colors
+- `berry-normalize.css` - included normalize, no colors classes
+- `berry-normalize-colors.css` - included normalize, included colors
 
 All files include "box-sizing"-reset: `box-sizing: border-box`.
 
@@ -460,4 +460,5 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 ## Copyright and license
 
 (c) 2019, Berry - CSS Utilities, http://maxsite.org/berry
+
 [MIT License](https://github.com/maxsite/berry/blob/master/LICENSE)
