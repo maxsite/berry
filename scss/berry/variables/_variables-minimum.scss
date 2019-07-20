@@ -1,0 +1,426 @@
+// (c) Berry - CSS Utilities, http://maxsite.org/berry
+
+// Variables
+
+// * PREFIX
+// * SCREENS
+// * LAYOUT/CONTAINER
+// * FLEX
+// * HIDE
+// * WIDTH / HEIGHT
+// * PADDING/ MARGIN
+// * TEXT
+// * BORDER
+// * POSITION
+// * COLORS BASE
+// * COLORS STEP
+
+
+// ***************** PREFIX *****************
+
+// global prefix for all css-classes
+// for example: "my_" -> .my_w50-tablet, .my_t-red700
+$pf: "";
+
+
+// ***************** SCREENS *****************
+
+// Use any variables for @media rules
+
+//      480     667      768      1024       1200
+// SMALL   PHONE   TABLET   MEDIUM    DESKTOP    LARGE
+$SCREEN_LARGE:   "(min-width: 1201px)";
+$SCREEN_DESKTOP: "(max-width: 1200px)";
+$SCREEN_MEDIUM:  "(max-width: 1024px)";
+$SCREEN_TABLET:  "(max-width: 768px)";
+$SCREEN_PHONE:   "(max-width: 667px)";
+$SCREEN_SMALL:   "(max-width: 480px)";
+
+// another variant
+//   576  768  992  1200
+// SM   MD   LG   XL
+$SCREEN_XL: "(min-width: 1201px)"; // Extra large
+$SCREEN_LG: "(max-width: 992px)";  // Large
+$SCREEN_MD: "(max-width: 768px)";  // Medium
+$SCREEN_SM: "(max-width: 576px)";  // Small
+
+// statistics screen resolution:
+// DESKTOP 1366    - http://gs.statcounter.com/screen-resolution-stats/desktop/worldwide
+// TABLET  768     - http://gs.statcounter.com/screen-resolution-stats/tablet/worldwide
+// PHONE   640 667 - http://gs.statcounter.com/screen-resolution-stats/mobile/worldwide
+
+
+// ***************** LAYOUT/CONTAINER *****************
+// classes .layoutXX alias .containerXXX
+
+// maximum container layout width for .layout-center-wrap
+$layout_max_width: 1200px;
+
+// maximum width layout for other size
+// .layout-center-tablet, .layout-center-wrap-phone, .layout-center-myphone
+// .container-center-tablet, .container-center-wrap-phone, .container-center-myphone
+$layout_max_width_list: (
+    // "tablet": 768px,
+    // "phone": 667px,
+    // "myphone": 800px, // .layout-center-myphone .layout-center-wrap-myphone
+);
+
+// padding (right and left) for .layout-wrap and .layout-center
+// false for missing padding
+$layout_wrap_padding: 15px;
+
+
+// ***************** FLEX *****************
+
+// @media for flex classes
+// postfix: $screen
+// Point from large to small !!!
+// .flex-wrap-tablet, .flex-wrap-phone
+$screen_media_flex_list: (
+    // "medum": $SCREEN_MEDIUM, 
+    // "tablet": $SCREEN_TABLET, 
+    // "phone": $SCREEN_PHONE,
+);
+
+// flex order, grow and shrink
+// .flex-order2, .flex-grow5, .flex-shrink4 
+$flex_order_list: 1;
+$flex_grow_list: 1;
+$flex_shrink_list: 1;
+
+
+// ***************** HIDE *****************
+
+// @media for .hide classes
+// .hide-tablet .hide-phone
+$hide_media_list: (
+    // "medum": $SCREEN_MEDIUM,
+    // "tablet": $SCREEN_TABLET, 
+    // "phone": $SCREEN_PHONE,
+);
+
+
+// ***************** WIDTH / HEIGHT *****************
+
+// % width 
+// .w50, .w30-tablet
+$width_list_percent: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+
+// PX width, max-width and min-width
+// .w70px, .w300px-max, .w50px-min
+$width_list_px: 15;
+
+// @media for width(%) classes
+// Point from large to small !!!
+// postfix: $screen
+// .w70-tablet, .w50-phone
+$screen_media_width_list: (
+    // "medium": $SCREEN_MEDIUM,
+    // "tablet": $SCREEN_TABLET, 
+    // "phone": $SCREEN_PHONE,
+    );
+    
+// PX height and min-height
+// .h20px, .h100px-min, .h30px-max
+$height_list_px: 30;
+
+// VH height
+// .h50vh, .h100wh
+$height_list_vh: 100;
+
+
+// ***************** PADDING/ MARGIN *****************
+
+// set padding and margin as !important (true or false)
+$padding_margin_important: true;
+
+// PX padding 
+// .pad5, .pad50-t, .pad10-rl, .pad20-tb
+$padding_list: 0, 5, 10, 15, 20, 25, 30;
+
+// PX margin
+// .mar5, mar50-t, .mar10-rl, .mar20-tb
+$margin_list: 0, 5, 10, 15, 20, 25, 30;
+
+// list values PX for $screen_media_mar_pad_step_list
+$margin_list_media: 0;
+$padding_list_media: 0;
+
+// @media for margin/padding(px)
+// Point from large to small !!!
+// postfix: $screen
+// .mar10-phone, .pad0-tablet
+$screen_media_mar_pad_list: (
+   // "tablet": $SCREEN_TABLET, 
+   // "phone": $SCREEN_PHONE,
+);
+
+
+// ***************** TEXT *****************
+
+// text size REM (1rem = 100)
+// .t80, .t200
+$text_rem: .8, .9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2;
+
+// text REM for @media in $screen_media_text_list
+// .t80-tablet, .t200-phone
+$text_rem_screen: .8, .9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 2;
+
+// text size EM (1em = 100)
+// .t80em, .t200em
+$text_em: .8, .9, 1, 2;
+
+// text size in PX
+// .t8px, .t20px
+$text_px: 20;
+
+// line-height
+// .lh120 {line-height: 1.2;}
+$text_lh: 1, 1.5, 2;
+
+// line-height in EM
+// .lh150em {line-height: 1.5em;}
+$text_lh_em: 1, 1.5, 2;
+
+// text-classes for @media
+// Point from large to small !!!
+// postfix: $screen
+// .t130-tablet, .t-right-phone, .t-wrap-phone, .t-nowrap-tablet
+$screen_media_text_list: (
+    // "tablet": $SCREEN_TABLET, 
+    // "phone": $SCREEN_PHONE,
+);
+
+
+// ***************** BORDER *****************
+// see also $border_list_color below
+
+// border-width
+// .bor1, .bor2
+$border_list: 1;
+
+// borders type line
+// solid, dotted, dashed, double
+// .bor-solid  .bor-dotted-rl
+$border_type_list: solid; // , dotted, dashed, double;
+
+// class .bordered
+$bordered: #D4D7DD 1px solid;
+
+// border-radius PX
+// .rounded10 {border-radius: 10px;}
+$rounded_list: 0, 5; // , 7, 10, 20;
+
+// for class .rounded
+$rounded: 7px;
+
+
+// ***************** POSITION *****************
+
+// position PX
+// .pos0-t, .pos10-r, .pos10-b, .pos10-l
+$position_list: 0, 10;
+
+// z-index 
+// .z-index99
+$zindex_list: 1, 9, 99, 999;
+
+
+// ***************** OPACITY *****************
+
+// classes for opacity: XXX and background-color: rgba(0, 0, 0, XXX)
+// .bg-op30, .hover-bg-op30, .opacity10, .hover-opacity10
+$opacity_list: .6;
+
+
+// ***************** COLORS *****************
+
+$color1:    #00A8E6;
+$color2:    #8CC14C;
+$color3:    #FAA732;
+$color4:    #DA314B;
+$color5:    #EE35DF;
+
+$white:     #FFFFFF;
+$black:     #000000;
+
+// use degrees in HSV or any other way 
+$red:       hsl(4deg,   71%, 47%);
+$brown:     hsl(15deg,  47%, 47%);
+$orange:    hsl(40deg, 100%, 47%);
+$yellow:    hsl(55deg, 100%, 47%);
+$olive:     hsl(67deg,  79%, 47%);
+$green:     hsl(134deg, 70%, 47%);
+$teal:      hsl(190deg, 90%, 47%);
+// $cyan:       hsl(190deg, 90%, 47%); // alias $teal
+$blue:      hsl(220deg, 73%, 47%);
+$violet:    hsl(265deg, 58%, 47%);
+$purple:    hsl(290deg, 59%, 47%);
+$pink:      hsl(320deg, 73%, 47%);
+
+$gray:      hsl(218deg, 5%, 61%);
+$gray50:    lighten($gray, 35%);
+$gray100:   lighten($gray, 33%);
+$gray200:   lighten($gray, 27%);
+$gray300:   lighten($gray, 17%);
+$gray400:   lighten($gray, 8%);
+$gray500:   $gray;
+$gray600:   darken($gray, 13%);
+$gray700:   darken($gray, 23%);
+$gray800:   darken($gray, 35%);
+$gray900:   darken($gray, 48%);
+
+$color_primary:  $blue;
+$color_secondary:  $gray600; 
+$color_success:  $green;
+$color_info:  $teal;
+$color_warning:  $yellow; 
+$color_danger:  $red;
+$color_light:  $gray100;
+$color_dark:  $gray800;
+
+// color list for text, background and hover-classes
+// color: $value
+// .t-red, .bg-red, .hover-t-red, .hover-bg-red 
+$color_base_list: (
+
+    // "primary": $color_primary, 
+    // "secondary": $color_secondary, 
+    // "success": $color_success, 
+    // "info": $color_info, 
+    // "warning": $color_warning, 
+    // "danger": $color_danger, 
+    // "light": $color_light, 
+    // "dark": $color_dark, 
+
+    "color1":  $color1, 
+    "color2":  $color2, 
+    "color3":  $color3, 
+    "color4":  $color4, 
+    "color5":  $color5, 
+    
+    "gray":    $gray, 
+    "gray50":  $gray50, 
+    "gray100": $gray100, 
+    "gray200": $gray200, 
+    "gray300": $gray300, 
+    "gray400": $gray400, 
+    "gray500": $gray500, 
+    "gray600": $gray600, 
+    "gray700": $gray700, 
+    "gray800": $gray800, 
+    "gray900": $gray900, 
+
+    "white":   $white, 
+    "black":   $black, 
+
+    // "red":     $red, 
+    // "green":   $green, 
+    // "blue":    $blue, 
+    // "yellow":  $yellow, 
+    // "orange":  $orange, 
+    // "olive":   $olive, 
+    // "teal":    $teal, 
+    // "violet":  $violet, 
+    // "purple":  $purple, 
+    // "pink":    $pink, 
+    // "brown":   $brown
+);
+
+// color for borders
+// .bor-color1, .hover-bor-blue
+$border_list_color: (
+    "color1":  $color1, 
+    "color2":  $color2, 
+    "color3":  $color3, 
+    "color4":  $color4, 
+    "color5":  $color5, 
+
+    "gray":    $gray, 
+    "gray50":  $gray50, 
+    "gray100": $gray100, 
+    "gray200": $gray200, 
+    "gray300": $gray300, 
+    "gray400": $gray400, 
+    "gray500": $gray500, 
+    "gray600": $gray600, 
+    "gray700": $gray700, 
+    "gray800": $gray800, 
+    "gray900": $gray900,
+
+    "white":   $white, 
+    "black":   $black, 
+    
+    // "red":     $red, 
+    // "green":   $green, 
+    // "blue":    $blue, 
+    // "yellow":  $yellow, 
+    // "orange":  $orange, 
+    // "olive":   $olive, 
+    // "teal":    $teal, 
+    // "violet":  $violet, 
+    // "purple":  $purple, 
+    // "pink":    $pink, 
+    // "brown":   $brown
+);
+
+
+// ***************** COLORS STEP *****************
+
+// step list for $color_step_list. 
+// See the algorithm in the file "_colors.scss"
+// Possible values: 50, 100, 200, 300, 400, 500, 600, 700, 800 or 900
+$color_state_step_list: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+// list colors for step gradients
+// .t-red100, .bg-blue600, .hover-t-teal800, .hover-bg-olive300
+$color_step_list: (
+    // "red":     $red, 
+    // "green":   $green, 
+    // "blue":    $blue, 
+    // "yellow":  $yellow, 
+    // "orange":  $orange, 
+    // "olive":   $olive, 
+    // "teal":    $teal, 
+    // "violet":  $violet, 
+    // "purple":  $purple, 
+    // "pink":    $pink, 
+    // "brown":   $brown
+);
+
+// list colors for classes .links-hover-t-XXX and .links-hover-bg-XXX
+// .links-hover-t-red, .links-hover-bg-color5
+$color_links_hover_list: (
+    "color1":  $color1, 
+    "color2":  $color2, 
+    "color3":  $color3, 
+    "color4":  $color4, 
+    "color5":  $color5, 
+
+    "gray":    $gray, 
+    "gray50":  $gray50, 
+    "gray100": $gray100, 
+    "gray200": $gray200, 
+    "gray300": $gray300, 
+    "gray400": $gray400, 
+    "gray500": $gray500, 
+    "gray600": $gray600, 
+    "gray700": $gray700, 
+    "gray800": $gray800, 
+    "gray900": $gray900, 
+
+    // "white":   $white, 
+    // "black":   $black, 
+    
+    // "red":     $red, 
+    // "green":   $green, 
+    // "blue":    $blue, 
+    // "yellow":  $yellow, 
+    // "orange":  $orange, 
+    // "olive":   $olive, 
+    // "teal":    $teal, 
+    // "violet":  $violet, 
+    // "purple":  $purple, 
+    // "pink":    $pink, 
+    // "brown":   $brown
+);

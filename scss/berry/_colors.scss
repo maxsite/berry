@@ -1,0 +1,116 @@
+// (c) Berry - CSS Utilities, http://maxsite.org/berry
+
+
+.#{$pf}bg-transparent {
+    background-color: transparent !important;
+}
+
+.#{$pf}t-transparent {
+    color: transparent !important;
+}
+
+// opacity
+@each $op in $opacity_list {
+    $op1: round($op * 100);
+    
+    .#{$pf}opacity#{$op1},
+    .#{$pf}hover-opacity#{$op1}:hover {
+        opacity: $op;
+    }
+    
+    .#{$pf}bg-op#{$op1},
+    .#{$pf}hover-bg-op#{$op1}:hover {
+        background-color: rgba(0, 0, 0, $op);
+    }
+    
+}
+
+// mixin for .t- .bg- .hover-t- .hover-bg 
+@mixin colors_state($name, $color) {
+
+    .#{$pf}t-#{$name} {
+        color: $color;
+    }
+
+    .#{$pf}bg-#{$name} {
+        background: $color;
+    }
+
+    .#{$pf}hover-t-#{$name}:hover {
+        color: $color !important;
+    }
+
+    .#{$pf}hover-bg-#{$name}:hover {
+        background: $color !important;
+    }
+}
+
+// base colors .t- .bg- .hover-t- .hover-bg 
+@each $name, $color in $color_base_list {
+    @include colors_state($name, $color);
+}
+
+// generate color gradient 50..900
+// colors in $color_step_list
+// steps in $color_state_step_list
+@each $name, $color in $color_step_list {
+
+    @each $step in $color_state_step_list {
+
+        @if $step==50 {
+            @include colors_state(#{$name}50, lighten($color, 45%));
+        }
+
+        @if $step==100 {
+            @include colors_state(#{$name}100, lighten($color, 40%));
+        }
+
+        @if $step==200 {
+            @include colors_state(#{$name}200, lighten($color, 30%));
+        }
+
+        @if $step==300 {
+            @include colors_state(#{$name}300, lighten($color, 20%));
+        }
+
+        @if $step==400 {
+            @include colors_state(#{$name}400, lighten($color, 10%));
+        }
+
+        @if $step==500 {
+            @include colors_state(#{$name}500, $color);
+        }
+
+        @if $step==600 {
+            @include colors_state(#{$name}600, darken($color, 10%));
+        }
+
+        @if $step==700 {
+            @include colors_state(#{$name}700, darken($color, 20%));
+        }
+
+        @if $step==800 {
+            @include colors_state(#{$name}800, darken($color, 30%));
+        }
+
+        @if $step==900 {
+            @include colors_state(#{$name}900, darken($color, 38%));
+        }
+
+    }
+}
+
+@mixin colors_state_links_hover($name, $color) {
+
+    .#{$pf}links-hover-t-#{$name} a:not([class^="#{$pf}hover-t-"]):not([class*=" #{$pf}hover-t-"]):hover {
+        color: $color !important;
+    }
+
+    .#{$pf}links-hover-bg-#{$name} a:not([class^="#{$pf}hover-bg-"]):not([class*=" #{$pf}hover-bg-"]):hover {
+        background: $color !important;
+    }
+}
+
+@each $name, $color in $color_links_hover_list {
+    @include colors_state_links_hover($name, $color);
+}
