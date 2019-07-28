@@ -334,7 +334,7 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 - .t-center 
 - .t-justify 
 - .t-decoration-none
-  .t-nowrap 
+- .t-nowrap 
 - .t-wrap 
 - .t-pre-wrap 
 - .t-break, .t-break-word 
