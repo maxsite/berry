@@ -2,14 +2,11 @@
 
 // layout
 
-.#{$pf}container-center-wrap,
 .#{$pf}layout-center-wrap {
     width: 100%;
 }
 
-.#{$pf}container-center,
 .#{$pf}layout-center,
-.#{$pf}container-center-wrap>.#{$pf}container-wrap,
 .#{$pf}layout-center-wrap>.#{$pf}layout-wrap {
     width       : 100%;
     margin-right: auto;
@@ -25,9 +22,7 @@
 // for layout_max_width_list
 @each $postfix, $m in $layout_max_width_list {
 
-    .#{$pf}container-center-#{$postfix},
     .#{$pf}layout-center-#{$postfix},
-    .#{$pf}container-center-wrap-#{$postfix}>.#{$pf}container-wrap,
     .#{$pf}layout-center-wrap-#{$postfix}>.#{$pf}layout-wrap {
         width       : 100%;
         margin-right: auto;

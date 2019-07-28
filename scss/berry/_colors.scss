@@ -53,50 +53,48 @@
 // generate color gradient 50..900
 // colors in $color_step_list
 // steps in $color_state_step_list
+@mixin colors_step($step, $name, $color) {
+
+    // step: percent%
+	$step_list_color: (
+         50: 44,
+        100: 40,
+        150: 35,
+        200: 30,
+        250: 25,
+        300: 20,
+        350: 15,
+        400: 10,
+        450: 5,
+        550: 5,
+        600: 10,
+        650: 15,
+        700: 20,
+        750: 25,
+        800: 30,
+        850: 35,
+        900: 40,
+        950: 43
+    );
+	
+	@if $step==500 {
+        @include colors_state(#{$name}#{$step}, $color);
+    }
+    
+    @if $step<490 {
+		$proc: map-get($step_list_color, $step);
+        @include colors_state(#{$name}#{$step}, lighten($color, $proc));
+    }
+    
+	@if $step>510 {
+		$proc: map-get($step_list_color, $step);
+        @include colors_state(#{$name}#{$step}, darken($color, $proc));
+    }
+}
+
 @each $name, $color in $color_step_list {
-
-    @each $step in $color_state_step_list {
-
-        @if $step==50 {
-            @include colors_state(#{$name}50, lighten($color, 45%));
-        }
-
-        @if $step==100 {
-            @include colors_state(#{$name}100, lighten($color, 40%));
-        }
-
-        @if $step==200 {
-            @include colors_state(#{$name}200, lighten($color, 30%));
-        }
-
-        @if $step==300 {
-            @include colors_state(#{$name}300, lighten($color, 20%));
-        }
-
-        @if $step==400 {
-            @include colors_state(#{$name}400, lighten($color, 10%));
-        }
-
-        @if $step==500 {
-            @include colors_state(#{$name}500, $color);
-        }
-
-        @if $step==600 {
-            @include colors_state(#{$name}600, darken($color, 10%));
-        }
-
-        @if $step==700 {
-            @include colors_state(#{$name}700, darken($color, 20%));
-        }
-
-        @if $step==800 {
-            @include colors_state(#{$name}800, darken($color, 30%));
-        }
-
-        @if $step==900 {
-            @include colors_state(#{$name}900, darken($color, 38%));
-        }
-
+    @each $step in $color_state_step_list {    
+		@include colors_step($step, $name, $color);
     }
 }
 

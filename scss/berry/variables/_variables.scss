@@ -235,11 +235,11 @@ $opacity_list: .1, .2, .3, .4, .5, .6, .7, .8, .9, 1;
 
 // ***************** COLORS *****************
 
-$color1:    #00A8E6;
-$color2:    #8CC14C;
-$color3:    #FAA732;
-$color4:    #DA314B;
-$color5:    #EE35DF;
+$color1:    #007BFF;
+$color2:    #6C757D;
+$color3:    #28A745;
+$color4:    #DC3545;
+$color5:    #FFC107;
 
 $white:     #FFFFFF;
 $black:     #000000;
@@ -252,32 +252,43 @@ $yellow:    hsl(55deg, 100%, 47%);
 $olive:     hsl(67deg,  79%, 47%);
 $green:     hsl(134deg, 70%, 47%);
 $teal:      hsl(190deg, 90%, 47%);
-// $cyan:       hsl(190deg, 90%, 47%); // alias $teal
 $blue:      hsl(220deg, 73%, 47%);
 $violet:    hsl(265deg, 58%, 47%);
 $purple:    hsl(290deg, 59%, 47%);
 $pink:      hsl(320deg, 73%, 47%);
 
-$gray:      hsl(218deg, 5%, 61%);
+// individual settings for gray 
+$gray:      hsl(208deg, 5%, 61%);
+
 $gray50:    lighten($gray, 35%);
 $gray100:   lighten($gray, 33%);
+$gray150:   lighten($gray, 30%);
 $gray200:   lighten($gray, 27%);
+$gray250:   lighten($gray, 22%);
 $gray300:   lighten($gray, 17%);
+$gray350:   lighten($gray, 12%);
 $gray400:   lighten($gray, 8%);
+$gray450:   lighten($gray, 4%);
 $gray500:   $gray;
-$gray600:   darken($gray, 13%);
+$gray550:   darken($gray, 4%);
+$gray600:   darken($gray, 12%);
+$gray650:   darken($gray, 18%);
 $gray700:   darken($gray, 23%);
+$gray750:   darken($gray, 29%);
 $gray800:   darken($gray, 35%);
+$gray850:   darken($gray, 41%);
 $gray900:   darken($gray, 48%);
+$gray950:   darken($gray, 50%);
 
-$color_primary:  $blue;
-$color_secondary:  $gray600; 
-$color_success:  $green;
-$color_info:  $teal;
-$color_warning:  $yellow; 
-$color_danger:  $red;
-$color_light:  $gray100;
-$color_dark:  $gray800;
+// from the Bootstrap 4
+// $color_primary:  #007BFF;
+// $color_secondary:  #6C757D; 
+// $color_success:  #28A745;
+// $color_danger:  #DC3545;
+// $color_warning:  #FFC107; 
+// $color_info:  #17A2B8;
+// $color_light:  #F8F9FA;
+// $color_dark:  #343A40;
 
 // color list for text, background and hover-classes
 // color: $value
@@ -287,9 +298,9 @@ $color_base_list: (
     // "primary": $color_primary, 
     // "secondary": $color_secondary, 
     // "success": $color_success, 
-    // "info": $color_info, 
-    // "warning": $color_warning, 
     // "danger": $color_danger, 
+    // "warning": $color_warning, 
+    // "info": $color_info, 
     // "light": $color_light, 
     // "dark": $color_dark, 
 
@@ -302,14 +313,23 @@ $color_base_list: (
     "gray":    $gray, 
     "gray50":  $gray50, 
     "gray100": $gray100, 
+    "gray150": $gray150, 
     "gray200": $gray200, 
+    "gray250": $gray250, 
     "gray300": $gray300, 
+    "gray350": $gray350, 
     "gray400": $gray400, 
+    "gray450": $gray450, 
     "gray500": $gray500, 
+    "gray550": $gray550, 
     "gray600": $gray600, 
+    "gray650": $gray650, 
     "gray700": $gray700, 
+    "gray750": $gray750, 
     "gray800": $gray800, 
+    "gray850": $gray850, 
     "gray900": $gray900, 
+    "gray950": $gray950, 
 
     "white":   $white, 
     "black":   $black, 
@@ -369,8 +389,8 @@ $border_list_color: (
 
 // step list for $color_step_list. 
 // See the algorithm in the file "_colors.scss"
-// Possible values: 50, 100, 200, 300, 400, 500, 600, 700, 800 or 900
-$color_state_step_list: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900;
+// step 50: 50, 100, 150, 200, ... 950
+$color_state_step_list: 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950;
 
 // list colors for step gradients
 // .t-red100, .bg-blue600, .hover-t-teal800, .hover-bg-olive300

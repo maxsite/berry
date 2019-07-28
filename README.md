@@ -221,8 +221,9 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 - .h10px (and other values)
 - .h10px-min
 - .h10px-max 
-- .h50vh (height: 50vh) (and other values)
-- .h100vh
+- .h100vh (height: 100vh) (and other values)
+- .h100vh-min
+- .h100vh-max
 
 ```html
 <div class="h30px">text</div>
@@ -230,11 +231,11 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 
 ### Layout / Container 
 
-- .layout-center / .container-center
-- .layout-center-wrap / .container-center-wrap
-- .layout-wrap / .container-wrap
-- .layout-center-tablet / .container-center-tablet (and other @media)
-- .layout-center-wrap-tablet / .container-center-wrap-tablet
+- .layout-center
+- .layout-center-wrap
+- .layout-wrap
+- .layout-center-tablet (and other @media)
+- .layout-center-wrap-tablet
 
 ```html
 <div class="layout-center-wrap">
@@ -332,7 +333,8 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 - .t-left 
 - .t-center 
 - .t-justify 
-- .t-nowrap 
+- .t-decoration-none
+  .t-nowrap 
 - .t-wrap 
 - .t-pre-wrap 
 - .t-break, .t-break-word 

@@ -32,4 +32,12 @@
     .#{$pf}h#{$var}vh {
         height: #{$var}vh;
     }
+    
+    .#{$pf}h#{$var}vh-min {
+        min-height: #{$var}vh;
+    }
+    
+    .#{$pf}h#{$var}vh-max {
+        max-height: #{$var}vh;
+    }
 }

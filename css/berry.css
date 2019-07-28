@@ -185,27 +185,27 @@ hr {
 
 .bor-color1,
 .hover-bor-color1:hover {
-  border-color: #00A8E6; }
+  border-color: #007BFF; }
 
 .bor-color2,
 .hover-bor-color2:hover {
-  border-color: #8CC14C; }
+  border-color: #6C757D; }
 
 .bor-color3,
 .hover-bor-color3:hover {
-  border-color: #FAA732; }
+  border-color: #28A745; }
 
 .bor-color4,
 .hover-bor-color4:hover {
-  border-color: #DA314B; }
+  border-color: #DC3545; }
 
 .bor-color5,
 .hover-bor-color5:hover {
-  border-color: #EE35DF; }
+  border-color: #FFC107; }
 
 .bor-gray,
 .hover-bor-gray:hover {
-  border-color: #979aa1; }
+  border-color: #979ca1; }
 
 .bor-gray50,
 .hover-bor-gray50:hover {
@@ -213,35 +213,35 @@ hr {
 
 .bor-gray100,
 .hover-bor-gray100:hover {
-  border-color: #efeff0; }
+  border-color: #eff0f0; }
 
 .bor-gray200,
 .hover-bor-gray200:hover {
-  border-color: #dfe0e2; }
+  border-color: #dfe1e2; }
 
 .bor-gray300,
 .hover-bor-gray300:hover {
-  border-color: #c4c6ca; }
+  border-color: #c4c7ca; }
 
 .bor-gray400,
 .hover-bor-gray400:hover {
-  border-color: #acafb4; }
+  border-color: #acb0b4; }
 
 .bor-gray500,
 .hover-bor-gray500:hover {
-  border-color: #979aa1; }
+  border-color: #979ca1; }
 
 .bor-gray600,
 .hover-bor-gray600:hover {
-  border-color: #747981; }
+  border-color: #777d83; }
 
 .bor-gray700,
 .hover-bor-gray700:hover {
-  border-color: #5c6066; }
+  border-color: #5c6166; }
 
 .bor-gray800,
 .hover-bor-gray800:hover {
-  border-color: #3f4146; }
+  border-color: #3f4346; }
 
 .bor-gray900,
 .hover-bor-gray900:hover {
@@ -643,16 +643,25 @@ hr {
 .h50vh {
   height: 50vh; }
 
+.h50vh-min {
+  min-height: 50vh; }
+
+.h50vh-max {
+  max-height: 50vh; }
+
 .h100vh {
   height: 100vh; }
 
-.container-center-wrap,
+.h100vh-min {
+  min-height: 100vh; }
+
+.h100vh-max {
+  max-height: 100vh; }
+
 .layout-center-wrap {
   width: 100%; }
 
-.container-center,
 .layout-center,
-.container-center-wrap > .container-wrap,
 .layout-center-wrap > .layout-wrap {
   width: 100%;
   margin-right: auto;
@@ -661,18 +670,14 @@ hr {
   padding-right: 15px;
   padding-left: 15px; }
 
-.container-center-tablet,
 .layout-center-tablet,
-.container-center-wrap-tablet > .container-wrap,
 .layout-center-wrap-tablet > .layout-wrap {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
   max-width: 768px; }
 
-.container-center-phone,
 .layout-center-phone,
-.container-center-wrap-phone > .container-wrap,
 .layout-center-wrap-phone > .layout-wrap {
   width: 100%;
   margin-right: auto;
@@ -1840,6 +1845,9 @@ hr {
 
 .underline {
   text-decoration: underline; }
+
+.t-decoration-none {
+  text-decoration: none; }
 
 .strike {
   text-decoration: line-through; }
