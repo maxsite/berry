@@ -304,8 +304,8 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 
 ### Rounded (border-radius)
 
-- .b-circle (border-radius: 50%)
 - .rounded 
+- .rounded-circle (border-radius: 50%)
 - .rounded10 (and other values) 
 
 ```html

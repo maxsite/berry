@@ -1799,29 +1799,29 @@ hr {
 .z-index999 {
   z-index: 999; }
 
-.b-circle {
+.rounded-circle {
   border-radius: 50%; }
 
 .rounded {
   border-radius: 7px; }
 
 .rounded0 {
-  border-radius: 0px; }
+  border-radius: 0px !important; }
 
 .rounded3 {
-  border-radius: 3px; }
+  border-radius: 3px !important; }
 
 .rounded5 {
-  border-radius: 5px; }
+  border-radius: 5px !important; }
 
 .rounded7 {
-  border-radius: 7px; }
+  border-radius: 7px !important; }
 
 .rounded10 {
-  border-radius: 10px; }
+  border-radius: 10px !important; }
 
 .rounded20 {
-  border-radius: 20px; }
+  border-radius: 20px !important; }
 
 .t-reset {
   font-weight: normal;
@@ -2594,6 +2594,15 @@ hr {
 .w45-max {
   max-width: 45%; }
 
+.w46 {
+  width: 46%; }
+
+.w46-min {
+  min-width: 46%; }
+
+.w46-max {
+  max-width: 46%; }
+
 .w47 {
   width: 47%; }
 
@@ -2820,6 +2829,9 @@ hr {
   .w45-tablet {
     width: 45%; }
 
+  .w46-tablet {
+    width: 46%; }
+
   .w47-tablet {
     width: 47%; }
 
@@ -2942,6 +2954,9 @@ hr {
 
   .w45-phone {
     width: 45%; }
+
+  .w46-phone {
+    width: 46%; }
 
   .w47-phone {
     width: 47%; }
