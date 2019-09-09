@@ -3,6 +3,8 @@
 .#{$pf}visibility-hidden  { visibility: hidden; }
 .#{$pf}visibility-visible { visibility: visible; }
 
+.#{$pf}overflow-hidden { overflow: hidden; }
+
 // .hide-XXX
 @each $postfix, $m in $hide_media_list {
     @media #{$m} {

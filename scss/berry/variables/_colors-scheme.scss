@@ -1,0 +1,513 @@
+// (c) Berry - CSS Utilities, http://maxsite.org/berry
+
+// Variables for colors
+
+$color1:    #007BFF;
+$color2:    #6C757D;
+$color3:    #28A745;
+$color4:    #DC3545;
+$color5:    #FFC107;
+
+// from the Bootstrap 4
+// $color_primary:  #007BFF;
+// $color_secondary:  #6C757D;
+// $color_success:  #28A745;
+// $color_danger:  #DC3545;
+// $color_warning:  #FFC107;
+// $color_info:  #17A2B8;
+// $color_light:  #F8F9FA;
+// $color_dark:  #343A40;
+
+$white:     #FFFFFF;
+$black:     #000000;
+
+// individual settings for gray
+$gray:      hsl(210deg, 6%, 60%);
+$gray500:   $gray;
+
+$gray50:    hsl(210, 1%, 96%);
+$gray100:   hsl(210, 2%, 94%);
+$gray150:   hsl(210, 2%, 91%);
+$gray200:   hsl(210, 3%, 88%);
+$gray250:   hsl(210, 3%, 83%);
+$gray300:   hsl(210, 4%, 78%);
+$gray350:   hsl(210, 4%, 73%);
+$gray400:   hsl(210, 5%, 69%);
+$gray450:   hsl(210, 5%, 65%);
+$gray550:   hsl(210, 6%, 55%);
+$gray600:   hsl(210, 7%, 49%);
+$gray650:   hsl(210, 7%, 44%);
+$gray700:   hsl(210, 8%, 38%);
+$gray750:   hsl(210, 8%, 33%);
+$gray800:   hsl(210, 9%, 28%);
+$gray850:   hsl(210, 9%, 22%);
+$gray900:   hsl(210, 10%, 16%);
+$gray950:   hsl(210, 10%, 10%);
+
+
+// Colors scheme
+// https://yeun.github.io/open-color
+// https://material.io/resources/color
+
+$red:    #ff6b6b;
+$red50:  #fff5f5;
+$red100: #ffe3e3;
+$red200: #ffc9c9;
+$red300: #ffa8a8;
+$red400: #ff8787;
+$red500: $red;
+$red600: #fa5252;
+$red700: #f03e3e;
+$red800: #e03131;
+$red900: #c92a2a;
+
+$brown:    #795548;
+$brown50:  #f0ecea;
+$brown100: #d6cac6;
+$brown200: #bbaaa4;
+$brown300: #9f867d;
+$brown400: #8d6d62;
+$brown500: $brown;
+$brown600: #6c4b41;
+$brown700: #5d3f36;
+$brown800: #4d332d;
+$brown900: #3e2622;
+
+$orange:    #ff922b;
+$orange50:  #fff4e6;
+$orange100: #ffe8cc;
+$orange200: #ffd8a8;
+$orange300: #ffc078;
+$orange400: #ffa94d;
+$orange500: $orange;
+$orange600: #fd7e14;
+$orange700: #f76707;
+$orange800: #e8590c;
+$orange900: #d9480f;
+
+$yellow:    #fcc419;
+$yellow50:  #fff9db;
+$yellow100: #fff3bf;
+$yellow200: #ffec99;
+$yellow300: #ffe066;
+$yellow400: #ffd43b;
+$yellow500: $yellow;
+$yellow600: #fab005;
+$yellow700: #f59f00;
+$yellow800: #f08c00;
+$yellow900: #e67700;
+
+$olive:    #CDDC39;
+$olive50:  #F9FBE7;
+$olive100: #F0F4C3;
+$olive200: #E6EE9C;
+$olive300: #DCE775;
+$olive400: #D4E157;
+$olive500: $olive;
+$olive600: #C0CA33;
+$olive700: #AFB42B;
+$olive800: #9E9D24;
+$olive900: #827717;
+
+$lime:    #94d82d;
+$lime50:  #f4fce3;
+$lime100: #e9fac8;
+$lime200: #d8f5a2;
+$lime300: #c0eb75;
+$lime400: #a9e34b;
+$lime500: $lime;
+$lime600: #82c91e;
+$lime700: #74b816;
+$lime800: #66a80f;
+$lime900: #5c940d;
+
+$green:    #51cf66;
+$green50:  #ebfbee;
+$green100: #d3f9d8;
+$green200: #b2f2bb;
+$green300: #8ce99a;
+$green400: #69db7c;
+$green500: $green;
+$green600: #40c057;
+$green700: #37b24d;
+$green800: #2f9e44;
+$green900: #2b8a3e;
+
+$teal:    #20c997;
+$teal50:  #e6fcf5;
+$teal100: #c3fae8;
+$teal200: #96f2d7;
+$teal300: #63e6be;
+$teal400: #38d9a9;
+$teal500: $teal;
+$teal600: #12b886;
+$teal700: #0ca678;
+$teal800: #099268;
+$teal900: #087f5b;
+
+$cyan:    #22b8cf;
+$cyan50:  #e3fafc;
+$cyan100: #c5f6fa;
+$cyan200: #99e9f2;
+$cyan300: #66d9e8;
+$cyan400: #3bc9db;
+$cyan500: $cyan;
+$cyan600: #15aabf;
+$cyan700: #1098ad;
+$cyan800: #0c8599;
+$cyan900: #0b7285;
+
+$blue:    #339af0;
+$blue50:  #e7f5ff;
+$blue100: #d0ebff;
+$blue200: #a5d8ff;
+$blue300: #74c0fc;
+$blue400: #4dabf7;
+$blue500: $blue;
+$blue600: #228be6;
+$blue700: #1c7ed6;
+$blue800: #1971c2;
+$blue900: #1864ab;
+
+$indigo:    #5c7cfa;
+$indigo50:  #edf2ff;
+$indigo100: #dbe4ff;
+$indigo200: #bac8ff;
+$indigo300: #91a7ff;
+$indigo400: #748ffc;
+$indigo500: $indigo;
+$indigo600: #4c6ef5;
+$indigo700: #4263eb;
+$indigo800: #3b5bdb;
+$indigo900: #364fc7;
+
+$violet:    #845ef7;
+$violet50:  #f3f0ff;
+$violet100: #e5dbff;
+$violet200: #d0bfff;
+$violet300: #b197fc;
+$violet400: #9775fa;
+$violet500: $violet;
+$violet600: #7950f2;
+$violet700: #7048e8;
+$violet800: #6741d9;
+$violet900: #5f3dc4;
+
+$purple:    #cc5de8;
+$purple50:  #f8f0fc;
+$purple100: #f3d9fa;
+$purple200: #eebefa;
+$purple300: #e599f7;
+$purple400: #da77f2;
+$purple500: $purple;
+$purple600: #be4bdb;
+$purple700: #ae3ec9;
+$purple800: #9c36b5;
+$purple900: #862e9c;
+
+$pink:    #f06595;
+$pink50:  #fff0f6;
+$pink100: #ffdeeb;
+$pink200: #fcc2d7;
+$pink300: #faa2c1;
+$pink400: #f783ac;
+$pink500: $pink;
+$pink600: #e64980;
+$pink700: #d6336c;
+$pink800: #c2255c;
+$pink900: #a61e4d;
+
+// color list for text, background and hover-classes
+// color: $value
+// .t-red, .bg-red, .hover-t-red, .hover-bg-red
+$color_base_list: (
+
+    // "primary": $color_primary,
+    // "secondary": $color_secondary,
+    // "success": $color_success,
+    // "danger": $color_danger,
+    // "warning": $color_warning,
+    // "info": $color_info,
+    // "light": $color_light,
+    // "dark": $color_dark,
+
+    "color1":  $color1,
+    "color2":  $color2,
+    "color3":  $color3,
+    "color4":  $color4,
+    "color5":  $color5,
+
+    "white":   $white,
+    "black":   $black,
+
+    "gray":    $gray,
+    "gray50":  $gray50,
+    "gray100": $gray100,
+    "gray150": $gray150,
+    "gray200": $gray200,
+    "gray250": $gray250,
+    "gray300": $gray300,
+    "gray350": $gray350,
+    "gray400": $gray400,
+    "gray450": $gray450,
+    "gray500": $gray500,
+    "gray550": $gray550,
+    "gray600": $gray600,
+    "gray650": $gray650,
+    "gray700": $gray700,
+    "gray750": $gray750,
+    "gray800": $gray800,
+    "gray850": $gray850,
+    "gray900": $gray900,
+    "gray950": $gray950,
+
+    "red":    $red,
+    "red50":  $red50,
+    "red100": $red100,
+    "red200": $red200,
+    "red300": $red300,
+    "red400": $red400,
+    "red500": $red500,
+    "red600": $red600,
+    "red700": $red700,
+    "red800": $red800,
+    "red900": $red900,
+
+    "pink":    $pink,
+    "pink50":  $pink50,
+    "pink100": $pink100,
+    "pink200": $pink200,
+    "pink300": $pink300,
+    "pink400": $pink400,
+    "pink500": $pink500,
+    "pink600": $pink600,
+    "pink700": $pink700,
+    "pink800": $pink800,
+    "pink900": $pink900,
+
+    "purple":    $purple,
+    "purple50":  $purple50,
+    "purple100": $purple100,
+    "purple200": $purple200,
+    "purple300": $purple300,
+    "purple400": $purple400,
+    "purple500": $purple500,
+    "purple600": $purple600,
+    "purple700": $purple700,
+    "purple800": $purple800,
+    "purple900": $purple900,
+
+    "violet":    $violet,
+    "violet50":  $violet50,
+    "violet100": $violet100,
+    "violet200": $violet200,
+    "violet300": $violet300,
+    "violet400": $violet400,
+    "violet500": $violet500,
+    "violet600": $violet600,
+    "violet700": $violet700,
+    "violet800": $violet800,
+    "violet900": $violet900,
+
+    "indigo":    $indigo,
+    "indigo50":  $indigo50,
+    "indigo100": $indigo100,
+    "indigo200": $indigo200,
+    "indigo300": $indigo300,
+    "indigo400": $indigo400,
+    "indigo500": $indigo500,
+    "indigo600": $indigo600,
+    "indigo700": $indigo700,
+    "indigo800": $indigo800,
+    "indigo900": $indigo900,
+
+    "blue":    $blue,
+    "blue50":  $blue50,
+    "blue100": $blue100,
+    "blue200": $blue200,
+    "blue300": $blue300,
+    "blue400": $blue400,
+    "blue500": $blue500,
+    "blue600": $blue600,
+    "blue700": $blue700,
+    "blue800": $blue800,
+    "blue900": $blue900,
+
+    "cyan":    $cyan,
+    "cyan50":  $cyan50,
+    "cyan100": $cyan100,
+    "cyan200": $cyan200,
+    "cyan300": $cyan300,
+    "cyan400": $cyan400,
+    "cyan500": $cyan500,
+    "cyan600": $cyan600,
+    "cyan700": $cyan700,
+    "cyan800": $cyan800,
+    "cyan900": $cyan900,
+
+    "teal":    $teal,
+    "teal50":  $teal50,
+    "teal100": $teal100,
+    "teal200": $teal200,
+    "teal300": $teal300,
+    "teal400": $teal400,
+    "teal500": $teal500,
+    "teal600": $teal600,
+    "teal700": $teal700,
+    "teal800": $teal800,
+    "teal900": $teal900,
+
+    "green":    $green,
+    "green50":  $green50,
+    "green100": $green100,
+    "green200": $green200,
+    "green300": $green300,
+    "green400": $green400,
+    "green500": $green500,
+    "green600": $green600,
+    "green700": $green700,
+    "green800": $green800,
+    "green900": $green900,
+
+    "lime":    $lime,
+    "lime50":  $lime50,
+    "lime100": $lime100,
+    "lime200": $lime200,
+    "lime300": $lime300,
+    "lime400": $lime400,
+    "lime500": $lime500,
+    "lime600": $lime600,
+    "lime700": $lime700,
+    "lime800": $lime800,
+    "lime900": $lime900,
+
+    "yellow":    $yellow,
+    "yellow50":  $yellow50,
+    "yellow100": $yellow100,
+    "yellow200": $yellow200,
+    "yellow300": $yellow300,
+    "yellow400": $yellow400,
+    "yellow500": $yellow500,
+    "yellow600": $yellow600,
+    "yellow700": $yellow700,
+    "yellow800": $yellow800,
+    "yellow900": $yellow900,
+
+    "orange":    $orange,
+    "orange50":  $orange50,
+    "orange100": $orange100,
+    "orange200": $orange200,
+    "orange300": $orange300,
+    "orange400": $orange400,
+    "orange500": $orange500,
+    "orange600": $orange600,
+    "orange700": $orange700,
+    "orange800": $orange800,
+    "orange900": $orange900,
+
+    "brown":    $brown,
+    "brown50":  $brown50,
+    "brown100": $brown100,
+    "brown200": $brown200,
+    "brown300": $brown300,
+    "brown400": $brown400,
+    "brown500": $brown500,
+    "brown600": $brown600,
+    "brown700": $brown700,
+    "brown800": $brown800,
+    "brown900": $brown900,
+
+    "olive":    $olive,
+    "olive50":  $olive50,
+    "olive100": $olive100,
+    "olive200": $olive200,
+    "olive300": $olive300,
+    "olive400": $olive400,
+    "olive500": $olive500,
+    "olive600": $olive600,
+    "olive700": $olive700,
+    "olive800": $olive800,
+    "olive900": $olive900,
+
+);
+
+// color for borders
+// .bor-color1, .hover-bor-blue
+$border_list_color: (
+    "color1":  $color1,
+    "color2":  $color2,
+    "color3":  $color3,
+    "color4":  $color4,
+    "color5":  $color5,
+
+    "white":   $white,
+    "black":   $black,
+
+    "gray":    $gray,
+    "gray50":  $gray50,
+    "gray100": $gray100,
+    "gray200": $gray200,
+    "gray300": $gray300,
+    "gray400": $gray400,
+    "gray500": $gray500,
+    "gray600": $gray600,
+    "gray700": $gray700,
+    "gray800": $gray800,
+    "gray900": $gray900,
+
+    'red':     $red,
+    'brown':  $brown,
+    'orange': $orange,
+    'yellow': $yellow,
+    'olive':  $olive,
+    'lime':   $lime,
+    'green':  $green,
+    'teal':   $teal,
+    'cyan':   $cyan,
+    'blue':   $blue,
+    'indigo': $indigo,
+    'violet': $violet,
+    'purple': $purple,
+    'pink':   $pink,
+
+);
+
+// list colors for classes .links-hover-t-XXX and .links-hover-bg-XXX
+// .links-hover-t-red, .links-hover-bg-color5
+$color_links_hover_list: (
+    "color1":  $color1,
+    "color2":  $color2,
+    "color3":  $color3,
+    "color4":  $color4,
+    "color5":  $color5,
+
+    "white":   $white,
+    "black":   $black,
+
+    "gray":    $gray,
+    "gray50":  $gray50,
+    "gray100": $gray100,
+    "gray200": $gray200,
+    "gray300": $gray300,
+    "gray400": $gray400,
+    "gray500": $gray500,
+    "gray600": $gray600,
+    "gray700": $gray700,
+    "gray800": $gray800,
+    "gray900": $gray900,
+
+    'red':     $red,
+    'brown':  $brown,
+    'orange': $orange,
+    'yellow': $yellow,
+    'olive':  $olive,
+    'lime':   $lime,
+    'green':  $green,
+    'teal':   $teal,
+    'cyan':   $cyan,
+    'blue':   $blue,
+    'indigo': $indigo,
+    'violet': $violet,
+    'purple': $purple,
+    'pink':   $pink,
+);

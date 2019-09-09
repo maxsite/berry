@@ -19,6 +19,8 @@ Customization with variables:
 
 In the file `berry.scss`, you can specify the necessary modules.
 
+Colors variable in `variables/_colors-scheme.scss`.
+
 ## Using Berry 
 
 Connect the CSS-file as you like.
@@ -437,13 +439,16 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 <a class="hover-no-underline" href="#">link</a>
 ```
 
-## Color text and background. Opacity
+## Opacity and transparent
 
 - .t-transparent (color: transparent;)
 - .bg-transparent (background-color: transparent;)
 
 - .opacity10, .hover-opacity10 (opacity: 0.1;) (and other values)
 - .bg-op10, .hover-bg-op10 (background-color: rgba(0, 0, 0, 0.1);)
+
+
+## Color text and background
 
 - .t-color1 (and other values)
 - .bg-color1
@@ -458,6 +463,32 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 <div class="links-hover-t-red"><a href="#">link</a></div>
 <a class="t-blue hover-t-red600 hover-bg-yellow100" href="#">link</a>
 ```
+
+## Base colors (see demo/berry-colors.html)
+
+- color1
+- color2
+- color3
+- color4
+- color5
+- white
+- black
+- gray (gray50, gray100, gray150, gray200 ... gray950)
+- red (red50, red100, red200 ... red900 - for all colors)
+- brown 
+- orange
+- yellow
+- olive
+- lime'
+- green
+- teal
+- cyan
+- blue
+- indigo
+- violet
+- purple
+- pink
+
 
 ## Copyright and license
 

@@ -203,50 +203,6 @@ hr {
 .hover-bor-color5:hover {
   border-color: #FFC107; }
 
-.bor-gray,
-.hover-bor-gray:hover {
-  border-color: #979ca1; }
-
-.bor-gray50,
-.hover-bor-gray50:hover {
-  border-color: #f4f5f5; }
-
-.bor-gray100,
-.hover-bor-gray100:hover {
-  border-color: #eff0f0; }
-
-.bor-gray200,
-.hover-bor-gray200:hover {
-  border-color: #dfe1e2; }
-
-.bor-gray300,
-.hover-bor-gray300:hover {
-  border-color: #c4c7ca; }
-
-.bor-gray400,
-.hover-bor-gray400:hover {
-  border-color: #acb0b4; }
-
-.bor-gray500,
-.hover-bor-gray500:hover {
-  border-color: #979ca1; }
-
-.bor-gray600,
-.hover-bor-gray600:hover {
-  border-color: #777d83; }
-
-.bor-gray700,
-.hover-bor-gray700:hover {
-  border-color: #5c6166; }
-
-.bor-gray800,
-.hover-bor-gray800:hover {
-  border-color: #3f4346; }
-
-.bor-gray900,
-.hover-bor-gray900:hover {
-  border-color: #1f2123; }
-
 .bor-white,
 .hover-bor-white:hover {
   border-color: #FFFFFF; }
@@ -255,49 +211,105 @@ hr {
 .hover-bor-black:hover {
   border-color: #000000; }
 
+.bor-gray,
+.hover-bor-gray:hover {
+  border-color: #93999f; }
+
+.bor-gray50,
+.hover-bor-gray50:hover {
+  border-color: whitesmoke; }
+
+.bor-gray100,
+.hover-bor-gray100:hover {
+  border-color: #eff0f0; }
+
+.bor-gray200,
+.hover-bor-gray200:hover {
+  border-color: #dfe0e1; }
+
+.bor-gray300,
+.hover-bor-gray300:hover {
+  border-color: #c5c7c9; }
+
+.bor-gray400,
+.hover-bor-gray400:hover {
+  border-color: #acb0b4; }
+
+.bor-gray500,
+.hover-bor-gray500:hover {
+  border-color: #93999f; }
+
+.bor-gray600,
+.hover-bor-gray600:hover {
+  border-color: #747d86; }
+
+.bor-gray700,
+.hover-bor-gray700:hover {
+  border-color: #596169; }
+
+.bor-gray800,
+.hover-bor-gray800:hover {
+  border-color: #41474e; }
+
+.bor-gray900,
+.hover-bor-gray900:hover {
+  border-color: #25292d; }
+
 .bor-red,
 .hover-bor-red:hover {
-  border-color: #cd2e23; }
-
-.bor-green,
-.hover-bor-green:hover {
-  border-color: #24cc4b; }
-
-.bor-blue,
-.hover-bor-blue:hover {
-  border-color: #205bcf; }
-
-.bor-yellow,
-.hover-bor-yellow:hover {
-  border-color: #f0dc00; }
-
-.bor-orange,
-.hover-bor-orange:hover {
-  border-color: #f0a000; }
-
-.bor-olive,
-.hover-bor-olive:hover {
-  border-color: #c0d719; }
-
-.bor-teal,
-.hover-bor-teal:hover {
-  border-color: #0cc0e4; }
-
-.bor-violet,
-.hover-bor-violet:hover {
-  border-color: #6c32bd; }
-
-.bor-purple,
-.hover-bor-purple:hover {
-  border-color: #a731bf; }
-
-.bor-pink,
-.hover-bor-pink:hover {
-  border-color: #cf2095; }
+  border-color: #ff6b6b; }
 
 .bor-brown,
 .hover-bor-brown:hover {
-  border-color: #b05c40; }
+  border-color: #795548; }
+
+.bor-orange,
+.hover-bor-orange:hover {
+  border-color: #ff922b; }
+
+.bor-yellow,
+.hover-bor-yellow:hover {
+  border-color: #fcc419; }
+
+.bor-olive,
+.hover-bor-olive:hover {
+  border-color: #CDDC39; }
+
+.bor-lime,
+.hover-bor-lime:hover {
+  border-color: #94d82d; }
+
+.bor-green,
+.hover-bor-green:hover {
+  border-color: #51cf66; }
+
+.bor-teal,
+.hover-bor-teal:hover {
+  border-color: #20c997; }
+
+.bor-cyan,
+.hover-bor-cyan:hover {
+  border-color: #22b8cf; }
+
+.bor-blue,
+.hover-bor-blue:hover {
+  border-color: #339af0; }
+
+.bor-indigo,
+.hover-bor-indigo:hover {
+  border-color: #5c7cfa; }
+
+.bor-violet,
+.hover-bor-violet:hover {
+  border-color: #845ef7; }
+
+.bor-purple,
+.hover-bor-purple:hover {
+  border-color: #cc5de8; }
+
+.bor-pink,
+.hover-bor-pink:hover {
+  border-color: #f06595; }
 
 .bor1 {
   border-width: 1px; }
@@ -683,6 +695,92 @@ hr {
   margin-right: auto;
   margin-left: auto;
   max-width: 667px; }
+
+.bg-transparent {
+  background-color: transparent !important; }
+
+.t-transparent {
+  color: transparent !important; }
+
+.opacity10,
+.hover-opacity10:hover {
+  opacity: 0.1; }
+
+.bg-op10,
+.hover-bg-op10:hover {
+  background-color: rgba(0, 0, 0, 0.1); }
+
+.opacity20,
+.hover-opacity20:hover {
+  opacity: 0.2; }
+
+.bg-op20,
+.hover-bg-op20:hover {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.opacity30,
+.hover-opacity30:hover {
+  opacity: 0.3; }
+
+.bg-op30,
+.hover-bg-op30:hover {
+  background-color: rgba(0, 0, 0, 0.3); }
+
+.opacity40,
+.hover-opacity40:hover {
+  opacity: 0.4; }
+
+.bg-op40,
+.hover-bg-op40:hover {
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.opacity50,
+.hover-opacity50:hover {
+  opacity: 0.5; }
+
+.bg-op50,
+.hover-bg-op50:hover {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.opacity60,
+.hover-opacity60:hover {
+  opacity: 0.6; }
+
+.bg-op60,
+.hover-bg-op60:hover {
+  background-color: rgba(0, 0, 0, 0.6); }
+
+.opacity70,
+.hover-opacity70:hover {
+  opacity: 0.7; }
+
+.bg-op70,
+.hover-bg-op70:hover {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.opacity80,
+.hover-opacity80:hover {
+  opacity: 0.8; }
+
+.bg-op80,
+.hover-bg-op80:hover {
+  background-color: rgba(0, 0, 0, 0.8); }
+
+.opacity90,
+.hover-opacity90:hover {
+  opacity: 0.9; }
+
+.bg-op90,
+.hover-bg-op90:hover {
+  background-color: rgba(0, 0, 0, 0.9); }
+
+.opacity100,
+.hover-opacity100:hover {
+  opacity: 1; }
+
+.bg-op100,
+.hover-bg-op100:hover {
+  background-color: black; }
 
 .pad0 {
   padding: 0!important; }
@@ -2232,6 +2330,9 @@ hr {
 
 .visibility-visible {
   visibility: visible; }
+
+.overflow-hidden {
+  overflow: hidden; }
 
 @media (max-width: 768px) {
   .hide-tablet {
