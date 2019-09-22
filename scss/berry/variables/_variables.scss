@@ -12,7 +12,6 @@
 // * TEXT
 // * BORDER
 // * POSITION
-// * COLORS
 
 // ***************** PREFIX *****************
 
@@ -106,7 +105,7 @@ $width_list_percent: 0, 1, 2, 3, 4, 5, 10, 15, 20, 23, 24, 25, 30, 31, 32, 33, 3
 
 // PX width, max-width and min-width
 // .w70px, .w300px-max, .w50px-min
-$width_list_px: 5, 10, 15, 20, 25, 30, 35, 40, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700;
+$width_list_px: 5, 10, 15, 20, 25, 30, 35, 40, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800;
 
 // @media for width(%) classes
 // Point from large to small !!!
@@ -229,8 +228,3 @@ $zindex_list: 1, 9, 99, 999;
 // classes for opacity: XXX and background-color: rgba(0, 0, 0, XXX)
 // .bg-op30, .hover-bg-op30, .opacity10, .hover-opacity10
 $opacity_list: .1, .2, .3, .4, .5, .6, .7, .8, .9, 1;
-
-
-// ***************** COLORS *****************
-
-@import 'colors-scheme';

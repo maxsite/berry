@@ -62,16 +62,6 @@
     }
 }
 
-// color border
-@each $name,
-$color in $border_list_color {
-
-    .#{$pf}bor-#{$name},
-    .#{$pf}hover-bor-#{$name}:hover {
-        border-color: $color;
-    }
-}
-
 // width
 @each $var in $border_list {
     .#{$pf}bor#{$var} {

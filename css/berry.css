@@ -1,4 +1,4 @@
-/*! (c) Berry - CSS Utilities, http://maxsite.org/berry */
+/*! (c) Berry 2.0 - CSS Utilities, http://maxsite.org/berry */
 *,
 *:before,
 *:after {
@@ -182,134 +182,6 @@ hr {
 .bor-double-rl {
   border-right-style: double;
   border-left-style: double; }
-
-.bor-color1,
-.hover-bor-color1:hover {
-  border-color: #007BFF; }
-
-.bor-color2,
-.hover-bor-color2:hover {
-  border-color: #6C757D; }
-
-.bor-color3,
-.hover-bor-color3:hover {
-  border-color: #28A745; }
-
-.bor-color4,
-.hover-bor-color4:hover {
-  border-color: #DC3545; }
-
-.bor-color5,
-.hover-bor-color5:hover {
-  border-color: #FFC107; }
-
-.bor-white,
-.hover-bor-white:hover {
-  border-color: #FFFFFF; }
-
-.bor-black,
-.hover-bor-black:hover {
-  border-color: #000000; }
-
-.bor-gray,
-.hover-bor-gray:hover {
-  border-color: #93999f; }
-
-.bor-gray50,
-.hover-bor-gray50:hover {
-  border-color: whitesmoke; }
-
-.bor-gray100,
-.hover-bor-gray100:hover {
-  border-color: #eff0f0; }
-
-.bor-gray200,
-.hover-bor-gray200:hover {
-  border-color: #dfe0e1; }
-
-.bor-gray300,
-.hover-bor-gray300:hover {
-  border-color: #c5c7c9; }
-
-.bor-gray400,
-.hover-bor-gray400:hover {
-  border-color: #acb0b4; }
-
-.bor-gray500,
-.hover-bor-gray500:hover {
-  border-color: #93999f; }
-
-.bor-gray600,
-.hover-bor-gray600:hover {
-  border-color: #747d86; }
-
-.bor-gray700,
-.hover-bor-gray700:hover {
-  border-color: #596169; }
-
-.bor-gray800,
-.hover-bor-gray800:hover {
-  border-color: #41474e; }
-
-.bor-gray900,
-.hover-bor-gray900:hover {
-  border-color: #25292d; }
-
-.bor-red,
-.hover-bor-red:hover {
-  border-color: #ff6b6b; }
-
-.bor-brown,
-.hover-bor-brown:hover {
-  border-color: #795548; }
-
-.bor-orange,
-.hover-bor-orange:hover {
-  border-color: #ff922b; }
-
-.bor-yellow,
-.hover-bor-yellow:hover {
-  border-color: #fcc419; }
-
-.bor-olive,
-.hover-bor-olive:hover {
-  border-color: #CDDC39; }
-
-.bor-lime,
-.hover-bor-lime:hover {
-  border-color: #94d82d; }
-
-.bor-green,
-.hover-bor-green:hover {
-  border-color: #51cf66; }
-
-.bor-teal,
-.hover-bor-teal:hover {
-  border-color: #20c997; }
-
-.bor-cyan,
-.hover-bor-cyan:hover {
-  border-color: #22b8cf; }
-
-.bor-blue,
-.hover-bor-blue:hover {
-  border-color: #339af0; }
-
-.bor-indigo,
-.hover-bor-indigo:hover {
-  border-color: #5c7cfa; }
-
-.bor-violet,
-.hover-bor-violet:hover {
-  border-color: #845ef7; }
-
-.bor-purple,
-.hover-bor-purple:hover {
-  border-color: #cc5de8; }
-
-.bor-pink,
-.hover-bor-pink:hover {
-  border-color: #f06595; }
 
 .bor1 {
   border-width: 1px; }
@@ -2515,6 +2387,15 @@ hr {
 .w700px-max {
   max-width: 700px; }
 
+.w800px {
+  width: 800px; }
+
+.w800px-min {
+  min-width: 800px; }
+
+.w800px-max {
+  max-width: 800px; }
+
 .w0 {
   width: 0%; }
 
@@ -3109,6 +2990,25 @@ hr {
 
   .w100-phone {
     width: 100%; } }
+a.hover-no-color:hover {
+  color: inherit; }
+a.hover-no-underline:hover {
+  text-decoration: none; }
+
+.hover-no-color a:hover {
+  color: inherit; }
+
+.hover-no-underline a:hover {
+  text-decoration: none; }
+
+.link-no-color a:not([class^="t-"]):not([class*=" t-"]),
+.links-no-color a:not([class^="t-"]):not([class*=" t-"]) {
+  color: inherit; }
+
+.link-no-color-imp a,
+.links-no-color-imp a {
+  color: inherit !important; }
+
 .bg-size-auto {
   background-size: auto; }
 

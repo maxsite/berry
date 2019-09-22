@@ -4,22 +4,30 @@ CSS Library for Utility classes. For any CSS-framework.
 
 Use the most suitable option for your favorite css-framework.
 
-- `berry.css` - no normalize, no colors classes
-- `berry-color.css` - no normalize, included colors
-- `berry-normalize.css` - included normalize, no colors classes
-- `berry-normalize-colors.css` - included normalize, included colors
+Utility files:
 
-All files include "box-sizing"-reset: `box-sizing: border-box`.
+- `berry.css` - no normalize
+- `berry-normalize.css` - included normalize
+
+This files include "box-sizing"-reset: `box-sizing: border-box`.
+
+Color files:
+
+- `berry-color.css` - only colors (all gradations of brightness / step 50)
+- `berry-colors-lite.css` - only colors (gradations of brightness / step 100)
 
 ## Use Sass to configure
 
 Customization with variables:
 - Typical use: `variables/_variables.scss`
-- Minimal classes: `variables/_variables-minimum.scss`
+
+Customization colors:
+- All variables: `variables/_all-colors.scss`
+- Set all gradations (step 50) of brightness: `variables/_colors.scss`
+- Step 100-gradation: `variables/_colors-lite.scss`
 
 In the file `berry.scss`, you can specify the necessary modules.
 
-Colors variable in `variables/_colors-scheme.scss`.
 
 ## Using Berry 
 
@@ -27,6 +35,7 @@ Connect the CSS-file as you like.
 
 ```html
 <link href="/path_to_styles/berry.css" rel="stylesheet">
+<link href="/path_to_styles/berry-colors.css" rel="stylesheet">  # optional
 <link href="/path_to_styles/ANY.css" rel="stylesheet">
 ```
 
@@ -147,9 +156,6 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 - .bor-solid-l 
 - .bor-solid-tb 
 - .bor-solid-rl 
-
-- .bor-color1 (and other colors)
-- .hover-bor-color1
 
 - .bor1 (border-width: 1px) (and other width)
 
@@ -448,23 +454,7 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 - .bg-op10, .hover-bg-op10 (background-color: rgba(0, 0, 0, 0.1);)
 
 
-## Color text and background
-
-- .t-color1 (and other values)
-- .bg-color1
-- .hover-t-color1
-- .hover-bg-color1
-
-- .links-hover-t-color1 (and other values)
-- .links-hover-bg-color1
-
-```html
-<div class="t-red600 bg-yellow300">text</div>
-<div class="links-hover-t-red"><a href="#">link</a></div>
-<a class="t-blue hover-t-red600 hover-bg-yellow100" href="#">link</a>
-```
-
-## Base colors (see demo/berry-colors.html)
+## Base colors (see examples demo/berry-colors.html)
 
 - color1
 - color2
@@ -474,7 +464,7 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 - white
 - black
 - gray (gray50, gray100, gray150, gray200 ... gray950)
-- red (red50, red100, red200 ... red900 - for all colors)
+- red (red50, red100, red150, red200 ... red950 - for all colors)
 - brown 
 - orange
 - yellow
@@ -489,6 +479,24 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 - purple
 - pink
 
+## Color text, background, border, links
+
+- .t-color1 (and other values)
+- .bg-pink600
+- .hover-t-blue
+- .hover-bg-red
+
+- .links-hover-t-color1 (and other values)
+- .links-hover-bg-green
+
+- .bor-color1 (and other colors)
+- .hover-bor-yellow
+
+```html
+<div class="t-red600 bg-yellow300">text</div>
+<div class="links-hover-t-red"><a href="#">link</a></div>
+<a class="t-blue hover-t-red600 hover-bg-yellow100" href="#">link</a>
+```
 
 ## Copyright and license
 

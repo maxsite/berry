@@ -40,3 +40,12 @@
     @include colors_state_links_hover($name, $color);
 }
 
+// color border
+@each $name,
+$color in $border_list_color {
+
+    .#{$pf}bor-#{$name},
+    .#{$pf}hover-bor-#{$name}:hover {
+        border-color: $color;
+    }
+}

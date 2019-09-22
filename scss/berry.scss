@@ -1,8 +1,7 @@
-/*! (c) Berry - CSS Utilities, http://maxsite.org/berry */
+/*! (c) Berry 2.0 - CSS Utilities, http://maxsite.org/berry */
 
 // Variables
 @import 'berry/variables/variables';
-// @import 'berry/variables/variables-minimum'; // or minimal variables for small css-file
 
 // optional: base resets
 // @import 'berry/resets/normalize'; // normalize.css
@@ -21,8 +20,5 @@
 @import 'berry/text';
 @import 'berry/visible';
 @import 'berry/width';
+@import 'berry/links';
 @import 'berry/other';
-
-// optional:
-// @import 'berry/links';
-// @import 'berry/colors';
