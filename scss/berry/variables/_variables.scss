@@ -12,6 +12,7 @@
 // * TEXT
 // * BORDER
 // * POSITION
+// * OPACITY
 
 // ***************** PREFIX *****************
 
@@ -31,7 +32,7 @@ $SCREEN_DESKTOP: "(max-width: 1200px)";
 $SCREEN_MEDIUM:  "(max-width: 1024px)";
 $SCREEN_TABLET:  "(max-width: 768px)";
 $SCREEN_PHONE:   "(max-width: 667px)";
-$SCREEN_SMALL:   "(max-width: 480px)";
+$SCREEN_SMALL:   "(max-width: 360px)";
 
 // another variant
 //   576  768  992  1200
@@ -44,7 +45,7 @@ $SCREEN_SM: "(max-width: 576px)";  // Small
 // statistics screen resolution:
 // DESKTOP 1366    - http://gs.statcounter.com/screen-resolution-stats/desktop/worldwide
 // TABLET  768     - http://gs.statcounter.com/screen-resolution-stats/tablet/worldwide
-// PHONE   640 667 - http://gs.statcounter.com/screen-resolution-stats/mobile/worldwide
+// PHONE   360 640 667 - http://gs.statcounter.com/screen-resolution-stats/mobile/worldwide
 
 
 // ***************** LAYOUT/CONTAINER *****************
@@ -55,11 +56,10 @@ $layout_max_width: 1200px;
 
 // maximum width layout for other size
 // .layout-center-tablet, .layout-center-wrap-phone, .layout-center-myphone
-// .container-center-tablet, .container-center-wrap-phone, .container-center-myphone
 $layout_max_width_list: (
     "tablet": 768px,
     "phone": 667px,
-    // "myphone": 800px, // .layout-center-myphone .layout-center-wrap-myphone
+    // "myphone": 800px, // this sample: .layout-center-myphone .layout-center-wrap-myphone
 );
 
 // padding (right and left) for .layout-wrap and .layout-center
@@ -74,9 +74,9 @@ $layout_wrap_padding: 15px;
 // Point from large to small !!!
 // .flex-wrap-tablet, .flex-wrap-phone
 $screen_media_flex_list: (
-    // "medum": $SCREEN_MEDIUM, 
     "tablet": $SCREEN_TABLET, 
     "phone": $SCREEN_PHONE,
+    "small": $SCREEN_SMALL,
 );
 
 // flex order, grow and shrink
@@ -91,9 +91,9 @@ $flex_shrink_list: 1, 2, 3, 4, 5;
 // @media for .hide classes
 // .hide-tablet .hide-phone
 $hide_media_list: (
-    // "medum": $SCREEN_MEDIUM,
     "tablet": $SCREEN_TABLET, 
     "phone": $SCREEN_PHONE,
+	"small": $SCREEN_SMALL,
 );
 
 
@@ -112,9 +112,9 @@ $width_list_px: 5, 10, 15, 20, 25, 30, 35, 40, 50, 100, 150, 200, 250, 300, 400,
 // postfix: $screen
 // .w70-tablet, .w50-phone
 $screen_media_width_list: (
-    // "medium": $SCREEN_MEDIUM,
     "tablet": $SCREEN_TABLET, 
     "phone": $SCREEN_PHONE,
+	"small": $SCREEN_SMALL,
     );
     
 // PX height and min-height
@@ -150,6 +150,7 @@ $padding_list_media: 0, 5, 10, 20;
 $screen_media_mar_pad_list: (
     "tablet": $SCREEN_TABLET, 
     "phone": $SCREEN_PHONE,
+	"small": $SCREEN_SMALL,
 );
 
 
@@ -186,6 +187,7 @@ $text_lh_em: 1, 1.1, 1.2, 1.3, 1.5, 2;
 $screen_media_text_list: (
     "tablet": $SCREEN_TABLET, 
     "phone": $SCREEN_PHONE,
+	"small": $SCREEN_SMALL,
 );
 
 
