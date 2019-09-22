@@ -25,7 +25,7 @@ $pf: "";
 
 // Use any variables for @media rules
 
-//      480     667      768      1024       1200
+//      360     667      768      1024       1200
 // SMALL   PHONE   TABLET   MEDIUM    DESKTOP    LARGE
 $SCREEN_LARGE:   "(min-width: 1201px)";
 $SCREEN_DESKTOP: "(max-width: 1200px)";
@@ -37,10 +37,10 @@ $SCREEN_SMALL:   "(max-width: 360px)";
 // another variant
 //   576  768  992  1200
 // SM   MD   LG   XL
-$SCREEN_XL: "(min-width: 1201px)"; // Extra large
-$SCREEN_LG: "(max-width: 992px)";  // Large
-$SCREEN_MD: "(max-width: 768px)";  // Medium
-$SCREEN_SM: "(max-width: 576px)";  // Small
+// $SCREEN_XL: "(min-width: 1201px)"; // Extra large
+// $SCREEN_LG: "(max-width: 992px)";  // Large
+// $SCREEN_MD: "(max-width: 768px)";  // Medium
+// $SCREEN_SM: "(max-width: 576px)";  // Small
 
 // statistics screen resolution:
 // DESKTOP 1366    - http://gs.statcounter.com/screen-resolution-stats/desktop/worldwide
@@ -49,7 +49,7 @@ $SCREEN_SM: "(max-width: 576px)";  // Small
 
 
 // ***************** LAYOUT/CONTAINER *****************
-// classes .layoutXX alias .containerXXX
+// classes .layoutXX
 
 // maximum container layout width for .layout-center-wrap
 $layout_max_width: 1200px;
