@@ -21,13 +21,14 @@ Color files:
 Customization with variables:
 - Typical use: `variables/_variables.scss`
 
+In the file `berry.scss`, you can specify the necessary modules.
+
 Customization colors:
 - All variables: `variables/_all-colors.scss`
 - Set all gradations (step 50) of brightness: `variables/_colors.scss`
 - Step 100-gradation: `variables/_colors-lite.scss`
 
-In the file `berry.scss`, you can specify the necessary modules.
-
+Demo page for colors: https://maxsite.github.io/berry/berry-colors.html
 
 ## Using Berry 
 
@@ -500,6 +501,6 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 
 ## Copyright and license
 
-(c) 2019, Berry - CSS Utilities, http://maxsite.org/berry
+(c) 2019, Berry - CSS Utilities, https://maxsite.org/berry
 
 [MIT License](https://github.com/maxsite/berry/blob/master/LICENSE)
