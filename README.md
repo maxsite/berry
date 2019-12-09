@@ -21,6 +21,8 @@ Color files:
 Customization with variables:
 - Typical use: `variables/_variables.scss`
 
+See all variables: https://github.com/maxsite/berry/blob/master/scss/berry/variables/_variables.scss
+
 In the file `berry.scss`, you can specify the necessary modules.
 
 Customization colors:
