@@ -96,7 +96,7 @@ Configured in the `_variables.scss` file.
 
 - .w34 -> width: 34%
 - .pad10-b -> padding-bottom: 10px
-- .pad5-b-phone -> padding-bottom: 10px for phone
+- .pad5-b-phone -> padding-bottom: 5px for phone
 - .mar25-rl -> margin-right: 25px; margin-left: 25px
 - .t-red -> color: $red
 - .w50-tablet -> width: 50% for tablet
