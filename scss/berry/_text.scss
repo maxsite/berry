@@ -114,6 +114,10 @@
     font-family: Consolas, PT Mono, Monaco, Menlo, Courier New, monospace;
 }
 
+.#{$pf}t-hyphens {
+    hyphens: auto;
+}
+
 .#{$pf}t-clip {
     white-space  : nowrap;
     overflow     : hidden;

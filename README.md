@@ -356,6 +356,8 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 - .t-verdana (font-family: Verdana, Arial, Helvetica, sans-serif;)
 - .t-mono (font-family: Consolas, PT Mono, Monaco, Menlo, Courier New, monospace;)
 
+- .t-hyphens (hyphens: auto;)
+
 - .t-clip (white-space: nowrap; overflow: hidden; text-overflow: ellipsis;)
 
 - .t100 (font-size: 1rem;) (and other values) 
@@ -503,6 +505,6 @@ For other examples, see http://unicss.maxsite.com.ua/samples
 
 ## Copyright and license
 
-(c) 2019, Berry - CSS Utilities, https://maxsite.org/berry
+(c) 2019-2020, Berry - CSS Utilities, https://maxsite.org/berry
 
 [MIT License](https://github.com/maxsite/berry/blob/master/LICENSE)

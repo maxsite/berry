@@ -2093,6 +2093,9 @@ hr {
 .t-mono {
   font-family: Consolas, PT Mono, Monaco, Menlo, Courier New, monospace; }
 
+.t-hyphens {
+  hyphens: auto; }
+
 .t-clip {
   white-space: nowrap;
   overflow: hidden;
