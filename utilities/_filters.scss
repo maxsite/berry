@@ -1,0 +1,13 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// filters
+
+// css-функции нужно указывать в верхнем регистре, чтобы не создавать конфликт с sass-функциями!
+
+.#{$pf}filter-invert {
+    filter: INVERT(var(--invert, 100%));
+}
+
+.#{$pf}filter-sepia {
+    filter: SEPIA(var(--sepia, 100%));
+}

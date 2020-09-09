@@ -1,0 +1,200 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// prefix for all css-classes
+// for example: "my_" -> .my_t-red700
+$pf-colors: "" !default;
+
+// префикс для css-переменных цветов для $group-primary
+$pf-cssvar: "" !default;
+
+// фиксированные цвета
+$white: #FFFFFF !default;
+$black: #000000 !default;
+
+$color1: #0D6EFD !default;
+$color2: #6C757D !default;
+$color3: #28A745 !default;
+$color4: #DC3545 !default;
+$color5: #FFC107 !default;
+$color6: #17A2B8 !default;
+$color7: #A300D9 !default;
+
+// цвета с градацией яркости — задаётся только Hue и Saturation
+$colorHS-gray:   210,  5% !default; // Hue, Saturation
+$colorHS-red:      4, 95% !default;
+$colorHS-brown:   15, 47% !default;
+$colorHS-orange:  35, 99% !default;
+$colorHS-yellow:  53, 99% !default;
+$colorHS-lime:    64, 85% !default;
+$colorHS-green:  122, 68% !default;
+$colorHS-teal:   175, 58% !default;
+$colorHS-cyan:   186, 82% !default;
+$colorHS-blue:   206, 86% !default;
+$colorHS-indigo: 231, 70% !default;
+$colorHS-violet: 270, 91% !default;
+$colorHS-purple: 290, 68% !default;
+$colorHS-pink:   335, 82% !default;
+
+// цвета для Material Design
+$colorHS-primary: $colorHS-blue !default;
+$colorHS-secondary: $colorHS-indigo !default;
+$colorHS-tertiary: $colorHS-cyan !default;
+
+// Значения Lightness для ступеней яркости: 50, 100, 900 и 950
+$color-L50:  97% !default; // Lightness for color50
+$color-L100: 93% !default; // Lightness for color100
+$color-L900: 18% !default; // Lightness for color900
+$color-L950: 14% !default; // Lightness for color950
+
+// генерация на основе групп
+@import 'scheme';
+@import 'groups';
+
+// собственная групировка цветов (основная группа фиксированных цветов)
+$colors-group-my: (
+    "color1": $color1,
+    "color2": $color2,
+    "color3": $color3,
+    "color4": $color4,
+    "color5": $color5,
+    "color6": $color6,
+    "color7": $color7,
+
+    "primary": $primary,
+    "secondary": $secondary,
+    "tertiary": $tertiary,
+
+    "white": $white,
+    "black": $black,
+    "gray": $gray,
+    "red": $red,
+    "pink": $pink,
+    "purple": $purple,
+    "violet": $violet,
+    "indigo": $indigo,
+    "blue": $blue,
+    "cyan": $cyan,
+    "teal": $teal,
+    "green": $green,
+    "lime": $lime,
+    "yellow": $yellow,
+    "orange": $orange,
+    "brown": $brown,
+) !default;
+
+// подключение своей группы для генерации css-переменных и css-классов
+// можно добавить другие группы цветов
+$generation1: (
+    $colors-group-my,
+) !default;
+
+// остальные группы без создания css-переменных (только css-классы)
+$generation2: (
+    $colors-group-primary,
+    $colors-group-secondary,
+    $colors-group-tertiary,
+    $colors-group-gray,
+    $colors-group-red,
+    $colors-group-pink,
+    $colors-group-purple,
+    $colors-group-violet,
+    $colors-group-indigo,
+    $colors-group-blue,
+    $colors-group-cyan,
+    $colors-group-teal,
+    $colors-group-green,
+    $colors-group-lime,
+    $colors-group-yellow,
+    $colors-group-orange,
+    $colors-group-brown,
+) !default;
+
+// color for borders
+// .bor-color1, .hover-bor-blue
+$color_border_list: (
+    "color1": $color1,
+    "color2": $color2,
+    "color3": $color3,
+    "color4": $color4,
+    "color5": $color5,
+    "color6": $color6,
+    "color7": $color7,
+    
+    "primary": $primary,
+    "secondary": $secondary,
+    "tertiary": $tertiary,
+
+    "white": $white,
+    "black": $black,
+
+    "gray": $gray,
+    "gray50": $gray50,
+    "gray100": $gray100,
+    "gray200": $gray200,
+    "gray300": $gray300,
+    "gray400": $gray400,
+    "gray500": $gray500,
+    "gray600": $gray600,
+    "gray700": $gray700,
+    "gray800": $gray800,
+    "gray900": $gray900,
+
+    'red': $red,
+    'brown': $brown,
+    'orange': $orange,
+    'yellow': $yellow,
+    'lime': $lime,
+    'green': $green,
+    'teal': $teal,
+    'cyan': $cyan,
+    'blue': $blue,
+    'indigo': $indigo,
+    'violet': $violet,
+    'purple': $purple,
+    'pink': $pink,
+) !default;
+
+// list colors for classes .links-hover-t-XXX and .links-hover-bg-XXX
+// .links-hover-t-red, .links-hover-bg-color5
+$color_links_list: (
+    "color1": $color1,
+    "color2": $color2,
+    "color3": $color3,
+    "color4": $color4,
+    "color5": $color5,
+    "color6": $color6,
+    "color7": $color7,
+    
+    "primary": $primary,
+    "secondary": $secondary,
+    "tertiary": $tertiary,
+
+    "white": $white,
+    "black": $black,
+
+    "gray": $gray,
+    "gray50": $gray50,
+    "gray100": $gray100,
+    "gray200": $gray200,
+    "gray300": $gray300,
+    "gray400": $gray400,
+    "gray500": $gray500,
+    "gray600": $gray600,
+    "gray700": $gray700,
+    "gray800": $gray800,
+    "gray900": $gray900,
+
+    'red': $red,
+    'brown': $brown,
+    'orange': $orange,
+    'yellow': $yellow,
+    'lime': $lime,
+    'green': $green,
+    'teal': $teal,
+    'cyan': $cyan,
+    'blue': $blue,
+    'indigo': $indigo,
+    'violet': $violet,
+    'purple': $purple,
+    'pink': $pink,
+) !default;

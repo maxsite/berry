@@ -1,0 +1,11 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// global css-variables in :root
+
+:root {
+
+  @each $key,
+  $val in $root_list {
+    --#{$key}: #{$val};
+  }
+}

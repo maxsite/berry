@@ -1,0 +1,19 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+
+// line-height .lh130
+@each $var in $text_lh {
+    $var1: round($var * 100);
+
+    .#{$pf}lh#{$var1} {
+        line-height: #{$var};
+    }
+}
+
+@each $var in $text_lh_em {
+    $var1: round($var * 100);
+
+    .#{$pf}lh#{$var1}em {
+        line-height: #{$var}em;
+    }
+}

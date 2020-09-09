@@ -1,0 +1,16 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+.#{$pf}rounded-circle {
+    border-radius: 50%;
+}
+
+.#{$pf}rounded {
+    border-radius: var(--rounded-radius, $rounded);
+}
+
+// border-radius
+@each $var in $rounded_list {
+    .#{$pf}rounded#{$var} {
+        border-radius: #{$var}px !important;
+    }
+}

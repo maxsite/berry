@@ -1,0 +1,43 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+.#{$pf}visibility-hidden  { visibility: hidden; }
+.#{$pf}visibility-visible { visibility: visible; }
+
+.#{$pf}overflow-hidden { overflow: hidden; }
+.#{$pf}overflow-auto { overflow: auto; }
+.#{$pf}overflow-x-auto { overflow-x: auto; }
+.#{$pf}overflow-y-auto { overflow-y: auto; }
+
+.#{$pf}overscroll-behavior-contain { overscroll-behavior: contain; }
+.#{$pf}overscroll-behavior-none { overscroll-behavior: none; }
+
+/*
+???
+// from Bootstrap 4
+.#{$pf}sr-only,
+.#{$pf}sr-only-focusable:not(:focus) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+} 
+*/
+
+// .hide-XXX
+// .show-XXX
+@each $postfix, $m in $hide_media_list {
+    @media #{$m} {
+        .#{$pf}hide-#{$postfix} {
+            display: none !important;
+        }
+        
+        .#{$pf}show-#{$postfix} {
+            display: block !important;
+        }
+    }
+}

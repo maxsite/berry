@@ -1,9 +1,8 @@
-# Berry CSS (3.0-beta — no sass-file)
+# Berry CSS 3
 
-Документация (временная): https://maxsite.org/berry3
-В beta-версии доступен только css-файл.
+Документация: https://maxsite.org/berry
 
-Berry 2 доступна: https://github.com/maxsite/berry/releases
+Berry 2 доступна здесь: https://github.com/maxsite/berry/releases
 
 ## Copyright and license
 
