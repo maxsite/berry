@@ -1,7 +1,7 @@
 // (c) Berry CSS, https://maxsite.org/berry
 
 .#{$pf}bordered {
-    border: $bordered;
+    border: var(--bordered, $bordered);
 }
 
 // default = 1px
@@ -37,6 +37,10 @@
 .#{$pf}bor-none-rl,
 .#{$pf}bor-none-l {
     border-left-style: none !important;
+}
+
+.#{$pf}bor-currentColor {
+    border-color: currentColor;
 }
 
 // style line
