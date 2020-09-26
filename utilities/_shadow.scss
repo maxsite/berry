@@ -2,10 +2,10 @@
 
 // box-shadow
 .b-shadow-var {
-	box-shadow: var(--b-shadow, 0 2px 7px 0 rgba(0, 0, 0, 0.1));
+	box-shadow: var(--shadow-b, $shadow-b);
 }
 
 // text-shadow
 .t-shadow-var {
-	text-shadow: var(--t-shadow, 1px 1px 5px #999);
+	text-shadow: var(--shadow-t, $shadow-t);
 }

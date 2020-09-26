@@ -1,22 +1,23 @@
 /*! (c) Berry CSS, https://maxsite.org/berry */
 
-// version 3.0 (alpha 7) - 2.08.2020
+// version 3.0 - 19.09.2020
 
 // Variables
 
-// * PREFIX
-// * SCREENS
-// * LAYOUT/CONTAINER
-// * FLEX
-// * GRID
-// * HIDE
-// * WIDTH
-// * HEIGHT
-// * PADDING/ MARGIN
-// * TEXT
-// * BORDER
-// * POSITION
-// * OPACITY
+// PREFIX
+// SCREENS
+// LAYOUT/CONTAINER
+// FLEX
+// GRID
+// HIDE
+// WIDTH
+// HEIGHT
+// PADDING/ MARGIN
+// TEXT
+// BORDER
+// POSITION
+// OPACITY
+// SHADOW
 
 // ***************** PREFIX *****************
 
@@ -275,3 +276,10 @@ $zindex_list: 1, 2, 9, 99, 999, 9999 !default;
 // classes for opacity: XXX and background-color: rgba(0, 0, 0, XXX)
 // .bg-op30, .hover-bg-op30, .opacity10, .hover-opacity10
 $opacity_list: .1, .2, .3, .4, .5, .6, .7, .8, .9, 1 !default;
+
+
+// ***************** SHADOW *****************
+
+//.b-shadow-var, .t-shadow-var
+$shadow-b: 0 2px 7px 0 rgba(138, 108, 108, 0.3) !default;
+$shadow-t: 1px 1px 5px #999 !default;
