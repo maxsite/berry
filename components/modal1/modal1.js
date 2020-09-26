@@ -2,9 +2,9 @@
 
 function modal1Init() {
     let modals = document.getElementsByClassName("modal-trigger");
-    
-    for(let i = 0; i < modals.length; i++){
-        modals[i].addEventListener("click", function(){
+
+    for (let i = 0; i < modals.length; i++) {
+        modals[i].addEventListener("click", function (e) {
 
             let id = this.getAttribute("data-modal");
             let modal = document.getElementById(id);
@@ -12,22 +12,27 @@ function modal1Init() {
             let closeOther = modal.querySelector(".modal-close");
             let modalclose = modal.getAttribute("data-modalclose");
 
-            closeIcon.addEventListener("click", function(){
-                modal.classList.remove("modal-show");
-            });
+            if (closeIcon) {
+                closeIcon.addEventListener("click", function () {
+                    modal.classList.remove("modal-show");
+                });
+            }
 
-            closeOther.addEventListener("click", function(){
-                modal.classList.remove("modal-show");
-            });
+            if (closeOther) {
+                closeOther.addEventListener("click", function () {
+                    modal.classList.remove("modal-show");
+                });
+            }
 
             if (!modalclose) {
-                window.addEventListener("click", function(e){
+                window.addEventListener("click", function (e) {
                     if (e.target === modal)
                         modal.classList.remove("modal-show");
                 });
             }
 
             modal.classList.toggle("modal-show");
+            e.preventDefault();
         });
     }
 }

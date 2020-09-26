@@ -2,9 +2,11 @@
 
 // modal elements
 $modal1-bg: rgba(0, 0, 0, 0.6) !default;
+$modal1-bg-content: #fff !default;
+$modal1-radius: 5px !default;
+$modal1-max-width: 600px !default;
 $modal1-zindex: 100 !default;
 $modal1-top: 30% !default;
-$modal1-radius: 5px !default;
 
 .modal {
     position: fixed;
@@ -27,8 +29,8 @@ $modal1-radius: 5px !default;
     top: var(--modal1-top, $modal1-top);
     transform: translate(-50%, -50%);
     border-radius: var(--modal1-radius, $modal1-radius);
-    background-color: #fff;
-    max-width: 500px;
+    background-color: var(--modal1-bg-content, $modal1-bg-content);
+    max-width: var(--modal1-max-width, $modal1-max-width);
 }
 
 .modal-close-icon {
