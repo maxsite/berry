@@ -259,6 +259,12 @@ $rounded_list: 0, 3, 5, 7, 10, 20 !default;
 // for class .rounded
 $rounded: 7px !default;
 
+// .bor-none-tablet, .bor-none-phone, .bor-none-small
+$screen_media_border_list: (
+    "tablet": $SCREEN_TABLET, 
+    "phone": $SCREEN_PHONE,
+    "small": $SCREEN_SMALL,
+) !default;
 
 // ***************** POSITION *****************
 

@@ -82,3 +82,12 @@
         border-width: #{$var}px;
     }
 }
+
+// for @media
+@each $postfix, $m in $screen_media_border_list {
+    @media #{$m} {
+        .#{$pf}bor-none-#{$postfix} {
+            border-style: none !important;
+        }
+    }
+}
