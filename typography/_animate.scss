@@ -3,11 +3,13 @@
 // animation
 
 .animation-fade,
+.animation-fadeout,
 .animation-left,
 .animation-top,
 .animation-right,
 .animation-bottom,
 .animation-zoom,
+.animation-zoomout,
 .animation-bounce,
 .animation-rotatein,
 .animation-rotateout {
@@ -61,6 +63,20 @@
     }
 }
 
+.animation-fadeout {
+    animation-name: animationfadeout;
+}
+
+@keyframes animationfadeout {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
 .animation-zoom {
     animation-name: animationzoom;
 }
@@ -72,6 +88,20 @@
 
     to {
         transform: scale(1)
+    }
+}
+
+.animation-zoomout {
+    animation-name: animationzoomout;
+}
+
+@keyframes animationzoomout {
+    from {
+        transform: scale(1)
+    }
+
+    to {
+        transform: scale(0)
     }
 }
 
