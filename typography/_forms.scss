@@ -26,7 +26,8 @@ textarea {
     border: var(--form-input-border, $form-input-border);
     border-radius: var(--form-input-border-radius, $form-input-border-radius);
     transition: border-color ease .2s;
-    
+    background-color: $form-input-background;
+
     &:disabled {
         color: var(--form-input-disabled-color, $form-input-disabled-color);
         background-color: var(--form-input-disabled-background, $form-input-disabled-background);
