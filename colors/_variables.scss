@@ -20,6 +20,10 @@ $color6: #17A2B8 !default;
 $color7: #A300D9 !default;
 
 // цвета с градацией яркости — задаётся только Hue и Saturation
+
+// инверсия градации яркости - если false, то 100 светлее 200
+$colorHS-inverse-light: false !default;
+
 $colorHS-gray:   210,  5% !default; // Hue, Saturation
 $colorHS-red:      4, 95% !default;
 $colorHS-brown:   15, 47% !default;

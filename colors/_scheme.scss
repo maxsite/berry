@@ -11,6 +11,12 @@
 // ***********************************************************************
 
 @function berry-color-step($hs, $step) {
+    
+    // если указана инверсия яркости, то 
+    @if $colorHS-inverse-light {
+        @return berry-color-step-inverse($hs, $step);
+    }
+    
     $hue: nth($hs, 1);
     $sat: nth($hs, 2);
 
@@ -33,6 +39,33 @@
     $color-step: ($color-L100 - $color-L900) / 16; // step gradations
     
     @return hsl($hue, $sat, $color-L900 + $color-step * $step);
+    
+}
+
+// инверсные цвета
+@function berry-color-step-inverse($hs, $step) {
+    $hue: nth($hs, 1);
+    $sat: nth($hs, 2);
+
+    @if $step == 950 {
+        @return hsl($hue, $sat, $color-L50);
+    } 
+    
+    @if $step == 900 {
+        @return hsl($hue, $sat, $color-L100);
+    }
+    
+    @if $step == 100 {
+        @return hsl($hue, $sat, $color-L900);
+    }
+
+    @if $step == 50 {
+        @return hsl($hue, $sat, $color-L950);
+    }
+                
+    $color-step: ($color-L900 - $color-L100) / 16; // step gradations
+    
+    @return hsl($hue, $sat, $color-L100 + $color-step * $step);
 }
 
 $gray50:  berry-color-step($colorHS-gray, 50) !default;
