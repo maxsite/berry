@@ -13,4 +13,14 @@
     .#{$pf}rounded#{$var} {
         border-radius: #{$var}px !important;
     }
+	
+	.#{$pf}rounded#{$var}-r {
+		border-top-right-radius: #{$var}px !important;
+		border-bottom-right-radius: #{$var}px !important;
+    }
+	
+	.#{$pf}rounded#{$var}-l {
+		border-top-left-radius: #{$var}px !important;
+		border-bottom-left-radius: #{$var}px !important;
+    }
 }
