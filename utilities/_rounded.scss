@@ -23,4 +23,14 @@
 		border-top-left-radius: #{$var}px !important;
 		border-bottom-left-radius: #{$var}px !important;
     }
+	
+	.#{$pf}rounded#{$var}-t {
+		border-top-left-radius: #{$var}px !important;
+		border-top-right-radius: #{$var}px !important;
+    }
+	
+	.#{$pf}rounded#{$var}-b {
+		border-bottom-left-radius: #{$var}px !important;
+		border-bottom-right-radius: #{$var}px !important;
+    }
 }
