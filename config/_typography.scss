@@ -1,0 +1,23 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// настройки модуля typography
+
+@use '../modules/typography/default' with (
+	$modules: (
+		'animate': true,
+		'badge': true,
+		'base': true,
+		'blocks': true,
+		'buttons': true,
+		'details': true,
+		'drop-cap': true,
+		'forms': true,
+		'icons': true,
+		'images': true,
+		'lines': true,
+		'links': true,
+		'print': true,
+		'root': true,
+		'table': true,
+	),
+);

@@ -1,0 +1,40 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// только группы из одиночных цветов (default2)
+
+@use '../modules/colors/default1' as *;
+@use '../modules/colors/default2' with (
+	
+	// основная группа фиксированных цветов (используется в $generation1)
+	$colors-group-my: (
+		"color1": $color1,
+		"color2": $color2,
+		"color3": $color3,
+		"color4": $color4,
+		"color5": $color5,
+		"color6": $color6,
+		"color7": $color7,
+
+		"primary": $primary,
+		"secondary": $secondary,
+		"tertiary": $tertiary,
+
+		"white": $white,
+		"black": $black,
+		"gray": $gray,
+		"red": $red,
+		"pink": $pink,
+		"purple": $purple,
+		"violet": $violet,
+		"indigo": $indigo,
+		"blue": $blue,
+		"cyan": $cyan,
+		"teal": $teal,
+		"green": $green,
+		"lime": $lime,
+		"yellow": $yellow,
+		"orange": $orange,
+		"brown": $brown,
+	),
+	
+);

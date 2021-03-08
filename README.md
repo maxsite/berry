@@ -1,8 +1,8 @@
-# Berry CSS 3
+# Berry CSS 4
 
 Документация: https://maxsite.org/berry
 
-Berry 2 доступна здесь: https://github.com/maxsite/berry/releases
+Прошлые версии Berry CSS доступны здесь: https://github.com/maxsite/berry/releases
 
 ## Copyright and license
 

@@ -1,5 +1,10 @@
-@import 'reset';
-@import 'utilities';
-@import 'colors-variables';
-@import 'colors-generation';
-@import 'typography';
+// (c) Berry CSS, https://maxsite.org/berry
+
+@use 'modules/copyright';
+@use 'modules/reset';
+@use 'modules/utilities';
+@use 'modules/typography';
+@use 'modules/colors';
+
+// sample module
+// @use 'modules/demo';
