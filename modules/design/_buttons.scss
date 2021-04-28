@@ -2,8 +2,8 @@
 
 // button
 
-@forward '../../config/typography';
-@use 'default' as *;
+@forward '../../config/buttons';
+@use 'default-buttons' as *;
 @use 'mixin' as *;
 
 @use "sass:map";

@@ -1,0 +1,13 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// настройки модуля design/forms
+
+// подключение colors, если используются $переменные цветов
+// @forward '../config/colors1';
+// @use '../modules/colors/default1' as *;
+
+@use '../modules/design/default-forms' with (
+	$modules: (
+		'forms': true,
+	),
+);

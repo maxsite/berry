@@ -2,8 +2,8 @@
 
 // forms
 
-@forward '../../config/typography';
-@use 'default' as *;
+@forward '../../config/forms';
+@use 'default-forms' as *;
 @use "sass:map";
 
 @if map.get($modules, 'forms') {
