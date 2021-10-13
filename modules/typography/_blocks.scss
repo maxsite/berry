@@ -32,9 +32,14 @@
         -moz-tab-size: 4;
         tab-size     : 4;
 
-        & code {
-            color      : inherit;
-            white-space: pre-wrap;
+        > code {
+            color        : inherit;
+            white-space  : pre-wrap;
+            font-family  : inherit;
+            background   : inherit;
+            padding      : 0;
+            border-radius: 0;
+            font-size    : inherit;         
         }
 
         @if $pre-max-height>0 {
