@@ -6,6 +6,8 @@
 // ***********************************************************************
 // ***********************************************************************
 
+@use "sass:math"; // SASS new versions
+
 // инверсия градации яркости - если false, то 100 светлее 200
 $colorHS-inverse-light: false !default;
 
@@ -82,8 +84,12 @@ $color-L950: 14% !default; // Lightness for color950
     @if $step==950 {
         @return hsl($hue, $sat, $color-L950);
     }
-
-    $color-step: ($color-L100 - $color-L900) / 16; // step gradations
+    
+    // SASS old versions
+    // $color-step: ($color-L100 - $color-L900) / 16; // step gradations
+    
+    // SASS new versions
+    $color-step: math.div($color-L100 - $color-L900, 16); // step gradations
 
     @return hsl($hue, $sat, $color-L900 + $color-step * $step);
 
@@ -110,8 +116,12 @@ $color-L950: 14% !default; // Lightness for color950
         @return hsl($hue, $sat, $color-L950);
     }
 
-    $color-step: ($color-L900 - $color-L100) / 16; // step gradations
+    // SASS old versions
+    // $color-step: ($color-L900 - $color-L100) / 16; // step gradations
 
+    // SASS new versions
+    $color-step: math.div($color-L900 - $color-L100, 16); // step gradations
+    
     @return hsl($hue, $sat, $color-L100 + $color-step * $step);
 }
 

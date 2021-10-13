@@ -2,6 +2,8 @@
 
 // width
 
+@use "sass:math"; // SASS new versions
+
 @forward '../../config/utilities';
 @use 'default' as *;
 @use "sass:map";
@@ -29,7 +31,11 @@
     // 12-колоночная сетка .w3col .w6col-tablet .w12col-phone
     @for $i from 1 through 12 {
         .#{$pf}w#{$i}col {
-            width: percentage($i/12);
+            // SASS old versions
+            // width: percentage($i/12);
+            
+            // SASS new versions
+            width: percentage(math.div($i, 12));
         }
     }
 
@@ -87,7 +93,11 @@
 
             @for $i from 1 through 12 {
                 .#{$pf}w#{$i}col-#{$postfix} {
-                    width: percentage($i/12);
+                    // SASS old versions
+                    // width: percentage($i/12);
+                    
+                    // SASS new versions
+                    width: percentage(math.div($i, 12));
                 }
             }
 
