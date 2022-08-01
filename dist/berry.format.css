@@ -7156,7 +7156,7 @@ details summary::-webkit-details-marker {
 }
 
 details summary::before {
-  content: var(--summary-marker, "▶");
+  content: var(--summary-marker, "❯");
   color: var(--summary-marker-color);
   margin-right: 0.4em;
   display: inline-block;
