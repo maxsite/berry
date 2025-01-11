@@ -1,0 +1,30 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// video
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'video') {
+
+    // для адаптивного обрамления ютубовского видео
+    // <div class="video-r"> код видео </div>
+    // video-rubber
+    .video-r { 
+        position: relative; 
+        padding-bottom: 56.25%; 
+        height: 0; 
+        overflow: hidden; 
+    }
+
+    .video-r iframe, 
+    .video-r object, 
+    .video-r embed {
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%;
+        height: 100%; 
+    }
+}

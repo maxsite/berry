@@ -1,0 +1,43 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// filters
+
+// css-функции нужно указывать в верхнем регистре, чтобы не создавать конфликт с sass-функциями!
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'filters') {
+
+    .#{$pf}filter-invert {
+        filter: INVERT(var(--filter-invert, 100%));
+    }
+
+    .#{$pf}filter-sepia {
+        filter: SEPIA(var(--filter-sepia, 100%));
+    }
+    
+    .#{$pf}filter-gray {
+        filter: grayscale(100%);
+    }
+    
+}
+
+.hover-no-filter {
+    transition: all .5s ease;
+    
+    &::after,
+    &::before {    
+        transition: all .5s ease;
+    }
+    
+    &:hover,
+    &:hover::after,
+    &:hover::before {
+        filter: none;
+        background: none;
+        opacity: 1;
+    }
+}
+

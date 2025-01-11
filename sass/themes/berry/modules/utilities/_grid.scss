@@ -1,0 +1,69 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// CSS Grid
+
+// часть свойств пересекается с flex
+
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'grid') {
+
+    .#{$pf}grid-var {
+        display              : grid;
+        gap                  : var(--grid-gap, 0);
+        grid-template-columns: var(--grid-columns, none);
+        grid-template-rows   : var(--grid-rows, none);
+    }
+
+    .#{$pf}grid-item-var {
+        grid-column: var(--grid-item-column, auto / auto);
+        grid-row   : var(--grid-item-row, auto / auto);
+    }
+
+    // 12-колоночная сетка .grid-colX
+    @for $i from 1 through 12 {
+        .#{$pf}grid-#{$i}col {
+            display: grid;
+            grid-template-columns: var(--grid-columns, repeat($i, minmax(0, 2fr)));
+            gap                  : var(--grid-gap, 0);
+            grid-template-rows   : var(--grid-rows, none);
+        }
+    }
+
+    // .grid for @media
+    @each $postfix,
+    $m in $screen_media_grid_list {
+        @media #{$m} {
+            .#{$pf}grid-var-#{$postfix} {
+                display              : grid;
+                gap                  : var(--grid-gap-#{$postfix}, var(--grid-gap, 0));
+                grid-template-columns: var(--grid-columns-#{$postfix}, none);
+                grid-template-rows   : var(--grid-rows-#{$postfix}, none);
+            }
+
+            .#{$pf}grid-item-var-#{$postfix} {
+                grid-column: var(--grid-item-column-#{$postfix}, auto / auto);
+                grid-row   : var(--grid-item-row-#{$postfix}, auto / auto);
+            }
+            
+            // 12-колоночная сетка .grid-colX-tablet
+            @for $i from 1 through 12 {
+                .#{$pf}grid-#{$i}col-#{$postfix} {
+                    display: grid;
+                    grid-template-columns: var(--grid-columns-#{$postfix}, repeat($i, minmax(0, 2fr)));
+                    gap                  : var(--grid-gap-#{$postfix}, 0);
+                    grid-template-rows   : var(--grid-rows-#{$postfix}, none);
+                }
+            }
+        }
+    }
+    
+    @each $var in (0, 5, 7, 10, 15, 20, 25, 30, 40, 50, 100) {
+        .#{$pf}gap#{$var} {
+            gap: #{$var}px;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// настройки модуля utilities
+
+@use '../modules/utilities/default' with (
+    
+    $modules: (
+        'animate': true,
+        'background': true,
+        'badge': true,
+        'block': true,
+        'border': true,
+        'column': true,
+        'cursor': true,
+        'drop-cap': true,
+        'filters': true,
+        'flex': true,
+        'gradients': true,
+        'grid': true,
+        'height': true,
+        'icons': true,
+        'image-effects': true,
+        'layout': true,
+        'line-height': true,
+        'links': true,
+        'lists': true,
+        'object-fit': true,
+        'opacity': true,
+        'padding-margin': true,
+        'position': true,
+        'rounded': true,
+        'shadow': true,
+        'table': true,
+        'text': true,
+        'transform': true,
+        'transition': true,
+        'vendor': true,
+        'vertical-align': true,
+        'video': true,
+        'visible': true,
+        'width': true,
+    ),
+
+);

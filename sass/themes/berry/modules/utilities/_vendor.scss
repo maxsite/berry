@@ -1,0 +1,26 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// for vendor library
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'vendor') {
+
+    // alpine js
+    [x-cloak] {display: none !important}
+
+    // bootstrap icons
+    .bi::before,
+    [class*=" bi-"]::before,
+    [class^=bi-]::before {
+        margin-right: 7px !important;
+    }
+
+    // https://highlightjs.org/
+    .hljs {
+        background: var(--pre-bg-color) !important;
+        color: var(--pre-text-color) !important;
+    }
+}

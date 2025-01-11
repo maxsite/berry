@@ -1,0 +1,61 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// Transition
+
+/*
+
+<div class="transition-var"></div>
+
+<div class="transition-var" style="--duration: .7s"></div>
+
+<div class="transition-child-var" style="--duration: .7s">
+    <a href="#">link</a>
+    <a href="#">link</a>
+    <a href="#">link</a>
+</div>
+
+*/
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'transition') {
+    .#{$pf}transition-var,
+    .#{$pf}transition-child-var * {
+        transition: all var(--transition-duration, .5s);
+    }
+    
+    .#{$pf}transition-duration,
+    .#{$pf}transition-duration * {
+        transition: all .5s;
+    }
+    
+    @each $var in (0, 75, 100, 150, 200, 300, 500, 700, 1000) {
+        .#{$pf}transition-duration#{$var},
+        .#{$pf}transition-duration#{$var} * {
+            transition: all #{$var}ms;
+        }
+    }
+    
+    .#{$pf}transition-ease-linear,
+    .#{$pf}transition-ease-linear * {
+        transition-timing-function: linear;
+    }
+    
+    .#{$pf}transition-ease-in,
+    .#{$pf}transition-ease-in * {
+        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    }
+    
+    .#{$pf}transition-ease-out,
+    .#{$pf}transition-ease-out * {
+        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+    
+    .#{$pf}transition-ease-in-out,
+    .#{$pf}transition-ease-in-out * {
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+}

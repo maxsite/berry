@@ -1,0 +1,96 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// gradients
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'gradients') {
+
+    // <div class="gr-linear-top" style="--gr-start: yellow; --gr-end: orange;"></div> 
+
+    // https://www.w3schools.com/css/css3_gradients.asp
+    // to top, to right, to bottom, to left, to top right, to top left, to bottom right, to bottom left
+    .#{$pf}gr-linear-top {
+        background: linear-gradient(to top, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-linear-right {
+        background: linear-gradient(to right, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-linear-bottom {
+        background: linear-gradient(to bottom, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-linear-left {
+        background: linear-gradient(to left, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-linear-top-right {
+        background: linear-gradient(to top right, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-linear-top-left {
+        background: linear-gradient(to top left, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-linear-bottom-right {
+        background: linear-gradient(to bottom right, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-linear-bottom-left {
+        background: linear-gradient(to bottom left, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    // https://www.w3schools.com/css/css3_gradients_radial.asp
+    // circle, ellipse, closest-side, closest-corner, farthest-side, farthest-corner
+    .#{$pf}gr-radial-var {
+        background: radial-gradient(var(--gr-shape, ellipse at center), var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-radial-circle {
+        background: radial-gradient(circle, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-radial-ellipse {
+        background: radial-gradient(ellipse, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-radial-closest-side {
+        background: radial-gradient(closest-side, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-radial-closest-corner {
+        background: radial-gradient(closest-corner, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-radial-farthest-side {
+        background: radial-gradient(farthest-side, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    .#{$pf}gr-radial-farthest-corner {
+        background: radial-gradient(farthest-corner, var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    // https://www.w3schools.com/css/css3_gradients_conic.asp
+    .#{$pf}gr-conic {
+        background: conic-gradient(var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+    }
+    
+    // https://www.w3schools.com/cssref/func_repeating-conic-gradient.asp
+    .#{$pf}gr-repeating-conic {
+        background: repeating-conic-gradient(var(--gr-step, var(--primary600) 10%, var(--primary800) 20%, var(--primary600) 30%, var(--primary800) 40%, var(--primary600) 50%, var(--primary800) 60%, var(--primary600) 70%, var(--primary800) 80%, var(--primary600) 90%  ));
+    }
+    
+    // https://www.w3schools.com/cssref/func_repeating-linear-gradient.asp
+    .#{$pf}gr-repeating-linear {
+        background: repeating-linear-gradient(var(--gr-step, var(--primary600) 10%, var(--primary800) 20%, var(--primary600) 30%, var(--primary800) 40%, var(--primary600) 50%, var(--primary800) 60%, var(--primary600) 70%, var(--primary800) 80%, var(--primary600) 90%  ));
+    }
+    
+    // https://www.w3schools.com/cssref/func_repeating-radial-gradient.php
+    .#{$pf}gr-repeating-radial {
+        background: repeating-radial-gradient(var(--gr-step, var(--primary600) 10%, var(--primary800) 20%, var(--primary600) 30%, var(--primary800) 40%, var(--primary600) 50%, var(--primary800) 60%, var(--primary600) 70%, var(--primary800) 80%, var(--primary600) 90%  ));
+    }
+}

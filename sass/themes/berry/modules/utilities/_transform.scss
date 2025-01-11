@@ -1,0 +1,22 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// transform
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'transform') {
+    .#{$pf}rotate180 {
+        transform: rotate(180deg);
+    }
+    
+    .#{$pf}rotate90 {
+        transform: rotate(90deg);
+    }
+
+    .#{$pf}rotate45 {
+        transform: rotate(45deg);
+    }
+    
+}

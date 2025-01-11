@@ -1,0 +1,9 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+@mixin root_set($list) {
+    :root {
+        @each $key, $val in $list {
+        --#{$key}: #{$val};
+        }
+    }
+}

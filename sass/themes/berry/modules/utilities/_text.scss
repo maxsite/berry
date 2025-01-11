@@ -1,0 +1,317 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// Text
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'text') {
+
+    // reset text to normal
+    .#{$pf}t-normal {
+        font-weight    : normal;
+        font-style     : normal;
+        text-decoration: none;
+    }
+
+    // bold's
+    .#{$pf}t-bold {
+        font-weight: bold; // 700
+    }
+
+    .#{$pf}t-bold-normal {
+        font-weight: normal; // 400
+    }
+
+    .#{$pf}t-bold-bolder {
+        font-weight: bolder;
+    }
+
+    .#{$pf}t-bold-light {
+        font-weight: lighter;
+    }
+    
+    @each $var in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
+        .#{$pf}t-bold#{$var} {
+            font-weight: $var;
+        }
+    }
+    
+    .#{$pf}t-italic {
+        font-style: italic;
+    }
+    
+    .#{$pf}t-underline {
+        text-decoration: underline;
+    }
+
+    .#{$pf}t-strike {
+        text-decoration: line-through;
+    }
+    
+    .#{$pf}t-overline {
+        text-decoration: overline;
+    }
+    
+    .#{$pf}t-decoration-none {
+        text-decoration: none;
+    }
+
+    .#{$pf}t-decoration-solid {
+        text-decoration-style: solid;
+    }
+
+    .#{$pf}t-decoration-wavy {
+        text-decoration-style: wavy;
+    }
+    
+    .#{$pf}t-decoration-double {
+        text-decoration-style: double;
+    }
+    
+    .#{$pf}t-decoration-dotted {
+        text-decoration-style: dotted;
+    }
+    
+    .#{$pf}t-decoration-dashed {
+        text-decoration-style: dashed;
+    }
+    
+    @each $var in (0, 1, 2, 4, 8) {
+        .#{$pf}t-underline-offset#{$var}px {
+            text-underline-offset: #{$var}px;
+        }
+    }
+    
+    .#{$pf}t-underline-offset-auto {
+        text-underline-offset: auto;
+    }
+    
+    // capitalization
+    .#{$pf}t-small-caps {
+        font-variant: small-caps;
+    }
+
+    .#{$pf}t-capitalize {
+        text-transform: capitalize;
+    }
+
+    .#{$pf}t-upper {
+        text-transform: uppercase;
+    }
+
+    .#{$pf}t-lower {
+        text-transform: lowercase;
+    }
+
+    // aligns
+    .#{$pf}t-right {
+        text-align: right;
+    }
+
+    .#{$pf}t-left {
+        text-align: left;
+    }
+
+    .#{$pf}t-center {
+        text-align: center;
+    }
+
+    .#{$pf}t-justify {
+        text-align: justify;
+    }
+
+    // wrap's
+    .#{$pf}t-nowrap,
+    .#{$pf}text-nowrap {
+        white-space: nowrap;
+    }
+
+    .#{$pf}t-wrap,
+    .#{$pf}text-wrap {
+        white-space: normal;
+    }
+
+    .#{$pf}t-pre-wrap {
+        white-space: pre-wrap;
+    }
+
+    .#{$pf}t-break-word {
+        word-wrap: break-word;
+    }
+
+    .#{$pf}t-break-all {
+        word-break: break-all;
+    }
+
+    .#{$pf}t-break-keep {
+        word-break: keep-all;
+    }
+    
+    .#{$pf}t-rtl {
+        direction: rtl;
+    }
+    
+    .#{$pf}t-ltr {
+        direction: ltr;
+    }
+    
+    // https://www.w3schools.com/cssref/css3_pr_writing-mode.php
+    .#{$pf}t-writing-htb {
+        writing-mode: horizontal-tb;
+    }
+    
+    .#{$pf}t-writing-vrl {
+        writing-mode: vertical-rl;
+    }
+    
+    .#{$pf}t-writing-vlr {
+        writing-mode: vertical-lr;
+    }
+
+
+    // safe fonts -> https://www.cssfontstack.com/
+    .#{$pf}t-georgia {
+        font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .#{$pf}t-palatino {
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    }
+
+    .#{$pf}t-times {
+        font-family: "Times New Roman", serif;
+    }
+
+    .#{$pf}t-arial {
+        font-family: Arial, Helvetica, Verdana, sans-serif;
+    }
+
+    .#{$pf}t-arial-black {
+        font-family: "Arial Black", Gadget, sans-serif;
+    }
+
+    .#{$pf}t-comic {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    .#{$pf}t-impact {
+        font-family: Impact, Charcoal, sans-serif;
+    }
+
+    .#{$pf}t-tahoma {
+        font-family: Tahoma, Geneva, sans-serif;
+    }
+
+    .#{$pf}t-trebuchet {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+    }
+
+    .#{$pf}t-verdana {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    .#{$pf}t-mono {
+        font-family: $text_monospace;
+    }
+    
+    // .t-trackingX
+    @each $var in $text_tracking_list {
+        .#{$pf}t-tracking#{$var * 1000} {
+            letter-spacing: #{$var}em;
+        }
+    }
+
+    // hyphens
+    .#{$pf}t-hyphens {
+        -webkit-hyphens: auto;
+        -moz-hyphens   : auto;
+        -ms-hyphens    : auto;
+        hyphens        : auto;
+    }
+
+    // text clipping
+    .#{$pf}t-ellipsis {
+        white-space  : nowrap;
+        overflow     : hidden;
+        text-overflow: ellipsis;
+    }
+
+    .#{$pf}t-line-clamp {
+        overflow          : hidden;
+        display           : -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--line-clamp, 3);
+    }
+
+    // text rem-size .t180
+    @each $var in $text_rem {
+        $var1: round($var * 100);
+
+        .#{$pf}t#{$var1} {
+            font-size: #{$var}rem;
+        }
+    }
+
+    // text em-size .t190em
+    @each $var in $text_em {
+        $var1: round($var * 100);
+
+        .#{$pf}t#{$var1}em {
+            font-size: #{$var}em;
+        }
+    }
+
+    // text px-size .t24px
+    @each $var in $text_px {
+        .#{$pf}t#{$var}px {
+            font-size: #{$var}px;
+        }
+    }
+
+    // for @media text-align white-space
+    @each $postfix,
+    $m in $screen_media_text_list {
+        @media #{$m} {
+            .#{$pf}t-right-#{$postfix} {
+                text-align: right;
+            }
+
+            .#{$pf}t-left-#{$postfix} {
+                text-align: left;
+            }
+
+            .#{$pf}t-center-#{$postfix} {
+                text-align: center;
+            }
+
+            .#{$pf}t-justify-#{$postfix} {
+                text-align: justify;
+            }
+
+            .#{$pf}t-nowrap-#{$postfix} {
+                white-space: nowrap;
+            }
+
+            .#{$pf}t-wrap-#{$postfix} {
+                white-space: normal;
+            }
+        }
+    }
+
+    // for @media rem font-size
+    @each $postfix,
+    $m in $screen_media_text_list {
+        @media #{$m} {
+            @each $var in $text_rem_screen {
+                $var1: round($var * 100);
+
+                .#{$pf}t#{$var1}-#{$postfix} {
+                    font-size: #{$var}rem;
+                }
+            }
+        }
+    }
+
+}
