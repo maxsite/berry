@@ -65,5 +65,15 @@
         .#{$pf}gap#{$var} {
             gap: #{$var}px;
         }
+        
+        .#{$pf}column-gap#{$var} {
+            column-gap: #{$var}px;
+        }
+        
+        .#{$pf}row-gap#{$var} {
+            row-gap: #{$var}px;
+        }
+        
+        
     }
 }
