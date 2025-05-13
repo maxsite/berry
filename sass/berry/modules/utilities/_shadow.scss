@@ -1,0 +1,96 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// shadow
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'shadow') {
+
+    // text-shadow
+    .hover-t-shadow:hover,
+    .t-shadow {
+        text-shadow: var(--shadow-t, 0 0 5px var(--primary200));
+    }
+    
+    .dark .dark\:t-shadow {
+        text-shadow: var(--shadow-t-dark, 0 0 5px var(--primary400));
+    }
+    
+    .hover-b-shadow:hover,
+    .b-shadow {
+        box-shadow: var(--shadow-b, 3px 3px 3px 0 var(--primary150));
+    }
+    
+    .dark .dark\:hover-b-shadow:hover,
+    .dark .dark\:b-shadow {
+        box-shadow: var(--shadow-b-dark, 3px 3px 3px 0 var(--primary700));
+    }
+
+    .hover-b-shadow1:hover,
+    .b-shadow1 {
+        // box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        box-shadow: 0 1px 3px 0 var(--primary100), 0 1px 2px 0 var(--primary100);
+    }
+    
+    .dark .dark\:hover-b-shadow1:hover,
+    .dark .dark\:b-shadow1 {
+        box-shadow: 0 1px 3px 0 var(--primary700), 0 1px 2px 0 var(--primary700);
+    }
+    
+    .hover-b-shadow2:hover,
+    .b-shadow2 {
+        // box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 6px -1px var(--primary100), 0 2px 4px -1px var(--primary100);
+    }
+    
+    .dark .dark\:hover-b-shadow2:hover,
+    .dark .dark\:b-shadow2 {
+        box-shadow: 0 4px 6px -1px var(--primary700), 0 2px 4px -1px var(--primary700);
+    }
+    
+    .hover-b-shadow3:hover,
+    .b-shadow3 {
+        // box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 15px -3px var(--primary100), 0 4px 6px -2px var(--primary100);
+    }
+    
+    .dark .dark\:hover-b-shadow3:hover,
+    .dark .dark\:b-shadow3 {
+        box-shadow: 0 10px 15px -3px var(--primary700), 0 4px 6px -2px var(--primary700);
+    }
+    
+    .hover-b-shadow4:hover,
+    .b-shadow4 {
+        // box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        box-shadow: 0 20px 25px -5px var(--primary100), 0 10px 10px -5px var(--primary100);
+    }
+    
+    .dark .dark\:hover-b-shadow4:hover,
+    .dark .dark\:b-shadow4 {
+        box-shadow: 0 20px 25px -5px var(--primary700), 0 10px 10px -5px var(--primary700);
+    }
+    
+    .hover-b-shadow5:hover,
+    .b-shadow5 {
+        // box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 25px 50px -12px var(--primary100);
+    }
+    
+    .dark .dark\:hover-b-shadow5:hover,
+    .dark .dark\:b-shadow5 {
+        box-shadow: 0 25px 50px -12px var(--primary700);
+    }
+    
+    .hover-b-shadow6:hover,
+    .b-shadow6 {
+        // box-shadow: 0 0 7px -1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 7px -1px var(--primary100);
+    }
+    
+    .dark .dark\:hover-b-shadow6:hover,
+    .dark .dark\:b-shadow6 {
+        box-shadow: 0 0 7px -1px var(--primary700);
+    }
+}

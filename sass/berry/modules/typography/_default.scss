@@ -1,0 +1,146 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+
+// included files
+$modules: (
+    'base': true,
+    'blocks': true,
+    'details': true,
+    'images': true,
+    'lines': true,
+    'links': true,
+    'print': true,
+    'root': true,
+    'table': true,
+) !default;
+
+// from BS5
+$font-family-monospace: Consolas, "PT Mono", "Roboto Mono", "Liberation Mono", "Segoe UI Mono", "Courier New", monospace !default;
+
+$font-family-sans-serif: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+// _base.scss
+$body-size-base  : 16px !default;
+$body-font-family: $font-family-sans-serif !default;
+$body-line-height: 1.6 !default;
+$body-color      : var(--gray800) !default;
+$body-bg         : #fff !default;
+
+$h1-font-size: 2.5rem !default;
+$h2-font-size: 2rem !default;
+$h3-font-size: 1.75rem !default;
+$h4-font-size: 1.5rem !default;
+$h5-font-size: 1.25rem !default;
+$h6-font-size: 1rem !default;
+
+$headings-font-weight: normal !default;
+$headings-line-height: 1.2 !default;
+
+$headings-margin     : 1.1em 0 .5em 0 !default;
+$h1-margin           : .7em 0 .5em 0 !default;
+$h2-margin           : $headings-margin !default;
+$h3-margin           : $headings-margin !default;
+$h4-margin           : $headings-margin !default;
+$h5-margin           : $headings-margin !default;
+$h6-margin           : $headings-margin !default;
+
+$paragraph-margin: 0 0 1rem 0 !default;
+
+// ::::: _links.scss :::::
+$link-color           : var(--primary500) !default;
+$link-decoration      : none !default;
+$link-hover-color     : var(--primary700) !default;
+$link-hover-decoration: underline !default;
+
+
+// ::::: _blocks.scss :::::
+// <pre>
+$pre-text-color   : var(--primary800) !default;
+$pre-bg-color     : var(--primary50) !default;
+$pre-padding      : 10px 15px 10px 25px !default;
+$pre-margin       : 20px 0 !default;
+$pre-border-top   : var(--primary150) solid 1px !default;
+$pre-border-right : var(--primary150) double 3px !default;
+$pre-border-bottom: var(--primary150) solid 1px !default;
+$pre-border-left  : var(--primary150) double 3px !default;
+$pre-line-height  : 1.5 !default;
+$pre-border-radius: 3px !default;
+$pre-max-height   : 0 !default; // 500px or 0 for disable scrollbar
+$pre-font-size    : .9rem !default;
+
+// <code>
+$code-background   : var(--primary50) !default;
+$code-padding      : 0 5px !default;
+$code-border-radius: 3px !default;
+$code-font-size    : .9em !default;
+$code-color        : inherit !default;
+
+// <kbd> <samp> 
+$kbd-text-color      : var(--green800) !default;
+$kbd-background-color: var(--green100) !default;
+$kbd-font-size       : .9em !default;
+$kbd-border-radius   : 0 !default;
+
+// <var>
+$var-text-color      : var(--orange700) !default;
+$var-background-color: var(--orange100) !default;
+$var-font-size       : .9rem !default;
+$var-border-radius   : 3px !default;
+
+// <samp>
+$samp-text-color      : var(--green800) !default;
+$samp-background-color: var(--green200) !default;
+$samp-font-size       : .9rem !default;
+$samp-border-radius   : 3px !default;
+
+// <mark>
+$mark-background-color: var(--lime150) !default;
+$mark-text-color      : var(--body-color) !default;
+$mark-padding         : 0 4px !default;
+$mark-border-radius   : 3px !default;
+$mark-font-size       : .95em !default;
+
+// <blockquote>
+$blockquote-border-left  : 4px solid var(--primary400) !default;
+$blockquote-color        : var(--primary400) !default;
+$blockquote-margin       : 20px 0 !default;
+$blockquote-padding      : 10px 0 10px 25px !default;
+$blockquote-border-radius: 8px !default;
+$blockquote-background   : null !default;
+
+$blockquote-link-color           : var(--primary600) !default;
+$blockquote-link-decoration      : underline !default;
+$blockquote-link-hover-color     : var(--primary700) !default;
+$blockquote-link-hover-decoration: none !default;
+
+// ::::: _images.scss :::::
+$images-thumbnail-border : var(--primary200) 1px solid !default;
+$images-thumbnail-padding: 4px !default;
+$images-left-margin      : 5px 20px 5px 0 !default;
+$images-right-margin     : 5px 0 5px 20px !default;
+
+// ::::: _lines.scss :::::
+$hr-border: 1px solid var(--primary300) !default;
+$hr-margin: 20px 0 !default;
+
+// ::::: _table.scss :::::
+$table-tr-border-bottom: var(--primary100) 1px solid !default;
+
+$table-th-background   : var(--primary100) !default;
+$table-th-border-top   : var(--primary150) 1px solid !default; 
+$table-th-border-bottom: var(--primary150) 1px solid !default;
+$table-th-padding      : .6rem .5rem !default;
+$table-th-border-right : var(--primary150) 1px solid !default; // .table-border
+
+$table-td-padding     : .5rem !default;
+$table-td-border-right: var(--primary100) 1px solid !default; //.table-border
+
+$table-striped-odd-bg : var(--primary50) !default; // .table-striped
+$table-striped-even-bg: var(--primary100) !default;
+
+$table-tr-hover-bg: var(--primary150) !default; // .table-hover
+
+// ::::: _root.scss :::::
+$root_list: (
+    "font-family-monospace": $font-family-monospace,
+) !default;

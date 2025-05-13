@@ -1,0 +1,21 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// Configuration connection
+@forward '../../config/demo';
+@use 'default' as *;
+
+// Use the module «utilities»
+@forward '../../config/utilities';
+@use '../../modules/utilities/default' as utilities;
+
+// sample **********
+
+// p {color: $a}
+
+@media #{utilities.$SCREEN_TABLET} {
+   
+    // .my-class-tablet {
+    //     color: red;
+    // }
+    
+}

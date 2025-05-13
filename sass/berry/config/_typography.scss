@@ -1,0 +1,18 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// настройки модуля typography
+
+@use '../modules/typography/default' with (
+
+    $modules: (
+        'base': true,
+        'blocks': true,
+        'details': true,
+        'images': true,
+        'lines': true,
+        'links': true,
+        'print': true,
+        'root': true,
+        'table': true,
+    ),
+);

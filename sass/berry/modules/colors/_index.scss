@@ -1,0 +1,177 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+$color_step: "primary", "gray", "red", "brown", "orange", "yellow", "lime", "green", "teal", "cyan", "blue", "indigo", "violet", "purple", "pink";
+
+$color_nostep: "white", "black", "color1", "color2", "color3", "color4", "color5", "color6", "color7", "color8", "color9", "primary", "gray", "red", "brown", "orange", "yellow", "lime", "green", "teal", "cyan", "blue", "indigo", "violet", "purple", "pink";
+
+$color_border_list: "color1", "color2", "color3", "color4", "color5", "color6", "color7", "color8", "color9", "primary", "primary50", "primary100", "primary200", "primary300", "primary400", "primary500", "primary600", "primary700", "primary800", "primary900", "white", "black", "gray", "gray50", "gray100", "gray200", "gray300", "gray400", "gray500", "gray600", "gray700", "gray800", "gray900", 'red', 'brown', 'orange', 'yellow', 'lime', 'green', 'teal', 'cyan', 'blue', 'indigo', 'violet', 'purple', 'pink';
+
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+
+    --color1: #1B542C; // RAL 6035 Pearl green 138
+    --color2: #026A52; // RAL 6016 Turquoise green 163
+    --color3: #21888F; // RAL 5018 Turquoise blue 181
+    --color4: #296478; // RAL 5025 Pearl Gentian blue 194
+    --color5: #4D668E; // RAL 5023 Distant blue 213
+    --color6: #2B2C7C; // RAL 5002 Ultramarine blue 225
+    --color7: #992572; // RAL 4006 Traffic purple 319
+    --color8: #933D50; // RAL 4002 Red violet 349
+    --color9: #AC323B; // RAL 3031 Orient red 357
+    
+    --primary-hue: 216deg;
+    --primary-sat: 33%;
+    
+    --gray-hue: var(--primary-hue);
+    --gray-sat: 7%;    
+    
+    --red-hue: 5deg; // RAL 3013 Tomato red
+    --red-sat: 60%;
+    
+    --brown-hue: 16deg; // RAL 8002 Signal brown
+    --brown-sat: 31%; 
+    
+    --orange-hue: 31deg; // RAL 1034 Pastel yellow
+    --orange-sat: 75%;
+                     
+    --yellow-hue: 48deg; // RAL 1018 Zinc yellow
+    --yellow-sat: 88%;
+                     
+    --lime-hue: 57deg; // RAL 1016 Sulfur yellow
+    --lime-sat: 80%;
+
+    --green-hue: 102deg; // RAL 6017 May green
+    --green-sat: 34%;
+                     
+    --teal-hue: 172deg; // RAL 6033 Mint turquoise
+    --teal-sat: 30%;
+                     
+    --cyan-hue: 200deg; // RAL 5009 Azure blue
+    --cyan-sat: 45%;
+                     
+    --blue-hue: 218deg; // RAL 5026 Pearl night blue
+    --blue-sat: 50%;
+                     
+    --indigo-hue: 238deg; // RAL 5022 Night blue
+    --indigo-sat: 35%;
+                     
+    --violet-hue: 264deg; // RAL 4005 Blue lilac (в оригинале 263, 20%)
+    --violet-sat: 36%;
+                     
+    --purple-hue: 304deg; // RAL 4008 Signal violet
+    --purple-sat: 29%;
+                     
+    --pink-hue: 334deg; // RAL 4003 Heather violet
+    --pink-sat: 46%;
+    
+    @each $name in $color_step {
+        --#{$name}950: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 9%);
+        --#{$name}900: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 13%);
+        --#{$name}850: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 17%);
+        --#{$name}800: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 21%);
+        --#{$name}750: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 26%);
+        --#{$name}700: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 31%);
+        --#{$name}650: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 36%);
+        --#{$name}600: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 41%);
+        --#{$name}550: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 46%);
+        --#{$name}500: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 50%);
+        --#{$name}450: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 54%);
+        --#{$name}400: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 59%);
+        --#{$name}350: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 65%);
+        --#{$name}300: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 70%);
+        --#{$name}250: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 75%);
+        --#{$name}200: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 81%);
+        --#{$name}150: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 86%);
+        --#{$name}100: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 91%);
+        --#{$name}50:  hsl(var(--#{$name}-hue) var(--#{$name}-sat) 96%);
+        --#{$name}:    var(--#{$name}500);
+    
+        // Berry CSS 5.0
+        // --#{$name}950: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 7%);
+        // --#{$name}900: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 10%);
+        // --#{$name}850: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 15%);
+        // --#{$name}800: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 20%);
+        // --#{$name}750: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 25%);
+        // --#{$name}700: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 30%);
+        // --#{$name}650: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 35%);
+        // --#{$name}600: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 40%);
+        // --#{$name}550: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 45%);
+        // --#{$name}500: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 50%);
+        // --#{$name}450: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 55%);
+        // --#{$name}400: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 60%);
+        // --#{$name}350: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 65%);
+        // --#{$name}300: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 70%);
+        // --#{$name}250: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 75%);
+        // --#{$name}200: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 80%);
+        // --#{$name}150: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 85%);
+        // --#{$name}100: hsl(var(--#{$name}-hue) var(--#{$name}-sat) 90%);
+        // --#{$name}50:  hsl(var(--#{$name}-hue) var(--#{$name}-sat) 94%);
+        // --#{$name}:    var(--#{$name}500);
+    }
+}
+
+@each $name in $color_nostep {
+    .t-#{$name},
+    .dark .dark\:t-#{$name} {
+        color: var(--#{$name});
+    }
+
+    .bg-#{$name},
+    .dark .dark\:bg-#{$name} {
+        background-color: var(--#{$name});
+    }
+
+    .hover-t-#{$name}:hover,
+    .dark .dark\:hover-t-#{$name}:hover,
+    .links-hover-t-#{$name} a:not([class^="hover-t-"]):not([class*=" hover-t-"]):hover 
+    {
+        color: var(--#{$name}) !important;
+    }
+
+    .hover-bg-#{$name}:hover,
+    .dark .dark\:hover-bg-#{$name}:hover,
+    .links-hover-bg-#{$name} a:not([class^="hover-bg-"]):not([class*=" hover-bg-"]):hover
+    {
+        background-color: var(--#{$name}) !important;
+    }
+}
+
+// .t- .bg- .hover-t- .hover-bg-
+// .dark:t- .dark:bg- .dark:hover-t- .dark:hover-bg- 
+@each $name in $color_step {
+    @each $step in 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950 {
+        .t-#{$name}#{$step},
+        .dark .dark\:t-#{$name}#{$step} {
+            color: var(--#{$name}#{$step});
+        }
+
+        .bg-#{$name}#{$step},
+        .dark .dark\:bg-#{$name}#{$step} {
+            background-color: var(--#{$name}#{$step});
+        }
+
+        .hover-t-#{$name}#{$step}:hover,
+        .dark .dark\:hover-t-#{$name}#{$step}:hover,
+        .links-hover-t-#{$name}#{$step} a:not([class^="hover-t-"]):not([class*=" hover-t-"]):hover 
+        {
+            color: var(--#{$name}#{$step}) !important;
+        }
+
+        .hover-bg-#{$name}#{$step}:hover,
+        .dark .dark\:hover-bg-#{$name}#{$step}:hover,
+        .links-hover-bg-#{$name}#{$step} a:not([class^="hover-bg-"]):not([class*=" hover-bg-"]):hover
+        {
+            background-color: var(--#{$name}#{$step}) !important;
+        }
+    }
+}
+
+@each $name, $color in $color_border_list {
+    .bor-#{$name},
+    .hover-bor-#{$name}:hover,
+    .dark .dark\:bor-#{$name},
+    .dark .dark\:hover-bor-#{$name}:hover {
+        border-color: var(--#{$name});
+    }
+}

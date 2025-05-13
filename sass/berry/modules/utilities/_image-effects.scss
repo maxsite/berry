@@ -1,0 +1,110 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// image-effects
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'image-effects') {
+
+    // увеличение
+    .#{$pf}hover-img-scale {
+        transition: all .5s ease;
+
+        &:hover {
+            transform: scale3d(1.02, 1.02, 1.02);
+        }
+    }
+    
+    // тень
+    .#{$pf}hover-img-shadow {
+        transition: all .2s ease;
+
+        &:hover {
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+        }
+    }
+    
+    // эффект осветления при наведении
+    .#{$pf}hover-img-opacity1 {
+        transition: all .5s ease;
+
+        &:hover {
+            background-color: rgba(0,0,0,.2);
+            opacity: .8;
+        }
+    }
+
+    // картинка осветленая, при наведения нормальная
+    .#{$pf}hover-img-opacity2 {
+        transition: all .5s ease;
+        opacity: .8;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    // картинка grayscale, при наведении появляется цвет
+    .#{$pf}hover-img-gray {
+        transition: all .5s ease;
+        filter: grayscale(100%);
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+    
+    // картинка grayscale 30%, при наведении появляется цвет
+    .#{$pf}hover-img-gray30 {
+        transition: all .5s ease;
+        filter: grayscale(30%);
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+    
+    // картинка grayscale 50%, при наведении появляется цвет
+    .#{$pf}hover-img-gray50 {
+        transition: all .5s ease;
+        filter: grayscale(50%);
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+    
+    // картинка grayscale 70%, при наведении появляется цвет
+    .#{$pf}hover-img-gray70 {
+        transition: all .5s ease;
+        filter: grayscale(70%);
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+
+    // серпия, при наведении обычный цвет
+    .#{$pf}hover-img-sepia {
+        transition: all .5s ease;
+        filter: sepia(100%);
+
+        &:hover {
+            filter: none;
+        }
+    }
+    
+    // серпия 50%, при наведении обычный цвет
+    .#{$pf}hover-img-sepia50 {
+        transition: all .5s ease;
+        filter: sepia(50%);
+
+        &:hover {
+            filter: none;
+        }
+    }
+    
+
+}

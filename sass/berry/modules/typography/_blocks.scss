@@ -1,0 +1,145 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// pre, code, blockquote ...
+
+@forward '../../config/typography';
+@use 'default' as *;
+@use "sass:map";
+@use 'mixin' as *;
+
+@if map.get($modules, 'blocks') {
+    @include root_set((
+        "blockquote-margin": $blockquote-margin,
+        "blockquote-padding": $blockquote-padding,
+        "blockquote-border-left": $blockquote-border-left,
+        "blockquote-color": $blockquote-color,
+        "blockquote-border-radius": $blockquote-border-radius,
+        "blockquote-background": $blockquote-background,
+        "blockquote-link-color": $blockquote-link-color,
+        "blockquote-link-decoration": $blockquote-link-decoration,
+        "blockquote-link-hover-color": $blockquote-link-hover-color,
+        "blockquote-link-hover-decoration": $blockquote-link-hover-decoration,
+        
+        "pre-bg-color": $pre-bg-color,
+        "pre-text-color": $pre-text-color,
+        "pre-padding": $pre-padding,
+        "pre-margin": $pre-margin,
+        "pre-border-top": $pre-border-top,
+        "pre-border-right": $pre-border-right,
+        "pre-border-bottom": $pre-border-bottom,
+        "pre-border-left": $pre-border-left,
+        "pre-line-height": $pre-line-height,
+        "pre-border-radius": $pre-border-radius,
+        "pre-font-size": $pre-font-size,
+        
+        "code-background": $code-background,
+        "code-padding": $code-padding,
+        "code-border-radius": $code-border-radius,
+        "code-font-size": $code-font-size,
+        "code-color": $code-color,
+    ));
+
+    blockquote {
+        margin       : var(--blockquote-margin);
+        padding      : var(--blockquote-padding);
+        border-left  : var(--blockquote-border-left);
+        color        : var(--blockquote-color);
+        border-radius: var(--blockquote-border-radius);
+        background   : var(--blockquote-background);
+        
+        a {
+            color: var(--blockquote-link-color);
+            text-decoration: var(--blockquote-link-decoration);
+            
+            &:hover {
+                color          : var(--blockquote-link-hover-color);
+                text-decoration: var(--blockquote-link-hover-decoration);
+            }
+        }
+        
+    }
+
+    pre {
+        padding      : var(--pre-padding);
+        margin       : var(--pre-margin);
+        background   : var(--pre-bg-color);
+        color        : var(--pre-text-color);
+        border-top   : var(--pre-border-top);
+        border-right : var(--pre-border-right);
+        border-bottom: var(--pre-border-bottom);
+        border-left  : var(--pre-border-left);
+        line-height  : var(--pre-line-height);
+        border-radius: var(--pre-border-radius);
+        font-size    : var(--pre-font-size);
+        font-family  : var(--font-family-monospace);
+        white-space  : pre-wrap;
+        -moz-tab-size: 4;
+        tab-size     : 4;
+
+        > code {
+            color        : inherit;
+            white-space  : pre-wrap;
+            font-family  : inherit;
+            background   : inherit;
+            padding      : 0;
+            border-radius: 0;
+            font-size    : inherit;         
+        }
+
+        @if $pre-max-height>0 {
+            overflow-y: auto;
+            max-height: $pre-max-height;
+        }
+    }
+
+    code {
+        font-family  : var(--font-family-monospace);
+        background   : var(--code-background);
+        padding      : var(--code-padding);
+        border-radius: var(--code-border-radius);
+        font-size    : var(--code-font-size);
+        color        : var(--code-color);
+        white-space  : nowrap;
+        display      : inline-block;
+    }
+
+    var {
+        font-family     : var(--font-family-monospace);
+        font-style      : normal;
+        padding         : 0px 5px;
+        background-color: var(--var-background-color, $var-background-color);
+        color           : var(--var-text-color, $var-text-color);
+        font-size       : var(--var-font-size, $var-font-size);
+        border-radius   : var(--var-border-radius, $var-border-radius);
+    }
+
+    kbd {
+        font-family     : var(--font-family-monospace);
+        font-style      : normal;
+        padding         : 0px 5px;
+        background-color: var(--kbd-background-color, $kbd-background-color);
+        color           : var(--kbd-text-color, $kbd-text-color);
+        font-size       : var(--kbd-font-size, $kbd-font-size);
+        border-radius   : var(--kbd-border-radius, $kbd-border-radius);
+    }
+
+    samp {
+        font-family     : var(--font-family-monospace);
+        font-style      : normal;
+        padding         : 0px 5px;
+        background-color: var(--samp-background-color, $samp-background-color);
+        color           : var(--samp-text-color, $samp-text-color);
+        font-size       : var(--samp-font-size, $samp-font-size);
+        border-radius   : var(--samp-border-radius, $samp-border-radius);
+    }
+
+
+    mark {
+        padding         : var(--mark-padding, $mark-padding);
+        background-color: var(--mark-background-color, $mark-background-color);
+        color           : var(--mark-text-color, $mark-text-color);
+        border-radius   : var(--mark-border-radius, $mark-border-radius);
+        font-size       : var(--mark-font-size, $mark-font-size);
+    }
+
+}

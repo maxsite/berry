@@ -1,0 +1,9 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// настройки модуля design/buttons
+
+@use '../modules/design/default-buttons' with (
+    $modules: (
+        'buttons': true,
+    ),
+);

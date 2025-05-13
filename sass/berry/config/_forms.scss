@@ -1,0 +1,10 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// настройки модуля design/forms
+
+@use '../modules/design/default-forms' with (
+    $modules: (
+        'forms': true,
+    ),
+
+);

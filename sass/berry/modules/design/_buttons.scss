@@ -1,0 +1,65 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// button
+
+@forward '../../config/buttons';
+@use 'default-buttons' as *;
+@use 'mixin' as *;
+
+@use "sass:map";
+@if map.get($modules, 'buttons') {
+
+//  <button class="button" style="
+//  --button-bg-color: hsl(106deg 40% 25%);
+//  --button-hover-bg-color: hsl(106deg 40% 35%);
+//  --button-focus-bg-color: hsl(106deg 40% 40%);
+//  --button-focus-border: solid 1px hsl(106deg 20% 85%); 
+//  --button-focus-shadow: 0 0 0 2px hsl(106deg 20% 85%); 
+//  " type="button">custom button</button> 
+
+
+    .button {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: var(--button-transition, $button-transition);
+        border: var(--button-border, $button-border);
+        padding: var(--button-padding, $button-padding);
+        line-height: var(--button-line-height, $button-line-height);
+        border-radius: var(--button-radius, $button-radius);
+        background-color: var(--button-bg-color, $button-bg-color);
+        color: var(--button-text-color, $button-text-color);
+
+        &:hover {
+            text-decoration: none;
+            background-color: var(--button-hover-bg-color, $button-hover-bg-color);
+            color: var(--button-hover-text-color, $button-hover-text-color);
+        }
+
+        &:active,
+        &:focus {
+            outline: none;
+            background-color: var(--button-focus-bg-color, $button-focus-bg-color);
+            color: var(--button-focus-text-color, $button-focus-text-color);
+            box-shadow: var(--button-focus-shadow, $button-focus-shadow);
+            border: var(--button-focus-border, $button-focus-border);
+        }
+
+        &.disabled,
+        &:disabled {
+            cursor: not-allowed;
+            background-color: var(--button-disabled-bg-color, $button-disabled-bg-color);
+            color: var(--button-disabled-text-color, $button-disabled-text-color);
+        }
+    }
+
+    // generate from $buttons
+    @each $class,
+    $b in $buttons {
+        .#{$class} {
+            @include button_set($b);
+        }
+    }
+ }
+ 
