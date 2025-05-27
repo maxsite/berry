@@ -23,6 +23,15 @@ $color_border_list: "color1", "color2", "color3", "color4", "color5", "color6", 
     --primary-hue: 216deg;
     --primary-sat: 33%;
     
+    // акцентный accent цвет строится на основе primary
+    // но у accent нет классов и заданных цветов
+    // эти переменные используется только для того, чтобы задавать акценты через hsl()
+    // color: hsl(var(--accent-hue) var(--accent-sat) 30%);
+    --accent-hue-offset: -30deg;
+    --accent-sat-offset: 0%;
+    --accent-hue: calc(var(--primary-hue) + var(--accent-hue-offset));
+    --accent-sat: calc(var(--primary-sat) + var(--accent-sat-offset));
+    
     --gray-hue: var(--primary-hue);
     --gray-sat: 7%;    
     

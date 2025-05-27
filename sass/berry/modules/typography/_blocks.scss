@@ -31,12 +31,6 @@
         "pre-line-height": $pre-line-height,
         "pre-border-radius": $pre-border-radius,
         "pre-font-size": $pre-font-size,
-        
-        "code-background": $code-background,
-        "code-padding": $code-padding,
-        "code-border-radius": $code-border-radius,
-        "code-font-size": $code-font-size,
-        "code-color": $code-color,
     ));
 
     blockquote {
@@ -56,7 +50,6 @@
                 text-decoration: var(--blockquote-link-hover-decoration);
             }
         }
-        
     }
 
     pre {
@@ -94,52 +87,51 @@
 
     code {
         font-family  : var(--font-family-monospace);
-        background   : var(--code-background);
-        padding      : var(--code-padding);
-        border-radius: var(--code-border-radius);
-        font-size    : var(--code-font-size);
-        color        : var(--code-color);
+        font-size    : var(--code-font-size, $code-font-size);
+        background   : var(--code-background-color, $code-background-color);
+        color        : var(--code-text-color, $code-text-color);
+        padding      : var(--code-padding, $code-padding);
+        border-radius: var(--code-border-radius, $code-border-radius);
         white-space  : nowrap;
         display      : inline-block;
     }
 
     var {
-        font-family     : var(--font-family-monospace);
         font-style      : normal;
-        padding         : 0px 5px;
+        font-family     : var(--font-family-monospace);
+        font-size       : var(--var-font-size, $var-font-size);
         background-color: var(--var-background-color, $var-background-color);
         color           : var(--var-text-color, $var-text-color);
-        font-size       : var(--var-font-size, $var-font-size);
+        padding         : var(--var-padding, $var-padding);
         border-radius   : var(--var-border-radius, $var-border-radius);
     }
 
     kbd {
-        font-family     : var(--font-family-monospace);
         font-style      : normal;
-        padding         : 0px 5px;
+        font-family     : var(--font-family-monospace);
+        font-size       : var(--kbd-font-size, $kbd-font-size);
         background-color: var(--kbd-background-color, $kbd-background-color);
         color           : var(--kbd-text-color, $kbd-text-color);
-        font-size       : var(--kbd-font-size, $kbd-font-size);
+        padding         : var(--kbd-padding, $kbd-padding);
         border-radius   : var(--kbd-border-radius, $kbd-border-radius);
+        border          : var(--kbd-border, $kbd-border);
     }
 
     samp {
-        font-family     : var(--font-family-monospace);
         font-style      : normal;
-        padding         : 0px 5px;
+        font-family     : var(--font-family-monospace);
+        font-size       : var(--samp-font-size, $samp-font-size);
         background-color: var(--samp-background-color, $samp-background-color);
         color           : var(--samp-text-color, $samp-text-color);
-        font-size       : var(--samp-font-size, $samp-font-size);
+        padding         : var(--samp-padding, $samp-padding);
         border-radius   : var(--samp-border-radius, $samp-border-radius);
     }
 
-
     mark {
-        padding         : var(--mark-padding, $mark-padding);
+        font-size       : var(--mark-font-size, $mark-font-size);
         background-color: var(--mark-background-color, $mark-background-color);
         color           : var(--mark-text-color, $mark-text-color);
+        padding         : var(--mark-padding, $mark-padding);
         border-radius   : var(--mark-border-radius, $mark-border-radius);
-        font-size       : var(--mark-font-size, $mark-font-size);
     }
-
 }

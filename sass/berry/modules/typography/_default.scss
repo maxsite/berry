@@ -69,36 +69,42 @@ $pre-max-height   : 0 !default; // 500px or 0 for disable scrollbar
 $pre-font-size    : .9rem !default;
 
 // <code>
-$code-background   : var(--primary50) !default;
-$code-padding      : 0 5px !default;
-$code-border-radius: 3px !default;
-$code-font-size    : .9em !default;
-$code-color        : inherit !default;
+$code-background-color : var(--primary50) !default;
+$code-text-color       : inherit !default;
+$code-font-size        : .9em !default;
+$code-padding          : 0 5px !default;
+$code-border-radius    : 3px !default;
 
-// <kbd> <samp> 
-$kbd-text-color      : var(--green800) !default;
-$kbd-background-color: var(--green100) !default;
-$kbd-font-size       : .9em !default;
-$kbd-border-radius   : 0 !default;
-
-// <var>
-$var-text-color      : var(--orange700) !default;
-$var-background-color: var(--orange100) !default;
-$var-font-size       : .9rem !default;
-$var-border-radius   : 3px !default;
-
-// <samp>
-$samp-text-color      : var(--green800) !default;
-$samp-background-color: var(--green200) !default;
-$samp-font-size       : .9rem !default;
-$samp-border-radius   : 3px !default;
+// <kbd>
+$kbd-background-color: var(--primary100) !default;
+$kbd-text-color      : var(--primary800) !default;
+$kbd-font-size       : .8em !default;
+$kbd-padding         : 1px 5px !default;
+$kbd-border-radius   : 5px !default;
+$kbd-border          : 1px var(--primary200) solid !default;
 
 // <mark>
-$mark-background-color: var(--lime150) !default;
+$mark-background-color: var(--primary100) !default;
 $mark-text-color      : var(--body-color) !default;
-$mark-padding         : 0 4px !default;
+$mark-font-size       : .9em !default;
+$mark-padding         : 0 5px !default;
 $mark-border-radius   : 3px !default;
-$mark-font-size       : .95em !default;
+
+// <samp>
+$samp-background-color: var(--primary500) !default;
+$samp-text-color      : var(--primary100) !default;
+$samp-font-size       : .9rem !default;
+$samp-padding         : 0 5px !default;
+$samp-border-radius   : 3px !default;
+
+// <var>
+// $var-text-color      : var(--orange700) !default;
+// $var-background-color: var(--orange100) !default;
+$var-background-color: hsl(var(--accent-hue) var(--accent-sat) 90%) !default;
+$var-text-color      : hsl(var(--accent-hue) var(--accent-sat) 30%) !default;
+$var-font-size       : .9rem !default;
+$var-padding         : 0 5px !default;
+$var-border-radius   : 3px !default;
 
 // <blockquote>
 $blockquote-border-left  : 4px solid var(--primary400) !default;

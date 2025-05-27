@@ -1,4 +1,4 @@
-# Berry CSS 5.1
+# Berry CSS 5.2
 
 Documentation: https://maxsite.org/berry
 
