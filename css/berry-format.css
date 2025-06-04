@@ -887,7 +887,8 @@ template {
   float: left;
   font-size: 3em;
   font-weight: bold;
-  margin-right: 0.75rem;
+  margin-right: 0.2em;
+  margin-top: 0.2em;
   text-transform: uppercase;
   line-height: 1;
 }
