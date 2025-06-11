@@ -1927,7 +1927,7 @@ html .icon0:before {
 }
 
 .layout-center,
-.layout-center-wrap > .layout-wrap {
+.layout-center-wrap .layout-wrap {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -1937,7 +1937,7 @@ html .icon0:before {
 }
 
 .layout-center-tablet,
-.layout-center-wrap-tablet > .layout-wrap {
+.layout-center-wrap-tablet .layout-wrap {
   width: 100%;
   margin-right: auto;
   margin-left: auto;

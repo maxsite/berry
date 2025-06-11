@@ -13,7 +13,7 @@
     }
 
     .#{$pf}layout-center,
-    .#{$pf}layout-center-wrap>.#{$pf}layout-wrap {
+    .#{$pf}layout-center-wrap .#{$pf}layout-wrap {
         width       : 100%;
         margin-right: auto;
         margin-left : auto;
@@ -29,7 +29,7 @@
     @each $postfix,
     $m in $layout_max_width_list {
         .#{$pf}layout-center-#{$postfix},
-        .#{$pf}layout-center-wrap-#{$postfix}>.#{$pf}layout-wrap {
+        .#{$pf}layout-center-wrap-#{$postfix} .#{$pf}layout-wrap {
             width       : 100%;
             margin-right: auto;
             margin-left : auto;
