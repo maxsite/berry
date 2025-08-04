@@ -1,0 +1,41 @@
+// (c) Berry CSS, https://maxsite.org/berry
+
+// spoiler
+
+@forward '../../config/utilities';
+@use 'default' as *;
+@use "sass:map";
+
+@if map.get($modules, 'spoiler') {
+
+     // sample
+     // :root {
+     //     --spoiler-bg: var(--primary200);
+     //     --spoiler-bg-dark: var(--primary700);
+     //
+     //     --spoiler-bg: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGxtM3N0NGlzZmhtMTJneDBuODExZDBhc2dwZzN5MGY0bjB5eTlpOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41YplTbvZal0CdUc/giphy.gif');
+     // }
+     // text <span class="spoiler" onclick="this.classList.toggle('spoiler-show')">hidden text</span> text
+     // text <span class="spoiler animation-pulse" onclick="this.classList.toggle('spoiler-show')">hidden text</span> text text
+    
+    .spoiler {
+        display: inline-block;
+        color: transparent;
+        background: var(--spoiler-bg, var(--primary200));
+        background-size: cover;
+        cursor: pointer;
+        user-select: none;
+        transition: color 0.3s ease;
+        border-radius: var(--spoiler-radius, 3px);
+    }
+
+    .dark .spoiler {
+        background: var(--spoiler-bg-dark, var(--primary700));
+    }
+
+    .spoiler.spoiler-show {
+        color: inherit;
+        background: none;
+        animation-name: none;
+    }
+}

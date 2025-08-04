@@ -79,4 +79,45 @@
     .#{$pf}marker-decimal {
         list-style-type: decimal;
     }
+    
+    .#{$pf}marker-lower-alpha {
+        list-style-type: lower-alpha;
+    }
+    
+    .#{$pf}marker-upper-alpha {
+        list-style-type: upper-alpha;
+    }
+    
+    .#{$pf}marker-lower-greek {
+        list-style-type: lower-greek;
+    }
+    
+    .#{$pf}marker-lower-roman {
+        list-style-type: lower-roman;
+    }
+    
+    .#{$pf}marker-upper-roman {
+        list-style-type: upper-roman;
+    }
+    
+    .#{$pf}marker-lower-latin {
+        list-style-type: lower-roman;
+    }
+    
+    .#{$pf}marker-upper-latin {
+        list-style-type: upper-roman;
+    }
+    
+    .#{$pf}marker-disclosure-open {
+        list-style-type: disclosure-open;
+    }
+    
+    .#{$pf}marker-disclosure-closed {
+        list-style-type: disclosure-closed;
+    }
+    
+    .#{$pf}marker-decimal-leading-zero {
+        list-style-type: decimal-leading-zero;
+    }
+    
 }

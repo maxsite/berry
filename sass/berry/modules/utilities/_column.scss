@@ -97,23 +97,30 @@
     }
 
     // https://developer.mozilla.org/en-US/docs/Web/CSS/break-inside
+    .#{$pf}break-inside-auto li, 
     .#{$pf}break-inside-auto {
         break-inside: auto;
     }
 
+    .#{$pf}break-inside-avoid li,
     .#{$pf}break-inside-avoid {
         break-inside: avoid;
     }
 
+    .#{$pf}break-inside-avoid-page li,
     .#{$pf}break-inside-avoid-page {
         break-inside: avoid-page;
     }
 
+    .#{$pf}break-inside-avoid-column li,
     .#{$pf}break-inside-avoid-column {
         break-inside: avoid-column;
     }
 
+    .#{$pf}break-inside-avoid-region li,
     .#{$pf}break-inside-avoid-region {
         break-inside: avoid-region;
     }
+    
+    
 }

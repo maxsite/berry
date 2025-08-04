@@ -3,6 +3,7 @@
 // width
 
 @use "sass:math"; // SASS new versions
+@use "sass:string";
 
 @forward '../../config/utilities';
 @use 'default' as *;
@@ -63,7 +64,7 @@
     @for $i from 1 through 12 {
         .#{$pf}w#{$i}col {
             // SASS new versions
-            width: percentage(math.div($i, 12));
+            width: math.percentage(math.div($i, 12));
         }
     }
 
@@ -83,15 +84,15 @@
 
     @each $var in $width_list_percent {
         .#{$pf}w#{$var} {
-            width: unquote($var + "%");
+            width: string.unquote($var + "%");
         }
 
         .#{$pf}w#{$var}-min {
-            min-width: unquote($var + "%");
+            min-width: string.unquote($var + "%");
         }
 
         .#{$pf}w#{$var}-max {
-            max-width: unquote($var + "%");
+            max-width: string.unquote($var + "%");
         }
     }
 
@@ -113,14 +114,14 @@
 
             @each $var in $width_list_percent {
                 .#{$pf}w#{$var}-#{$postfix} {
-                    width: unquote($var + "%");
+                    width: string.unquote($var + "%");
                 }
             }
 
             @for $i from 1 through 12 {
                 .#{$pf}w#{$i}col-#{$postfix} {
                     // SASS new versions
-                    width: percentage(math.div($i, 12));
+                    width: math.percentage(math.div($i, 12));
                 }
             }
 
