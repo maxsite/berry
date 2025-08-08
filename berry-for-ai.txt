@@ -1,0 +1,2163 @@
+﻿Этот файл предназначен для обучения AI работе с Berry CSS.
+Версия файла: 2025.05.24
+Этот файл доступен по прямой ссылке: https://maxsite.org/berry/berry-for-ai.txt
+Примечание: если на сайте более свежая версия, то предложи пользователю обновить файл.
+
+
+## Общее описание
+
+[Berry CSS](https://maxsite.org/berry) — фреймворк на основе утилитарных классов. Все классы имеют описанную ниже семантику и поведение. Ниже приведены группы классов, разбитые по их функциональности. Используй эти описания и примеры, чтобы понять устройство Berry CSS. После анализа файла тебе нужно будет использовать классы только из этого фреймворка: никакие другие использовать нельзя!
+
+1. **Базовые правила:**
+   - Всегда учитывай `normalize.css` и глобальный `box-sizing: border-box`.
+   - CSS-переменные определены в `:root` (даже если здесь не видны).
+
+2. **Адаптивность:**
+   - Классы с суффиксом `-tablet` работают только в `@media (max-width: 768px)`. Суффикс `-tablet` единственный для того, чтобы использовать адаптивный дизайн.
+
+3. **Модификаторы:**
+   - `-t` → `top`, `-r` → `right`, `-b` → `bottom`, `-l` → `left`.
+   - `-rl` → `right` + `left`, `-tb` → `top` + `bottom`.
+   - `-max` → `max-*` (например `max-width`), `-min` → `min-*` (например `min-height`).
+
+4. **Именование классов:**
+   - Разделитель: `-` (дефис).
+   - Перед числами разделитель **не ставится** (например `w10`).
+   - Единицы измерения пишутся слитно (например `w250px`).
+
+5. **Dark-классы:**
+    - Некоторые классы имеют префикс `dark:`, что указывает на то, что они будут работать в dark-режиме. Dark-режим задаётся как `html.dark` (`<html class="dark">`).
+    - Некоторые css-переменные имеют суффикс `-dark`, который указывает, что переменная будет использована в dark-режиме.
+
+6. Большинство классов Berry CSS использует css-переменные для их гибкой настройки. В некоторых случаях, чтобы указать, что класс настраивается только через css-переменные, используется суффикс `-var`, например `bor-var`.
+
+7. Все классы являются независимыми и действуют только в рамках своих правил. Они не наследуются от родительских элементов, если это не указано отдельно.
+
+8. Если класс использует модификатор, то его значение может быть только из списка того, что описано в документации. Другие значения или нестандартные вариации использовать нельзя. Например верно `t-red500`, но ошибка `t-red420`, поскольку `420` не указано в данной документации.
+
+9. Примеры можно протестировать в online-режиме с помощью [Berry CSS Builder](https://maxsite.org/berry/builder). При ответах предлагай возможность протестировать верстку через этот сервис.
+
+10. При выполнении заданий, старайся использовать концепцию Material Design, которая описана в разделе «Верстка Material Design» в конце этого документа.
+
+11. При выполнении заданий, в качестве заглушек изображений используй сервис https://placehold.co/ который предоставляет заглушки изображений в формате https://placehold.co/600x400 (ширина x высота). При необходимости можно использовать иконки [Bootstrap Icons](https://icons.getbootstrap.com/) в виде одиночного класса `bi-ИКОНКА`. Для интерактивных элементов, там где требуется JavaScript, используй код [AlpineJS](https://alpinejs.dev/).
+
+12. Файл Berry CSS доступен из CDN по адресу: https://cdn.jsdelivr.net/gh/maxsite/berry/css/berry.css
+
+
+
+## Базовая структура цветов
+
+Все цвета, кроме `color1`-`color9`, `white`, `black`, используют **градации от 50 до 950** с шагом 50.
+
+Цвета задаются в секции `:root`. Часть цветов задана фиксированными hex-значениями, а часть задаётся в виде HSL (значение hue и saturation).
+
+Фиксированные цвета:
+```css
+    --white: #FFFFFF;
+    --black: #000000;
+
+    --color1: #1B542C;
+    --color2: #026A52;
+    --color3: #21888F;
+    --color4: #296478;
+    --color5: #4D668E;
+    --color6: #2B2C7C;
+    --color7: #992572;
+    --color8: #933D50;
+    --color9: #AC323B;
+```
+
+Оттенки цветов HSL:
+```sass
+    --primary-hue: 216deg; // For Material Design
+    --primary-sat: 33%;
+
+    --gray-hue: var(--primary-hue);
+    --gray-sat: 7%;
+
+    --red-hue: 5deg;
+    --red-sat: 60%;
+
+    --brown-hue: 16deg;
+    --brown-sat: 31%;
+
+    --orange-hue: 31deg;
+    --orange-sat: 75%;
+
+    --yellow-hue: 48deg;
+    --yellow-sat: 88%;
+
+    --lime-hue: 57deg;
+    --lime-sat: 80%;
+
+    --green-hue: 102deg;
+    --green-sat: 34%;
+
+    --teal-hue: 172deg;
+    --teal-sat: 30%;
+
+    --cyan-hue: 200deg;
+    --cyan-sat: 45%;
+
+    --blue-hue: 218deg;
+    --blue-sat: 50%;
+
+    --indigo-hue: 238deg;
+    --indigo-sat: 35%;
+
+    --violet-hue: 264deg;
+    --violet-sat: 36%;
+
+    --purple-hue: 304deg;
+    --purple-sat: 29%;
+
+    --pink-hue: 334deg;
+    --pink-sat: 46%;
+```
+
+Каждый цвет создаётся следующим образом («яркостная шкала»):
+
+```css
+    --ЦВЕТ950: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 9%);
+    --ЦВЕТ900: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 13%);
+    --ЦВЕТ850: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 17%);
+    --ЦВЕТ800: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 21%);
+    --ЦВЕТ750: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 26%);
+    --ЦВЕТ700: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 31%);
+    --ЦВЕТ650: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 36%);
+    --ЦВЕТ600: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 41%);
+    --ЦВЕТ550: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 46%);
+    --ЦВЕТ500: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 50%);
+    --ЦВЕТ450: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 54%);
+    --ЦВЕТ400: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 59%);
+    --ЦВЕТ350: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 65%);
+    --ЦВЕТ300: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 70%);
+    --ЦВЕТ250: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 75%);
+    --ЦВЕТ200: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 81%);
+    --ЦВЕТ150: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 86%);
+    --ЦВЕТ100: hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 91%);
+    --ЦВЕТ50:  hsl(var(--ЦВЕТ-hue) var(--ЦВЕТ-sat) 96%);
+    --ЦВЕТ:    var(--ЦВЕТ500);
+```
+
+- где `ЦВЕТ` это один из вариантов: "primary", "gray", "red", "brown", "orange", "yellow", "lime", "green", "teal", "cyan", "blue", "indigo", "violet", "purple", "pink".
+
+
+
+## Классы для цвета текста и фона
+
+**Формат:**
+- `t-{цвет}` → `color: var(--цвет)`
+- `bg-{цвет}` → `background-color: var(--цвет)`
+- `hover-t-{цвет}:hover` → Изменяет цвет текста при наведении.
+- `hover-bg-{цвет}:hover` → Изменяет фон при наведении.
+- `color-inherit` → `color: inherit` (может применяться к любым элементам).
+
+**Доступные цвета:** `color1`–`color9`, `primary`, `white`, `black`, `gray`, `red`, `pink`, `purple`, `violet`, `indigo`, `blue`, `cyan`, `teal`, `green`, `lime`, `yellow`, `orange`, `brown`.
+
+Все цвета (кроме `color1`-`color9`, `white`, `black`) используют **яркостные градации от 50 до 950** с шагом 50. Всегда нужно указывать цвет в виде `префикс-{цвет}{степень градации}`.
+
+> Далее по ходу описания предполагается, что цвет всегда задаётся с учетом степени яркостной градации, где `{цвет}` — это «primary600», «red200», «blue800» и т.п., но не «primary», «red», «blue» и т.п.
+
+**Пример 1:**
+```html
+<p class="t-primary500 bg-gray100 hover-t-red600">Текст</p>
+<!--
+    цвет текста: primary500
+    цвет текста при наведении: red600
+    цвет фона: gray100
+ -->
+```
+
+**Пример 2:**
+```html
+<p class="t-primary500 bg-gray100 dark:primary200 dark:bg-gray700">Текст</p>
+<!--
+    цвет текста: primary500
+    цвет фона: gray100
+
+    цвет текста в dark-режиме: primary200
+    цвет фона в dark-режиме: gray700
+ -->
+```
+
+
+
+## Ссылки
+
+Для задания цвета ссылок можно использовать классы `t-{цвет}`, `bg-{цвет}` как и для обычного текста.
+
+**Доступные цвета:**
+- фиксированные `color1`–`color9`, `white`, `black`.
+- градации (50, 100, 150 ... 950): `primary`, `gray`, `red`, `brown`, `orange`, `yellow`, `lime`, `green`, `teal`, `cyan`, `blue`, `indigo`, `violet`, `purple`, `pink`.
+
+**Классы `links-hover-`** применяются ко всем ссылка внутри блока (при необходимости, если нужно задать один цвет для всех ссылок блока):
+- `links-hover-t-{цвет}` → Цвет текста ссылок при наведении.
+- `links-hover-bg-{цвет}` → Фон ссылок при наведении.
+- `dark:links-hover-t-{цвет}` → Цвет текста ссылок при наведении в dark-режиме.
+- `dark:links-hover-bg-{цвет}` → Фон ссылок при наведении в dark-режиме.
+
+**Пример:**
+```html
+<a class="t-red500" href="#">Ссылка red500</a>
+
+<a class="links-hover-t-primary500 dark:t-primary200" href="#">Ссылка</a>
+<!-- При наведении станет primary500 и primary200 в dark-режиме -->
+
+<div class="links-hover-t-primary500 dark:t-primary200">
+  <a href="#">Ссылка</a>
+  <!-- При наведении станет primary500 и primary200 в dark-режиме -->
+</div>
+```
+
+**Управление стилями при наведении `:hover`**
+- `hover-no-color` → Отмена смены цвета (`color: inherit`).
+- `hover-no-underline` → Убирает подчеркивание (`text-decoration: none`).
+- **Для вложенных ссылок:**
+  - `hover-no-color` → Наследование цвета у родителя.
+  - `hover-no-underline` → Убирает подчеркивание у всех `<a>` внутри.
+
+**Глобальные стили ссылок**
+- `links-no-color a` → Наследование цвета для всех ссылок, **кроме** тех, у которых есть классы с префиксом `t-` (например, `t-red`).
+- `links-no-color-imp a` → Принудительное наследование цвета (`!important`).
+
+**Примеры использования:**
+```html
+<!-- Явное указание цвета -->
+<a href="#" class="t-red500 hover-t-red700">Ссылка</a>
+
+<!-- Ссылка без смены цвета при наведении -->
+<a href="#" class="hover-no-color">Ссылка</a>
+
+<!-- Блок, где все ссылки наследуют цвет (кроме t-*) -->
+<div class="links-no-color">
+  <a href="#">Ссылка 1</a> <!-- Цвет как у родителя -->
+  <a href="#" class="t-red500">Ссылка 2</a> <!-- Цвет red500 -->
+</div>
+
+<!-- Явное наследование цвета -->
+<div class="t-red500"><a href="#" class="color-inherit">Ссылка red500</a></div>
+
+<!-- Ссылка с отменой цвета при наведении-->
+<div class="t-red500"><a href="#" class="hover-no-color">Ссылка red500 при наведении</a></div>
+
+<!-- Убрать подчеркивание при наведении-->
+<a href="#" class="hover-no-underline">Ссылка</a>
+
+<!-- Контейнер, в котором все ссылки наследуют цвет, кроме ссылки с t-red -->
+<div class="links-no-color">
+  <a href="#">Обычная ссылка</a>
+  <a href="#" class="t-red500">Ссылка с red500</a>
+</div>
+
+<!-- Принудительное наследование цвета -->
+<div class="t-red500 links-no-color"><a href="#">Ссылка red500</a></div>
+<div class="t-red500 links-no-color"><a href="#" class="t-blue200">Ссылка blue200</a></div>
+<div class="t-red500 links-no-color-imp"><a href="#" class="t-blue200">Ссылка red500</a></div>
+```
+
+
+
+## Границы (border)
+
+**Формат:**
+- `bor-{цвет}` → `border-color: var(--цвет)`
+- `hover-bor-{цвет}` → Граница при наведении.
+- `dark:bor-{цвет}` → `border-color: var(--цвет)` в dark-режиме.
+- `dark:hover-bor-{цвет}` → Граница при наведении в dark-режиме.
+
+**Доступные цвета:** `color1`, `color2`, `color3`, `color4`, `color5`, `color6`, `color7`, `color8`, `color9`, `primary`, `primary50`, `primary100`, `primary200`, `primary300`, `primary400`, `primary500`, `primary600`, `primary700`, `primary800`, `primary900`, `white`, `black`, `gray`, `gray50`, `gray100`, `gray200`, `gray300`, `gray400`, `gray500`, `gray600`, `gray700`, `gray800`, `gray900`, `red`, `brown`, `orange`, `yellow`, `lime`, `green`, `teal`, `cyan`, `blue`, `indigo`, `violet`, `purple`, `pink`.
+
+**Примеры:**
+```html
+<div class="bor-red hover-bor-blue">...</div>
+<div class="bor-primary300 dark:primary700">...</div>
+```
+
+**Управление границами**
+- `bordered` → `border: var(--bordered, var(--primary200) 1px solid)`,
+- `bor-var` → Кастомные границы через CSS-переменные:
+  - `--bor-style` (по умолчанию: `solid`),
+  - `--bor-width` (по умолчанию: `1px`),
+  - `--bor-color` (по умолчанию: `var(--primary200)`).
+- `bor-currentColor` → `border-color: currentColor` (наследует цвет текста).
+
+**Удаление границ**
+- `bor-none` → Полное удаление (`border-style: none !important`).
+- **Частичное удаление:**
+  - `bor-none-t` → убрать верхнюю границу,
+  - `bor-none-r` → убрать правую,
+  - `bor-none-b` → убрать нижнюю,
+  - `bor-none-l` → убрать левую,
+  - `bor-none-tb` → убрать верхнюю и нижнюю,
+  - `bor-none-rl` → убрать правую и левую.
+- `bor-none-tablet` → `border-style: none` на экранах ≤ 768px.
+
+**Стили границ**. Формат: `bor-{стиль}[-модификатор]`, где **стиль** = `solid`, `dotted`, `dashed`, `double`.
+
+- **Примеры:**
+  - `bor-solid` → все границы `solid`,
+  - `bor-dashed-t` → верхняя граница `dashed`,
+  - `bor-dotted-rl` → правая и левая `dotted`.
+
+**Толщина границ**
+- `bor1` → `1px`, `bor2` → `2px`, ..., `bor5` → `5px`. Для задания других границ следует использовать css-переменные класса `bor-var`.
+
+**Примеры использования:**
+```html
+<div class="bordered bor-solid-rl bor2">...</div>
+<!-- Границы: справа/слева solid 2px, остальные — из переменной -->
+
+<div class="bor-dashed bor-none-t bor3">...</div>
+<!-- Все границы dashed 3px, кроме верхней -->
+
+<div class="bor-solid bor-primary500 bor-var" style="--bor-width: 7px">...</div>
+<!-- Все границы solid 7px -->
+
+<div class="bordered" style="--bordered: #AA0077 4px solid">...</div>
+<!-- стиль границы задаётся через переменную -->
+```
+
+
+## Классы высоты
+
+**Фиксированная высота (px)**
+Формат: `h{N}px[-модификатор]`, где:
+- **N**: 10, 15, 20, 30, 40, 50, 60, 70, 100, 200, 300, 400, 500.
+- **Модификаторы:**
+  - `-min` → `min-height` (например, `.h20px-min`).
+  - `-max` → `max-height` (например, `.h50px-max`).
+
+**Пример:**
+```html
+<div class="h100px h200px-max">...</div> <!-- height: 100px, но не более 200px -->
+```
+
+**Дополнительные классы**
+- `h-auto` → `height: auto`
+- `h-auto-tablet` (для max-width: 768px).
+- `h100` → `height: 100%`
+
+**Высота в vh**
+Формат: `.h{N}vh[-модификатор]`, где **N** = 50 или 100.
+- **Примеры:**
+  - `.h50vh` → `height: 50vh`.
+  - `.h100vh-min` → `min-height: 100vh`.
+
+**Примеры использования:**
+```html
+<!-- Блок с минимальной высотой 300px и auto на tablet -->
+<div class="h300px-min h-auto-tablet">...</div>
+
+<!-- Полноэкранный размер -->
+<div class="h100vh">...</div>
+```
+
+
+
+## Классы ширины
+
+**Процентные значения**. Формат: `w{N}[-модификатор]`
+- **N** = `0`–`100` Значения: 0, 1, 2, 3, 4, 5, 10, 15, 20, 21, 22, 23, 24, 25, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 60, 65, 66, 67, 68, 69, 70, 75, 80, 85, 90, 95, 100.
+
+- **Модификаторы:**
+  - `-min` → `min-width`.
+  - `-max` → `max-width`.
+
+**Примеры:**
+- `w25` → `width: 25%`.
+- `w50-max` → `max-width: 50%`.
+
+**Пиксельные значения**. Формат: `w{N}px[-модификатор]`
+- **N** = 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800.
+- **Примеры:**
+  - `w100px` → `width: 100px`.
+  - `w200px-min` → `min-width: 200px`.
+
+**Адаптивность (только `-tablet` для max-width: 768px)**
+- **Примеры:**
+  - `w100-tablet` → `width: 100%` (только на tablet).
+  - `w10px-max-tablet` → `max-width: 10px` (на tablet).
+
+**Дополнительные классы**
+- `w-auto` → `width: auto`.
+
+**Примеры использования:**
+```html
+<!-- Блок 50% ширины с минимальной шириной 200px -->
+<div class="w50 w200px-min">...</div>
+
+<!-- Адаптивный блок: 100% на mobile, 25% на desktop -->
+<div class="w25 w100-tablet">...</div>
+
+<!-- Блок с фиксированной шириной 400px и максимальной 600px -->
+<div class="w400px w600px-max">...</div>
+
+<!-- Ширина 80% с минимальной границей 300px -->
+<div class="w80 w300px-min">...</div>
+
+<!-- Контейнер 100% ширины, но не более 700px -->
+<div class="w100 w700px-max">...</div>
+
+<!-- Адаптивный элемент: 60% на desktop, 100% на tablet -->
+<div class="w60 w100-tablet">...</div>
+
+<!-- Элемент с шириной 50px, но не меньше 20px -->
+<div class="w50px w20px-min">...</div>
+
+<!-- Элемент с авто-шириной на desktop и 75% на tablet -->
+<div class="w-auto w75-tablet">...</div>
+```
+
+**Фиксированная ширина**:
+  - `w-layout-max` → `width: 100%; max-width: 1200px`.
+  - `w-tablet` → `width: 768px`.
+  - `w-tablet-max` → `max-width: 768px`.
+  - `w-tablet-min` → `min-width: 768px`.
+
+**Важно!** Классы `w-tablet`, `w-tablet-max`, `w-tablet-min` хоть и используют суффикс `-tablet` на самом деле просто задают ширину tablet в 768px.
+
+**Гибкая ширина**:
+  - `w100-max` → `max-width: 100%`.
+  - `w-auto` → `width: auto`.
+
+**Максимальная ширина**:
+  - `w-max-none` → `max-width: none`.
+  - `w-max-min-content` → `max-width: min-content`.
+  - `w-max-max-content` → `max-width: max-content`.
+  - `w-max-fit-content` → `max-width: fit-content`.
+
+**Минимальная ширина**:
+  - `w-min-none` → `min-width: 0`.
+  - `w-min-min-content` → `min-width: min-content`.
+  - `w-min-max-content` → `min-width: max-content`.
+  - `w-min-fit-content` → `min-width: fit-content`.
+
+**Ширина в колонках** (12-колоночная сетка):
+  - Формат: `w{N}col`, где `N` — число колонок от 1 до 12.
+
+**Примеры**
+```html
+<!-- Контейнер с максимальной шириной 768px -->
+<div class="w-tablet-max">Контент</div>
+
+<!-- Адаптивный блок с шириной до 1200px -->
+<section class="w-layout-max">Раздел</section>
+
+<!-- Элемент с минимальной шириной по содержимому -->
+<span class="w-min-min-content">Текст</span>
+
+<!-- Контейнер с авто-шириной, но не менее 200px -->
+<div class="w-auto w200px-min bg-red200">Контент</div>
+
+<!-- Элемент на 3 колонки, но макс. ширина 300px -->
+<div class="w3col w300px-max bg-red100">Текст</div>
+
+<!-- Блок, который занимает всю доступную ширину, но не меньше 200px -->
+<div class="w-max-fit-content w200px-min bg-red500">Адаптивный контент</div>
+
+<!-- Блок на 4 колонки (33.33%) -->
+<div class="w4col">Треть</div>
+
+<!-- Блок на 6 колонок (50%) -->
+<div class="w6col">Половина</div>
+
+<!-- Блок на 12 колонок (100%) -->
+<div class="w12col">Полная ширина</div>
+```
+
+
+
+## Классы контейнера (модульная сетка)
+
+**Базовый контейнер**
+- `layout-center` — центрирование блока контейнера.
+- `layout-center-wrap > layout-wrap` → использование вложенного wrap-блока
+
+Классы `layout-center` и `layout-center-wrap` центрируют блок контейнера следующим образом:
+```css
+    width: 100%;
+    max-width: var(--layout-max-width, 1200px);
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: var(--layout-wrap-padding, 15px);
+    padding-left: var(--layout-wrap-padding, 15px);
+```
+
+**Ограничение ширины 768px (равна tablet)**
+- `layout-center-tablet` или `layout-center-wrap-tablet > layout-wrap` → Макс. ширина: `768px` (фиксировано).
+
+**Важно!** Классы `layout-center-tablet` и `layout-center-wrap-tablet используют суффикс `tablet`, но не работают как адаптивность  max-width: 768px. В этих классах устанавливается только максимальная ширина wrap-блока в 768px.
+
+**Кастомизация:**
+```css
+:root {
+    --layout-max-width: 1400px;
+    --layout-wrap-padding: 20px;
+}
+
+```
+
+**Примеры:**
+
+```html
+<!-- Использование wrap-блока -->
+<div class="layout-center-wrap">
+  <div class="layout-wrap">
+    <!-- Контент сайта -->
+  </div>
+</div>
+
+<!-- Без wrap-блока -->
+<div class="layout-center">
+    <!-- Контент сайта -->
+</div>
+
+<!-- Контейнер с увеличенной максимальной шириной -->
+<div class="layout-center" style="--layout-max-width: 1400px;">
+    <!-- Контент -->
+</div>
+
+<!-- Центрированный wrap-блок с кастомными отступами -->
+<div class="layout-center-wrap" style="--layout-wrap-padding: 25px;">
+    <div class="layout-wrap">
+        <!-- Контент -->
+    </div>
+</div>
+
+<!-- Ограниченный по ширине 768px -->
+<div class="layout-center-tablet">
+    <!-- Контент -->
+</div>
+```
+
+
+
+## Классы Grid
+
+**Контейнеры**
+- `grid-var` → Кастомная сетка через CSS-переменные:
+  - `--grid-gap` (отступы), `--grid-columns`, `--grid-rows`.
+- `grid-{N}col` → Сетка с N колонками (от 1 до 12).
+  - **Шаблон:** `repeat(N, minmax(0, 2fr))`.
+  - **Пример:** `grid-3col` → 3 колонки.
+- **Адаптивность:**
+  - `grid-{N}col-tablet` → Активируется на ≤ 768px.
+
+**Элементы сетки**
+- `grid-item-var` → Позиция через переменные:
+  - `--grid-item-column`, `--grid-item-row`.
+
+**Отступы (gap)**. Формат: `{тип}-gap{размер}` (размеры: 0, 5, 7, 10, 15, 20, 25, 30, 40, 50, 100px).
+- **Типы:**
+  - `gap` → общий отступ (row + column).
+  - `column-gap` → только между колонками.
+  - `row-gap` → только между рядами.
+- **Примеры:**
+  - `gap20` → `gap: 20px`.
+  - `row-gap10` → `row-gap: 10px`.
+
+**Примеры использования:**
+```html
+<!-- 3-колоночная сетка с отступами 20px -->
+<div class="grid-3col gap20">
+  <div class="grid-item-var" style="--grid-item-column: span 2">...</div>
+</div>
+
+<!-- Адаптивная сетка: 4 колонки → 2 на tablet -->
+<div class="grid-4col grid-2col-tablet gap15">...</div>
+
+<!-- Сетка с 6 колонками, отступы между колонками 15px -->
+<div class="grid-6col column-gap15">
+  <div class="grid-item-var" style="--grid-item-column: span 2">Элемент 1</div>
+  <div class="grid-item-var" style="--grid-item-column: span 3">Элемент 2</div>
+</div>
+
+<!-- Адаптивная сетка: 3 колонки на desktop, 1 колонка на tablet -->
+<div class="grid-3col grid-1col-tablet gap10">
+  <div class="grid-item-var">Элемент 1</div>
+  <div class="grid-item-var">Элемент 2</div>
+  <div class="grid-item-var">Элемент 3</div>
+</div>
+
+<!-- Использование кастомных переменных для grid -->
+<div class="grid-var" style="--grid-columns: 4; --grid-rows: 2; --grid-gap: 20px">
+  <div class="grid-item-var" style="--grid-item-column: span 2">Элемент 1</div>
+  <div class="grid-item-var" style="--grid-item-row: span 2">Элемент 2</div>
+</div>
+```
+
+
+## Классы Flexbox
+
+### **Базовые Flex-классы**
+- `flex` → `display: flex` + `justify-content: space-between` + `align-items: stretch`
+- **Адаптивность:**
+  - `flex-tablet` → активирует flex-контейнер только на экранах ≤ 768px, не отменяя другие классы.
+
+### **Направление и перенос**
+#### **Направление (flex-direction)**
+- `flex-row` (ряд), `flex-row-reverse` (ряд в обратном порядке)
+- `flex-column` (колонка), `flex-column-reverse` (колонка в обратном порядке)
+- **Адаптивность:**
+  - `flex-reverse-tablet` → `flex-direction: row-reverse` (на tablet)
+
+#### **Перенос (flex-wrap)**
+- `flex-wrap` (перенос), `flex-nowrap` (без переноса), `flex-wrap-reverse` (обратный перенос)
+- **Адаптивность:**
+  - `flex-wrap-tablet` → `flex-wrap: wrap` (перенос только на tablet ≤ 768px)
+
+### **Выравнивание**
+#### **По главной оси (justify-content)**
+- `flex-jc-start` (начало), `flex-jc-end` (конец), `flex-jc-center` (центр)
+- `flex-jc-between` (пространство между), `flex-jc-around` (пространство вокруг)
+- **Синонимы:**
+  - `flex-hcenter` = `flex-jc-center`
+- **Адаптивность:**
+  - `flex-hcenter-tablet` → `justify-content: center` (на tablet)
+
+#### **По поперечной оси (align-items)**
+- `flex-ai-start` (начало), `flex-ai-end` (конец), `flex-ai-center` (центр)
+- `flex-ai-baseline` (базовая линия), `flex-ai-stretch` (растяжение)
+- **Синонимы:**
+  - `flex-vcenter` = `flex-ai-center`
+- **Адаптивность:**
+  - `flex-vcenter-tablet` → `align-items: center` (на tablet)
+
+#### **Многострочное выравнивание (align-content)**
+- `flex-ac-start`, `flex-ac-end`, `flex-ac-center`
+- `flex-ac-between`, `flex-ac-around`, `flex-ac-stretch`
+
+#### **Индивидуальное выравнивание (align-self)**
+- `flex-as-auto`, `flex-as-start`, `flex-as-end`, `flex-as-center`
+- `flex-as-baseline`, `flex-as-stretch`
+
+### **Размеры и порядок**
+#### **Базовый размер (flex-basis)**
+- `flex-basis-var` → `var(--flex-basis, 150px)`
+- Фиксированные значения: `flex-basis50px`, `flex-basis100px`, `flex-basis150px`. Для других значений следует использовать `flex-basis-var` с `--flex-basis.
+
+#### **Порядок (order)**
+- `flex-order1` → `order: 1` (до `flex-order5`)
+- **Адаптивность:**
+  - `flex-order1-tablet` → `order: 1` (на tablet, до `flex-order5-tablet`)
+
+#### **Растяжение (flex-grow)**
+- `flex-grow1` → `flex-grow: 1` (до `flex-grow5`)
+
+#### **Сжатие (flex-shrink)**
+- `flex-shrink1` → `flex-shrink: 1` (до `flex-shrink5`)
+
+
+### **Примеры использования:**
+```html
+<!-- Горизонтальный центр + вертикальное растяжение -->
+<div class="flex flex-hcenter flex-ai-stretch">...</div>
+
+<!-- Колонка с переносом + центрирование на tablet -->
+<div class="flex-column flex-wrap flex-vcenter-tablet">...</div>
+
+<!-- Элемент с порядком 2 (на tablet — порядок 1) -->
+<div class="flex-order2 flex-order1-tablet">...</div>
+```
+
+**Правила именования:**
+- Префикс `flex-` + тип свойства (`jc`/`ai`/`ac`/`as`) + значение (`start`/`center`/`between`).
+- Числовые значения (order/grow/shrink) пишутся без дефиса перед цифрой.
+
+### Примеры построения flex-сетки
+
+Хотя flex-модель предлагает множество свойств, в Berry CSS построение flex-сетки возможно в достаточно простом виде.
+
+```(html)
+<!--
+    Базовый класс .flex задает общее поведение сетки.
+    Помни! В этом классе не разрешен перенос ячеек, но при этом стоит выравнивание ячеек по всей ширине контейнера justify-content: space-between и align-items: stretch. Если нужен «чистый» flex-контейнер, то следует использовать класс .b-flex
+-->
+<div class="flex">
+    <div>ячейка</div>
+    <div>ячейка</div>
+    <div>ячейка</div>
+</div>
+
+<!-- Дополнительный класс .flex-wrap задает возможность переноса ячеек в случае их переполнения. -->
+<div class="flex flex-wrap">
+    <div>ячейка</div>
+    <div>ячейка</div>
+    <div>ячейка</div>
+</div>
+
+<!-- Класс .flex-wrap-tablet задает возможность переноса ячеек в случае их переполнения только для размера tablet. Это используется для создания адаптивной сетки, когда размеры ячеек слишком большие для малого экрана, но нужно гарантировать пропорции ячеек для обычного. -->
+<div class="flex flex-wrap">
+    <div>ячейка</div>
+    <div>ячейка</div>
+    <div>ячейка</div>
+</div>
+
+<!-- «Типовая» адаптивная сетка. Размеры ячеек можно задавать с помощью любых классов ширины, включая и размеры для tablet -->
+<div class="flex flex-wrap">
+    <div class="w30 w100-tablet">ячейка 30%, на tablet уже 100%</div>
+    <div class="w50">ячейка 50% на любых экранах</div>
+</div>
+
+<!-- Размеры можно задавать с помощью «жадности» grow и shrink. В этом случае ширина будет автоматически рассчитана браузером. -->
+<div class="flex flex-wrap-tablet">
+    <div class="flex-grow3">ячейка с жадностью 3</div>
+    <div class="flex-grow1">ячейка с жадностью 1</div>
+</div>
+
+<!-- Можно комбинировать любые классы, влияющие на ширину ячеек -->
+<div class="flex">
+    <div class="w20">ячейка</div>
+    <div class="w4col">ячейка</div>
+    <div class="w30">ячейка</div>
+    <div class="w1col">ячейка</div>
+    <div class="flex-grow5">ячейка</div>
+    <div class="flex-shrink2">ячейка</div>
+    <div class="w50px">ячейка</div>
+</div>
+
+<!-- «Чистый» flex-контейнер с классами, задающих поведение сетки -->
+<div class="b-flex flex-jc-between flex-ai-start">
+    <div class="w20">ячейка</div>
+    <div class="w30">ячейка</div>
+    <div class="flex-grow2">ячейка</div>
+</div>
+```
+
+**Примечание.** Во многих случаях будет проще использовать не flex, а grid-сетку, особенно классы `grid-Xcol`.
+
+
+
+## Классы для отступов padding и margin
+
+**Формат классов**
+- **Padding:** `pad{число}[-модификатор]`
+- **Margin:** `mar{число}[-модификатор]`
+- **Адаптивность:** Добавь `-tablet` (например, `pad10-t-tablet`).
+
+**Доступные значения (px)**
+- **Все устройства:** `0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80, 100`.
+- **Только tablet (≤768px)** `0, 5, 10, 20, 30, 50`.
+
+**Модификаторы**
+
+| Суффикс | Область применения         | Пример                                  |
+|---------|----------------------------|-----------------------------------------|
+| `-t`    | Top                        | `pad10-t` → `padding-top: 10px`         |
+| `-r`    | Right                      | `mar5-r` → `margin-right: 5px`          |
+| `-b`    | Bottom                     | `pad20-b` → `padding-bottom: 20px`      |
+| `-l`    | Left                       | `mar15-l` → `margin-left: 15px`         |
+| `-tb`   | Top + Bottom               | `pad30-tb` → `padding-top/bottom: 30px` |
+| `-rl`   | Right + Left               | `mar0-rl` → `margin-right/left: 0`      |
+
+**Важно!**. Все классы имеют `!important`, чтобы иметь приоритет перед другими классами.
+
+**Примеры использования:**
+```html
+<!-- Отступы: сверху 30px, слева/справа 15px -->
+<div class="pad30-t pad15-rl">...</div>
+
+<!-- Внешние отступы: снизу 50px (кроме tablet) -->
+<div class="mar50-b mar0-b-tablet">...</div>
+
+<!-- 20px на десктопе, 10px на tablet -->
+<div class="pad20 pad10-tablet">...</div>
+
+<!-- Сброс всех padding на tablet -->
+<div class="pad20 pad0-tablet">...</div>
+```
+
+**Классы отступов для `::before`**.
+- **Шаблон:** `.mar-before{число}` → задает `margin-right` для псевдоэлемента `::before`.
+- **Доступные значения (px** `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30`.
+
+**Примеры**
+```html
+<!-- Иконка с отступом справа 10px -->
+<div class="icon-arrow-right mar-before10">Текст</div>
+<!-- Отобразится как: → Текст (со стрелкой) -->
+```
+
+
+
+## Классы размеров текста
+
+**Размеры текста в rem**
+- **Формат**: `tX`, где `X` — размер в `rem`, умноженный на 100 (напр., `t100` → `font-size: 1rem`, `t150` → `font-size: 1.5rem`).
+- **Доступные значения** (`rem`):
+  - 0.8, 0.85, 0.9, 0.95, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.5, 5.
+  - Примеры: `t80` → `0.8rem`, `t200` → `2rem`, `t500` → `5rem`.
+- **Адаптивность** (медиа-запрос `max-width: 768px`):
+  - Формат: `tX-tablet`.
+  - Доступные значения (`rem`): 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 3, 4, 5.
+  - Примеры: `t80-tablet` → `0.8rem`, `t200-tablet` → `2rem`, `t500-tablet` → `5rem`.
+
+**Размеры текста в em**
+- **Формат**: `tXem`, где `X` — размер в `em`, умноженный на 100 (напр., `t100em` → `font-size: 1em`).
+- **Доступные значения** (`em`): 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2.
+- **Примеры**:
+  - `t50em` → `0.5em`.
+  - `t80em` → `0.8em`.
+  - `t200em` → `2em`.
+
+**Размеры текста в px**
+- **Формат**: `tXpx`, где `X` — размер в пикселях.
+- **Доступные значения** (`px`): 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30, 40, 50.
+- **Примеры**:
+  - `t8px` → `8px`.
+  - `t16px` → `16px`.
+  - `t50px` → `50px`.
+
+Примеры
+```html
+<!-- Текст размером 1.5rem -->
+<p class="t150">Текст</p>
+
+<!-- Текст 1rem на десктопе, 0.9rem на планшетах -->
+<p class="t100 t90-tablet">Адаптивный текст</p>
+
+<!-- Текст размером 0.8em -->
+<span class="t80em">Мелкий текст</span>
+
+<!-- Заголовок размером 16px -->
+<h1 class="t16px">Заголовок</h1>
+
+<!-- Заголовок размером 5rem -->
+<h1 class="t500">Крупный заголовок</h1>
+```
+
+
+
+## Классы для оформления текста
+
+**Начертание и стиль**
+- **Жирность:**
+  - `t-bold` → `bold`, `t-bold400` → `400`, ... `t-bold900` → `900`.
+  - `t-bold-light` → `lighter`, `t-bold-normal` → `normal`.
+- **Курсив:** `t-italic`.
+- **Сброс:** `t-normal` (убирает жирность, курсив, подчеркивание).
+
+**Декорации текста**
+- **Подчеркивание:**
+  - `t-underline` + модификаторы стиля:
+    - `t-decoration-dashed` (пунктир), `t-decoration-wavy` (волна).
+  - Отступ: `t-underline-offset1px`...`t-underline-offset8px`.
+- **Перечеркивание:** `t-strike`.
+- **Надчеркивание:** `t-overline`.
+
+**Трансформация**
+- `t-upper` → `uppercase`, `t-lower` → `lowercase`.
+- `t-capitalize` → `capitalize`.
+- `t-small-caps` → капитель.
+
+**Выравнивание и перенос**
+- **Выравнивание:**
+  - `t-center`, `t-left`, `t-right`, `t-justify`.
+  - **Адаптивность:** `-tablet` (например, `t-center-tablet`).
+
+- **Перенос:**
+  - `t-nowrap` (без переноса), `t-wrap` (нормальный).
+  - `t-ellipsis` → обрезка с `...`.
+  - `t-line-clamp` → многострочная обрезка (если поддерживает браузер) `-webkit-line-clamp: var(--line-clamp, 3)`.
+
+**Шрифты**
+- **Семейства:**
+  - `t-mono` → `SFMono-Regular, Menlo, Monaco, Consolas, "PT Mono", "Liberation Mono", "Courier New", monospace`.
+  - «Безопасные» шрифты: `t-georgia`, `t-palatino`, `t-times`, `t-arial`, `t-arial-black`, `t-comic`, `t-impact`, `t-tahoma`, `t-trebuchet`, `t-verdana`.
+
+**Дополнительно**
+- **Переносы слов** `t-hyphens`.
+- **Направление:** `t-rtl` (справа налево), `t-ltr` (слева направо).
+- **Режим письма:** `t-writing-vrl` (вертикальный RL), `t-writing-vlr` (вертикальный LR), `t-writing-htb` (горизонтальный TB).
+
+- **Кернинг:**
+  - `t-tracking-50 {letter-spacing:-0.05em}`
+  - `t-tracking-25 {letter-spacing:-0.025em}`
+  - `t-tracking0 {letter-spacing:0em}`
+  - `t-tracking25 {letter-spacing:0.02em}`
+  - `t-tracking50 {letter-spacing:0.05em}`
+  - `t-tracking100 {letter-spacing:0.1em}`
+  - `t-tracking150 {letter-spacing:0.15em}`
+  - `t-tracking200 {letter-spacing:0.2em}`
+
+**Примеры:**
+```html
+<!-- Жирный заголовок с тенью -->
+<h1 class="t-bold t-shadow">Заголовок</h1>
+
+<!-- Текст с многострочной обрезкой -->
+<p class="t-line-clamp" style="--line-clamp: 2">...</p>
+
+<!-- Адаптивное выравнивание -->
+<p class="t-left t-center-tablet">...</p>
+
+<!-- Надчеркнутый текст с пунктирной линией -->
+<p class="t-overline t-decoration-dashed">...</p>
+
+<!-- Моноширинный шрифт с кернингом 0.1em -->
+<p class="t-mono t-tracking100">...</p>
+```
+
+
+
+## Классы интерлиньяжа (line-height)
+
+**Относительные единицы (безразмерные)**
+Формат: `lh{значение}`, где **значение** = от `100` (1.0) до `200` (2.0) с шагом 0.1.
+- **Примеры:**
+  - `lh100` → `line-height: 1` (плотный).
+  - `lh150` → `line-height: 1.5` (стандартный).
+  - `lh200` → `line-height: 2` (просторный).
+
+**Абсолютные единицы (em)**
+Формат: `lh{значение}em`, где **значение** = `100` (1em), `110` (1.1em), `120` (1.2em), `130` (1.3em), `150` (1.5em), `180` (1.8em), `200` (2.0em).
+- **Примеры:**
+  - `lh100em` → `line-height: 1em` (равен размеру шрифта).
+  - `lh150em` → `line-height: 1.5em`.
+
+**Примеры использования:**
+```html
+<p class="lh120">Текст с межстрочным интервалом 1.2</p>
+<p class="lh150em">Текст с интервалом 1.5em</p>
+```
+
+
+
+## Типографика
+
+Типографика задаёт типовое поведение тэгов без классов. Ниже приведены переменные и их значения по умолчанию.
+
+> Кастомизация типографики в Berry CSS осуществляется через CSS-переменные, заданные в :root. Это позволяет унифицировать стили для всего сайта и легко их модифицировать. AI должен интерпретировать запросы пользователя на изменение типографики как изменение значений глобальных переменных в :root, а не локальное переопределение для отдельных элементов. Однако, при необходимости, пользователь может вручную переопределить переменные в конкретных блоках или использовать инлайн-стили.
+
+**Тэг BODY**
+```sass
+  --body-size-base: 16px;
+  --body-line-height: 1.6;
+  --body-color: var(--gray800);
+  --body-bg: #fff;
+
+  --body-text-align; // по умолчанию пусто
+  --body-font-family; // по умолчанию пусто
+```
+
+**Тэг HTML**
+```sass
+    --html-size-base: 16px; // лучше если равна --body-size-base
+```
+
+**Заголовки**
+- **Теги:** `<h1>`–`<h6>`.
+- **Классы:** `h1`–`h6` (дублируют стили тегов).
+- **CSS-переменные:**
+  - `--headings-font-weight: normal`, `--headings-line-height: 1.2`. // для всех заголовков
+  - `--h1-font-size: 2.5rem`, `--h1-margin: 0.7em 0 0.5em 0`
+  - `--h2-font-size: 2rem`, `--h2-margin: 0.7em 0 0.5em 0`
+  - `--h3-font-size: 1.75rem`, `--h3-margin: 0.7em 0 0.5em 0`
+  - `--h4-font-size: 1.5rem`, `--h4-margin: 0.7em 0 0.5em 0`
+  - `--h5-font-size: 1.25rem`, `--h5-margin: 0.7em 0 0.5em 0`
+  - `--h6-font-size: 1rem`, `--h6-margin: 0.7em 0 0.5em 0`
+
+
+**Параграф `<p>`**
+  - `--paragraph-margin: 0 0 1rem 0`.
+
+**Примечание.** Обрати внимание, что у заголовков и параграфа заданы отступы `margin`. Они используются для обычного текста. Если же заголовки или параграф используются в других блоках, то нужно задавать явные отступы с помощью классов `marXXX`, например класс `mar0` обнулит отступы.
+
+**Ссылки `<a>`**
+  - `--link-color: var(--primary500)`
+  - `--link-decoration: none`
+  - `--link-hover-color: var(--primary700)`
+  - `--link-hover-decoration: underline`
+
+**Текстовые элементы**
+```sass
+  // <blockquote>
+  --blockquote-margin: 20px 0;
+  --blockquote-padding: 10px 0 10px 25px;
+  --blockquote-border-left: 4px solid var(--primary400);
+  --blockquote-color: var(--primary400);
+  --blockquote-border-radius: 8px;
+  --blockquote-background: ;
+  --blockquote-link-color: var(--primary600);
+  --blockquote-link-decoration: underline;
+  --blockquote-link-hover-color: var(--primary700);
+  --blockquote-link-hover-decoration: none;
+
+  // <pre>
+  --pre-bg-color: var(--primary50);
+  --pre-text-color: var(--primary800);
+  --pre-padding: 10px 15px 10px 25px;
+  --pre-margin: 20px 0;
+  --pre-border-top: var(--primary150) solid 1px;
+  --pre-border-right: var(--primary150) double 3px;
+  --pre-border-bottom: var(--primary150) solid 1px;
+  --pre-border-left: var(--primary150) double 3px;
+  --pre-line-height: 1.5;
+  --pre-border-radius: 3px;
+  --pre-font-size: 0.9rem;
+
+  // <code>
+  --code-background: var(--primary50);
+  --code-padding: 0 5px;
+  --code-border-radius: 3px;
+  --code-font-size: 0.9em;
+  --code-color: inherit;
+
+  // <var>
+  --var-text-color: var(--orange700);
+  --var-font-size: 0.9rem;
+  --var-border-radius: 3px;
+
+  // <kbd>
+  --kbd-background-color: var(--green100);
+  --kbd-text-color: var(--green800);
+  --kbd-font-size: 0.9em;
+  --kbd-border-radius: 0;
+
+  // <samp>
+  --samp-background-color: var(--green200);
+  --samp-text-color: var(--green800);
+  --samp-font-size: 0.9rem;
+  --samp-border-radius: 3px;
+
+  // <mark>
+  --mark-padding: 0 4px;
+  --mark-background-color: var(--lime150);
+  --mark-text-color: var(--body-color);
+  --mark-border-radius: 3px;
+  --mark-font-size: 0.95em;
+}
+```
+
+**Настройка `<details>` и `<summary>`**
+```sass
+    --summary-marker: "❯"; // символ маркера
+    --summary-marker-margin-r: .6em; // отступ справа от маркера
+    --summary-marker-time, 0.2s; // время transition
+    --summary-marker-rotate: 90deg; // поворот маркера при открытии
+    --summary-marker-color; // цвет не определен, чтобы использовать текущий цвет
+```
+
+
+
+## Классы списков
+
+**Базовые стили списков**
+- `list-unstyled` → Убирает маркеры, отступы и padding (`list-style: none`, `margin: 0`, `padding-left: 0`).
+- `list-inline` → Строчные элементы:
+  - Родитель: `list-style: none`, `padding-left: 0`.
+  - Дочерние `li`: `display: inline-block`.
+- `no-bullet` → Только отключает маркеры (`list-style: none`).
+
+**Позиция маркеров**
+- `list-inside` → Маркеры внутри блока (`list-style-position: inside`).
+- `list-outside` → Маркеры снаружи (`list-style-position: outside`).
+
+**Типы маркеров**
+- `square` → Квадраты (`list-style-type: square`).
+- `disc` → Круги (`list-style-type: disc`).
+- `circle` → Пустые круги (`list-style-type: circle`).
+
+**Дополнительные утилиты**
+- `no-margin` → Убирает `padding-left` + маркеры внутри (`list-style-position: inside`).
+
+**Маркеры**
+Эти классы можно указывать не только для UL/OL, но и у отдельного элемента LI.
+
+- `.marker-none {list-style-type: none;}`
+- `.marker-hyphen {list-style-type: "- ";}`
+- `.marker-square {list-style-type: square;}`
+- `.marker-disc {list-style-type: disc;}`
+- `.marker-circle {list-style-type: circle;}`
+- `.marker-decimal {list-style-type: decimal;}`
+
+
+**Примеры использования:**
+```html
+<!-- Горизонтальный список -->
+<ul class="list-inline">
+  <li>Пункт 1</li>
+  <li>Пункт 2</li>
+</ul>
+
+<!-- Список с квадратными маркерами -->
+<ul class="square">
+  <li>Элемент</li>
+</ul>
+
+<!-- Список без отступов и маркеров -->
+<ul class="list-unstyled">
+  <li>Текст</li>
+</ul>
+
+<!-- У элемента списка свой маркер -->
+<ul>
+  <li class="marker-decimal">Текст</li>
+  <li class="marker-hyphen">Текст</li>
+  <li class="marker-none">Текст</li>
+</ul>
+```
+
+
+
+## Классы колонок текста
+
+**Количество колонок**
+- Формат: `column-countN` где N = 1-7
+  Примеры:
+  - `column-count2` → 2 колонки
+  - `column-count4` → 4 колонки
+
+- Адаптивные версии (для ≤768px):
+  Формат: `column-countN-tablet`
+  Пример:
+  - `column-count3-tablet` → 3 колонки на tablet
+
+**Расстояние между колонками**
+- `column-gap10` → 10px
+- `column-gap20` → 20px
+- `column-gap30` → 30px
+- `column-gap40` → 40px
+- `column-gap50` → 50px
+
+**Произвольные настройки**
+- `column-rule-var` → кастомизация разделителя через CSS-переменные:
+```css
+column-rule: var(--column-rule-width, 1px) var(--column-rule-style, solid) var(--column-rule-color, #aaa);
+```
+
+- `column-var` → комплексная кастомизация:
+```css
+column-count: var(--column-count, 3);
+column-gap  : var(--column-gap, 30px);
+column-rule : var(--column-rule, 1px solid #aaa);
+```
+
+**Разрывы колонок**
+  - `break-inside-auto {break-inside: auto}`
+  - `break-inside-avoid {break-inside: avoid}`
+  - `break-inside-avoid-page {break-inside: avoid-page}`
+  - `break-inside-avoid-column {break-inside: avoid-column}`
+  - `break-inside-avoid-region {break-inside: avoid-region}`
+
+**Примеры использования:**
+```html
+<div class="column-count3 column-gap20">
+  <!-- Текст в 3 колонки с отступом 20px -->
+</div>
+
+<div class="column-count4 column-count2-tablet column-rule-var">
+  <!-- 4 колонки (2 на tablet) с кастомными разделителями -->
+</div>
+```
+
+
+
+## Классы таблиц
+
+**Макет таблицы**
+- `table-layout-fixed` → Фиксированная ширина колонок (`fixed`).
+- `table-layout-auto` → Автоматическая ширина (`auto`).
+- `table-caption-bottom` → Подпись снизу (`caption-side: bottom`).
+
+**Базовые стили**
+- **Все таблицы:**
+  - `width: 100%`, `border-collapse: collapse`.
+  - Границы строк: `--table-tr-border-bottom: var(--primary100) 1px solid`.
+- **Заголовки (`thead`**
+  - Фон: `--table-th-background: var(--primary100)`.
+  - Границы: `--table-th-border-bottom: var(--primary150) 1px solid`, `--table-th-border-top: var(--primary150) 1px solid`.
+  - Отступы: `--table-th-padding: 0.6rem 0.5rem`.
+- **Ячейки `td`**
+  - Вертикальное выравнивание: `top`.
+  - Отступы: `--table-td-padding: 0.5rem`.
+
+**Модификаторы таблиц**
+| Класс                  | Описание                          | CSS-переменные                                       |
+|------------------------|-----------------------------------|------------------------------------------------------|
+| `table-striped`        | Зебры (чередующиеся строки)       | `--table-striped-odd-bg`, `--table-striped-even-bg`  |
+| `table-border-none`    | Убирает границы строк             | —                                                    |
+| `table-border`         | Границы между колонками           | `--table-td-border-right`, `--table-th-border-right` |
+| `table-hover`          | Подсветка строк при наведении     | `--table-tr-hover-bg`                                |
+
+**Примеры использования:**
+```html
+<!-- Таблица с зеброй и границами -->
+<table class="table-striped table-border">
+  <thead>...</thead>
+  <tbody>...</tbody>
+</table>
+
+<!-- Фиксированный макет + hover -->
+<table class="table-layout-fixed table-hover">...</table>
+```
+
+
+
+## Изображения
+
+Все изображения имеют стили по умолчанию:
+
+```css
+max-width: 100%;
+height: auto;
+vertical-align: middle;
+```
+
+**Выравнивание**
+- `left` → `float: left; margin: var(--img-left-margin, 5px 20px 5px 0);`
+- `right` → `float: right; margin: var(--img-right-margin, 5px 0 5px 20px);`
+- `center` → `margin: 0 auto; display: block;`
+
+**Скругление**
+- `circle` → `border-radius: 50%`
+
+**Миниатюра**
+- `thumbnail` → `border: var(--thumbnail-border, var(--primary200) 1px solid); padding: var(--thumbnail-padding, 4px);`
+}
+
+**Важно!** Эти классы применяются только к тэгу `<img>`.
+
+
+
+## Эффекты для изображений
+
+Классы, которые создают различные эффекты только при наведении `:hover`.
+
+- `hover-img-scale` → `transform: scale3d(1.02, 1.02, 1.02)` - увеличение
+- `hover-img-shadow` → `box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8)` - тень
+- `hover-img-opacity1` → `background-color: rgba(0, 0, 0, 0.2); opacity: 0.8` - эффект осветления при наведении
+
+Классы, которые меняют вид как исходного изображения, так и его состояния `:hover`.
+
+| Класс              | Исходный вид            | При наведении        | Описание                                              |
+------------------------------------------------------------------------------------------------------------------------------|
+| hover-img-opacity2 | opacity: 0.8            | opacity: 1           | Изображение осветленное, при наведения нормальное     |
+| hover-img-gray     | filter: grayscale(100%) | filter: grayscale(0) | Изображение серое 100%, при наведении появляется цвет |
+| hover-img-gray30   | filter: grayscale(30%)  | filter: grayscale(0) | Изображение серое 30%, при наведении появляется цвет  |
+| hover-img-gray50   | filter: grayscale(50%)  | filter: grayscale(0) | Изображение серое 50%, при наведении появляется цвет  |
+| hover-img-gray70   | filter: grayscale(70%)  | filter: grayscale(0) | Изображение серое 70%, при наведении появляется цвет  |
+| hover-img-sepia    | filter: sepia(100%)     | filter: none         | Изображение серпия 100%, при наведении обычный цвет   |
+| hover-img-sepia50  | filter: sepia(50%)      | filter: none         | Изображение серпия 50%, при наведении обычный цвет    |
+
+Все приведенные классы используют `transition: all 0.5s ease`.
+
+
+
+## Классы border-radius
+
+**Базовые классы**
+- `rounded-circle` → Круг (`border-radius: 50%`).
+- `rounded` → Кастомное скругление через `--rounded-radius` (по умолчанию `7px`).
+
+**Фиксированные значения**
+**Формат:** `rounded{X}[-сторона]`, где:
+- **X** = `0, 3, 5, 7, 10, 20` (px).
+- **Сторона:** `t` (top), `r` (right), `b` (bottom), `l` (left).
+
+**Примеры:**
+- `rounded5` → `border-radius: 5px !important` (все углы).
+- `rounded10-t` → Скругление только верхних углов (`10px`).
+- `rounded0-r` → Сброс скругления справа.
+
+### Примеры использования:
+```html
+<!-- Круглая аватарка -->
+<img src="avatar.jpg" class="rounded-circle">
+
+<!-- Карточка со скруглением сверху -->
+<div class="rounded10-t rounded0-b">...</div>
+```
+
+
+
+## Классы `<hr>`
+
+Тэг `<hr>` стилизуется по умолчанию:
+```css
+  display: block;
+  padding: 0;
+  border: none;
+  border-top: var(--hr-border, 1px solid var(--primary300));
+  margin: var(--hr-margin, 20px 0);
+```
+
+Предопределенные классы для `<hr>`: `dashed`, `dotted`, `double` (изменяется свойство `border-top-style`).
+
+Для того, чтобы изменить отступы `<hr>` следует использовать либо классы `marXX`, либо использовать css-переменную `--hr-margin`.
+
+Для того, чтобы изменить стиль линии, можно использовать либо css-переменную `--hr-border`, либо использовать классы `bor-XXX`.
+
+**Примеры**
+
+```html
+<hr>
+<hr class="dashed">
+<hr class="dotted">
+<hr class="double">
+<hr class="dashed bor-red">
+<hr class="dashed bor3">
+<hr class="double bor3 bor-red">
+<hr class="bor3 bor-red bor-dashed">
+```
+
+
+
+## Классы для блоков
+
+**Очистка потока (clearfix и clear)**
+- `b-clearfix` → Clearfix (добавляет `::after` с `clear: both`)
+- `b-clear` → `clear: both`
+- `b-clear-right` → `clear: right`
+- `b-clear-left` → `clear: left`
+- `b-clear-none` → `clear: none`
+
+**Обтекание (float)**
+- `b-right` → `float: right`
+- `b-left` → `float: left`
+- `b-float-none` → `float: none`
+- `b-float-none-tablet` → `float: none` (только на `max-width: 768px`)
+
+**Выравнивание и центрирование**
+- `b-center` → `margin-left: auto; margin-right: auto` (центрирование блока)
+
+**Управление отображением (display)**
+- **Скрытие:**
+  - `b-hide` → `display: none`
+  - `b-hide-imp` → `display: none !important`
+- **Inline/Block:**
+  - `b-inline`, `b-inline-block` → `display: inline-block`
+  - `b-block` → `display: block`
+  - `b-block-imp` → `display: block !important`
+- **Flexbox:**
+  - `b-flex` → `display: flex`
+  - `b-inline-flex` → `display: inline-flex`
+- **Grid:**
+  - `b-grid` → `display: grid`
+  - `b-inline-grid` → `display: inline-grid`
+
+**Примеры использования:**
+- `<div class="b-clearfix b-flex">...</div>` → Flex-контейнер с clearfix.
+- `<div class="b-right b-hide-tablet">...</div>` → Правый float, скрыт на tablet.
+
+
+
+## Классы позиционирование и z-index
+
+**Типы позиционирования**
+- `pos-fixed` → `position: fixed`
+- `pos-absolute` → `position: absolute`
+- `pos-relative` → `position: relative`
+- `pos-sticky` → `position: sticky`
+  - **Адаптивность:**
+    - `pos-sticky-tablet` → sticky только на tablet (≤768px).
+    - `pos-sticky-tablet-none` → отключает sticky (`position: static`).
+
+**Позиции (отступы)**
+**Формат:** `pos{X}-{сторона}`, где:
+- **X** = `0, 10, 20, 30, 40, 50, 60, 80` (px).
+- **Сторона:** `t` (top), `r` (right), `b` (bottom), `l` (left).
+
+**Примеры:**
+- `pos0-t` → `top: 0`
+- `pos30-r` → `right: 30px`
+
+**Z-index**
+- `z-index1` → `z-index: 1`
+- `z-index2` → `z-index: 2`
+- `z-index9` → `z-index: 9`
+- `z-index99` → `z-index: 99`
+- `z-index999` → `z-index: 999`
+- `z-index9999` → `z-index: 9999`
+
+**Примеры комбинаций:**
+```html
+<!-- Фиксированная шапка с высоким z-index -->
+<header class="pos-fixed pos0-t pos0-r pos0-l z-index999">...</header>
+
+<!-- Относительный контейнер с абсолютным элементом -->
+<div class="pos-relative">
+  <div class="pos-absolute pos10-t pos10-r z-index2">...</div>
+</div>
+
+<!-- Липкий блок (только на десктопе) -->
+<div class="pos-sticky pos-sticky-tablet-none pos30-t">...</div>
+```
+
+
+
+## Классы background
+   - `bg-size-cover` → `background-size: cover`
+   - `bg-size-contain` → `background-size: contain`
+   - `bg-no-repeat` → `background-repeat: no-repeat`
+   - `bg-position-center` → `background-position: center`
+   - `bg-position-var` → `background-position: var(--bg-position, 50% 50%)`
+   - `bg-fixed` → `background-attachment: fixed`
+
+**Пример использования:**
+   - `bg-size-cover bg-no-repeat` → фон без повторения, заполняет область.
+
+
+
+## Классы filter
+
+**Фильтры для элементов**
+- `filter-invert` → инверсия цветов (`invert(var(--filter-invert, 100%)`).
+- `filter-sepia` → сепия (`sepia(var(--filter-sepia, 100%)`).
+- `filter-gray` → ч/б (`grayscale(100%)`).
+
+**Отключение фильтров при наведении**
+- `hover-no-filter` → плавно убирает все фильтры (`filter: none`) и эффекты при `:hover` (включая псевдоэлементы `::before`/`::after`).
+  - **Дополнительно:** Сбрасывает `background` и `opacity: 1`.
+  - Анимация: `transition: all 0.5s ease`.
+
+**Примеры использования:**
+```html
+<div class="filter-sepia hover-no-filter">Сепия → исчезает при наведении</div>
+<img class="filter-gray" src="photo.jpg"> <!-- Ч/Б без изменений при hover -->
+```
+
+
+
+## Классы object-fit
+
+**Классы для управления заполнением изображений/видео**
+- `object-fit-fill` → Растягивает контент с искажением (`fill`).
+- `object-fit-contain` → Вписывает целиком без обрезки (`contain`).
+- `object-fit-cover` → Заполняет область с обрезкой (`cover`).
+- `object-fit-scale-down` → Автоматически выбирает между `contain` и `none`.
+- `object-fit-none` → Оригинальный размер (`none`).
+
+**Примеры использования:**
+```html
+<!-- Квадратное изображение с заполнением области -->
+<img src="photo.jpg" class="object-fit-cover w200 h200">
+
+<!-- Видео без обрезки -->
+<video class="object-fit-contain w100 h100"></video>
+```
+
+
+
+## Классы cursor
+
+**Курсоры**
+- `cursor-pointer` → `cursor: pointer` (рука, кликабельный элемент)
+- `cursor-not-allowed` → `cursor: not-allowed` (запрещающий знак)
+
+**Взаимодействие**
+- `pointer-none` → `pointer-events: none` (элемент "не кликабелен", события мыши игнорируются)
+
+**Примеры использования:**
+```html
+<button class="cursor-pointer">Кнопка</button>
+<div class="cursor-not-allowed">Недоступно</div>
+<div class="pointer-none">Сквозной клик</div>
+```
+
+
+
+## Классы для иконок
+
+**Базовые стили иконок**
+- `icon0:before` → Убирает внешний отступ (`margin-right: 0 !important`).
+- **Общие стили для контейнеров:**
+  - `icon-circle`, `icon-square`, `icon-rounded` →
+    - Фиксированный размер: `width: 2em`, `height: 2em`.
+    - Выравнивание: `inline-block`, `text-align: center`.
+    - Особенности:
+      - `icon-circle` → `border-radius: 50%` (круг).
+      - `icon-rounded` → `border-radius: var(--icon-rounded-radius, 5px)` (скругление).
+
+**Псевдоэлементы для стрелок**
+- **Стрелки через `::before`/`::after`:**
+  - `icon-arrow-right::after` → добавляет "→".
+  - `icon-arrow-left::before` → добавляет "←".
+  - `icon-angle-right::after` → добавляет "›".
+  - `icon-angle-left::before` → добавляет "‹".
+
+**Примеры использования:**
+```html
+<!-- Круглая иконка с текстом -->
+<span class="icon-circle">★</span>
+
+<!-- Стрелка вправо -->
+<span class="icon-arrow-right">Далее</span>
+<!-- Отобразится как "Далее →" -->
+
+<!-- Квадратная иконка -->
+<span class="icon-square">!</span>
+```
+
+**Примечание.** Если используются иконки из шрифтов, например из [Bootstrap Icons](https://icons.getbootstrap.com/), то можно комбинировать классы Berry CSS с классами Bootstrap Icons. Классы иконок можно задавать как через тэг `<i>` (как это обычно делается), так и у непосредственного элемента, например ссылки.
+
+```html
+<a href="#" class="bi-star">ссылка</a>
+<button class="button bi-check">Кнопка</button>
+
+<!-- фактически это эквивалентное отображение -->
+<h1><i class="bi-balloon"></i> Заголовок</h1>
+<h1 class="bi-balloon">Заголовок</h1>
+
+<!-- разные цвета отображения -->
+<h1 class="r-red600"><i class="bi-balloon t-orange500"></i> Заголовок</h1>
+```
+
+
+
+## Классы трансформации rotate)
+
+**Поворот**:
+  - `rotate45` → `transform: rotate(45deg)`.
+  - `rotate90` → `transform: rotate(90deg)`.
+  - `rotate180` → `transform: rotate(180deg)`.
+
+*Примеры*
+```html
+<!-- Поворот текста на 90 градусов -->
+<span class="rotate90">Текст</span>
+```
+
+
+
+## Классы transition
+
+Классы могут применяться как конкретному блоку, так и к общему контейнеру. Их действие будет распространяться на вложенные элементы.
+
+**Длительность**:
+- `transition-duration` → `transition: all 0.5s`.
+- `transition-duration0` → `transition: all 0ms`.
+- `transition-duration75` → `transition: all 75ms`.
+- `transition-duration100` → `transition: all 100ms`.
+- `transition-duration150` → `transition: all 150ms`.
+- `transition-duration200` → `transition: all 200ms`.
+- `transition-duration300` → `transition: all 300ms`.
+- `transition-duration500` → `transition: all 500ms`.
+- `transition-duration700` → `transition: all 700ms`.
+- `transition-duration1000` → `transition: all 1000ms`.
+
+**Функции плавности**:
+- `transition-ease-linear` → `transition-timing-function: linear`.
+- `transition-ease-in` → `transition-timing-function: cubic-bezier(0.4, 0, 1, 1)`.
+- `transition-ease-out` → `transition-timing-function: cubic-bezier(0, 0, 0.2, 1)`.
+- `transition-ease-in-out` → `transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)`.
+
+Класс `transition-var` используется, если нужно задать произвольное время трансформации для непосредственного блока  → `transition: all var(--transition-duration, 0.5s)`.
+
+Класс `transition-child-var` используется, если нужно задать произвольное время трансформации, но **только для вложенных элементов** → `transition: all var(--transition-duration, 0.5s)`.
+
+**Примеры**
+```html
+<!-- Переход 300ms с линейной плавностью -->
+<div class="transition-duration300 transition-ease-linear">Элемент</div>
+
+<!-- Переход 0.5s с ease-in-out для всех элементов -->
+<section class="transition-duration transition-ease-in-out">
+  <p>Текст</p>
+</section>
+
+<!-- Переход с кастомной длительностью -->
+<div class="transition-var" style="--transition-duration: 0.2s">Кастом</div>
+```
+
+
+
+## Классы vertical-align
+
+Классы с модификатором `:before` распространяются только на псевдоэлемент `::before`. Они могут использоваться для иконок.
+
+- `va-baseline`, `va-baseline:before`  → vertical-align: baseline
+- `va-top`, `va-top:before` → vertical-align: top
+- `va-middle`, `va-middle:before` → vertical-align: middle
+- `va-bottom`, `va-bottom:before` → vertical-align: bottom
+- `va-text-top`, `va-text-top:before` → vertical-align: text-top
+- `va-text-bottom`, `va-text-bottom:before` → vertical-align: text-bottom
+- `va-sub`, `va-sub\:before` → vertical-align: sub
+- `va-super`, `va-super:before` → vertical-align: super
+
+**Примеры**
+```html
+<!-- Выравнивание по центру -->
+<span class="va-middle">Текст</span>
+
+<!-- Выравнивание иконки, которая использует :before -->
+<i class="bi-star va-text-top:before"></i>
+```
+
+
+
+## Классы видимости и прокрутки
+
+**Видимость**:
+  - `visibility-hidden` → `visibility: hidden`.
+  - `visibility-visible` → `visibility: visible`.
+
+**Переполнение**:
+  - `overflow-hidden` → `overflow: hidden`.
+  - `overflow-auto` → `overflow: auto`.
+  - `overflow-x-auto` → `overflow-x: auto`.
+  - `overflow-y-auto` → `overflow-y: auto`.
+
+**Поведение прокрутки**:
+  - `overscroll-behavior-contain` → `overscroll-behavior: contain`.
+  - `overscroll-behavior-none` → `overscroll-behavior: none`.
+
+**Адаптивность** (медиа-запрос `max-width: 768px`):
+  - `hide-tablet` → `display: none !important`.
+  - `show-tablet` → `display: block !important`.
+
+**Примеры**
+```html
+<!-- Скрытый элемент -->
+<div class="visibility-hidden">Невидимый</div>
+
+<!-- Элемент с прокруткой по Y -->
+<div class="overflow-y-auto">Длинный контент</div>
+
+<!-- Скрыть на планшетах -->
+<div class="hide-tablet">Только десктоп</div>
+
+<!-- Показать только на планшетах -->
+<div class="show-tablet">Только планшет</div>
+```
+
+
+
+## Классы анимации
+
+**Базовые классы анимаций** (длительность 0.6s, `animation-fill-mode: both`):
+   - `animation-fade`, `animation-fadeout`, `animation-left`, `animation-top`, `animation-right`, `animation-bottom`, `animation-zoom`, `animation-zoomout`, `animation-bounce`, `animation-rotatein`, `animation-rotateout`.
+   - *Примечание:* `-top`, `-left`, `-right`, `-bottom`, `-bounce` требуют `position: relative`.
+
+**Модификаторы длительности:**
+   - `animation-fast` (0.4s), `animation-slow` (1.5s), `animation-infinite` (повтор бесконечно).
+
+**Задержки:**
+   - `animation-delay1s`...`animation-delay5s` (задержка 1-5 сек).
+
+**Спецанимации:**
+   - `animation-ping` (пульсация), `animation-spin` (вращение), `animation-pulse` (мерцание).
+
+**Пример использования:**
+   - `animation-fade animation-delay2s` → fade с задержкой 2s.
+   - `animation-spin animation-infinite` → бесконечное вращение.
+
+### Анимация при скроллинге страницы
+
+Если нужно, то для анимации блоков при скроллинге страницы можно использовать библиотеку [WOW.JS](https://wowjs.uk/docs.html). Считай что библиотека уже инициализирована и использует класс `wow`.
+
+```html
+<h2 class="wow animation-left">Заголовок</h2>
+<p class="wow animation-right">Lorem ipsum dolor sit amet.</p>
+<p class="wow animation-zoom">Lorem ipsum dolor sit amet.</p>
+```
+
+
+
+## Класс для буквицы / drop cap
+
+Применяет стили **к первой букве** текстового блока:
+- `float: left` (обтекание текстом)
+- Крупный размер (`font-size: 3em`) и жирное начертание (`font-weight: bold`)
+- Автоматический `uppercase` (если нужно — можно переопределить)
+- Отступ справа (`margin-right: 0.75rem`)
+- Фиксированный `line-height: 1` (для выравнивания)
+
+**Пример:**
+```html
+<p class="drop-cap">Начало абзаца с буквицей.</p>
+```
+
+
+
+## Классы `badge` и `badge-button`
+
+Эти классы используются для создания значков возле элементов. Для кнопок следует использовать `badge-button` (значок в правом верхнем углу кнопки).
+
+Вывод можно настраивать через css-переменные:
+```css
+  transform: translate(0%, var(--badge-top, -50%));
+  padding: var(--badge-padding, 5px);
+  border-width: var(--badge-bor-width, 1px);
+  border-style: var(--badge-bor-style, solid);
+  border-radius: var(--badge-radius, 40%);
+```
+
+**Примеры использования:**
+```html
+Text <span class="badge t90 bg-gray100">8</span>
+
+Text<span class="badge bg-red400 t-red100 t80 bor-orange">88</span>
+
+Text<span class="badge bg-blue600 t-gray100 t80" style="--badge-bor-style: dotted">88</span>
+
+<h2 class="t-pink600">Header <span class="badge bg-pink100 t-pink700 t90">88</span></h2>
+
+<h2>Header <span class="badge bg-green100 t-green700 t90" style="--badge-top: 20%;">88</span></h2>
+
+<button class="button pos-relative">Button <span class="badge-button bg-red600 t-white t80">88</span></button>
+
+<button class="button pos-relative">Button <span class="badge-button bg-orange500 pad3"></span></button>
+```
+
+
+
+## Классы overlay
+
+**Базовый оверлей**
+- `b-overlay` → `position: relative` (контейнер)
+- **Поведение:** При наведении на `b-overlay` его дочерний `b-overlay-text` становится видимым (`opacity: 1`).
+
+**Текст оверлея**
+- `b-overlay-text` →
+  - Абсолютное позиционирование (`position: absolute`, растянут на весь родитель).
+  - Изначально прозрачен (`opacity: 0`), анимация через `transition` (по умолчанию: `0.5s ease`).
+  - **Вложенный контент:**
+    - Любой `div` внутри `b-overlay-text` нужно позиционировать отдельно (например `pos0-b` → прижат к низу).
+
+**Пример использования:**
+```html
+<div class="b-overlay">
+  <img class="w100 h100" src="img.png"> <!-- Заполняет родителя на 100% -->
+  <div class="b-overlay-text">
+    <div class="pos0-b">Текст прижат к низу</div> <!-- позиционирование boottom: 0 -->
+  </div>
+</div>
+```
+
+
+
+## Классы теней
+
+**Тень текста** задаётся с помощью `t-shadow` или `hover-t-shadow` → `text-shadow: var(--shadow-t, 0 0 5px var(--primary200))`. При необходимости тень можно поменять с помощью переменной `--shadow-t`.
+
+Класс `dark:t-shadow` задаёт тень для dark-режима → `text-shadow: var(--shadow-t-dark, 0 0 5px var(--primary400))`. Здесь можно изменить тень с помощью переменной `--shadow-t-dark`.
+
+**Тени блоков**
+
+Классы `b-shadow` и `hover-b-shadow` (тень при наведении)  → `box-shadow: var(--shadow-b, 3px 3px 3px 0 var(--primary150))`.
+
+Классы `dark:b-shadow` и `dark:hover-b-shadow` используются в dark-режиме → `box-shadow: var(--shadow-b-dark, 3px 3px 3px 0 var(--primary700))`.
+
+**Описание тени блоков**
+- `b-shadow` – небольшая тень, смещённая на 3 пикселя вправо и вниз, с размытием в 3 пикселя.
+- `b-shadow1` – очень мягкая, едва заметная тень, которая слегка приподнимает элемент.
+- `b-shadow2` – более выраженная тень, добавляет чёткости и ощущения "приподнятости" элемента.
+- `b-shadow3` – создаёт ощущение значительного подъёма, тень более длинная и рассеянная.
+- `b-shadow4` – глубокая тень, создающая сильный эффект парения.
+- `b-shadow5` – тень, создающая эффект очень высокого элемента.
+- `b-shadow6` – небольшая, компактная тень, создающая эффект слабого свечения вокруг элемента.
+
+**Варианты:**
+- `hover-b-shadow1:hover` → Активирует тень 1 при наведении.
+- `dark:b-shadow1`
+- `dark:hover-b-shadow1`
+- Аналогично для теней 2-6.
+
+**Примеры использования:**
+```html
+<!-- Тень текста -->
+<h1 class="t-shadow">Заголовок</h1>
+
+<!-- Тень текста -->
+<h1 class="t-shadow" style="--shadow-t: 2px 2px 4px #000">Заголовок</h1>
+
+<!-- Карточка с тенью при наведении -->
+<div class="b-shadow2 hover-b-shadow3">...</div>
+
+<!-- Модальное окно с сильной тенью -->
+<div class="b-shadow4">...</div>
+```
+
+
+
+## Классы для градиентов
+
+Формат: `gr-{тип}-{направление}` и `dark:gr-{тип}-{направление}`:
+
+- **Тип градиента:**
+  - `linear` - линейные
+  - `radial` - радиальные
+- **Направления линейных градиентов:**
+  - `top`, `right`, `bottom`, `left`
+  - `top-right`, `top-left`, `bottom-right`, `bottom-left`
+- **Направления радиальных градиентов:**
+  - `circle`, `ellipse`
+  - `closest-side`, `closest-corner`, `farthest-side`, `farthest-corner`
+- **Цвета:**
+  - `--gr-start` (начальный, по умолчанию `--primary600`)
+  - `--gr-end` (конечный, по умолчанию `--primary800`)
+- **Цвета: dark-режима**
+  - `--gr-start-dark` (начальный, по умолчанию `--primary800`)
+  - `--gr-end-dark` (конечный, по умолчанию `--primary900`)
+
+**Примеры:**
+```html
+<div class="gr-linear-right">...</div>
+<div class="gr-linear-right" style="--gr-start: var(--pink600); --gr-end: var(--pink700)">...</div>
+<div class="gr-linear-right dark:gr-linear-left">...</div>
+
+<div class="gr-linear-right dark:gr-linear-right" style="
+    --gr-start: var(--pink600);
+    --gr-end: var(--pink700);
+    --gr-start-dark: var(--pink300);
+    --gr-end-dark: var(--pink500);
+    ">...</div>
+
+<div class="gr-radial-circle" style="--gr-start: var(--blue500); --gr-end: var(--blue900)">...</div>
+```
+
+С помощью `gr-radial-var` и `dark:gr-radial-var`можно кастомизировать радиальный градиент через переменные:
+```sass
+// gr-radial-var
+background: radial-gradient(var(--gr-shape, ellipse at center), var(--gr-start, var(--primary600)), var(--gr-end, var(--primary800)));
+
+// dark:gr-radial-var {
+background: radial-gradient(var(--gr-shape-dark, ellipse at center), var(--gr-start-dark, var(--primary800)), var(--gr-end-dark, var(--primary900)));
+```
+
+
+
+## Классы прозрачности
+
+**Полная прозрачность**
+- `t-transparent` → Прозрачный текст (`color: transparent !important`).
+- `bg-transparent` → Прозрачный фон (`background-color: transparent !important`).
+
+**Кастомная прозрачность через CSS-переменные**
+- `bg-op-var` → Фон с прозрачностью (по умолчанию: черный `rgba(0, 0, 0, 0.7)`).
+  - Переменные: `--bg-op-red`, `--bg-op-green`, `--bg-op-blue`, `--bg-op` (альфа).
+- `bg-op-white-var` → То же, но базовый цвет белый (`rgba(255, 255, 255, 0.7)`).
+
+**Фиксированные значения прозрачности**
+Формат: `opacity{N}` / `.bg-op{N}` (где **N** = от 10 до 100 с шагом 10).
+- **Примеры:**
+  - `opacity30` → `opacity: 0.3`.
+  - `bg-op70` → `background-color: rgba(0,0,0, 0.7)`.
+
+**Версии для наведения (`hover-*`)**
+- `hover-opacity50:hover` → `opacity: 0.5` при наведении.
+- `hover-bg-op20:hover` → `background-color: rgba(0,0,0, 0.2)` при наведении.
+
+**Примеры использования:**
+```html
+<!-- Полупрозрачный текст -->
+<p class="opacity70">Текст с прозрачностью 70%</p>
+
+<!-- Фон с кастомной прозрачностью -->
+<div class="bg-op-var" style="--bg-op-red: 255; --bg-op: 0.5">...</div>
+```
+
+
+
+## Классы кнопок
+
+Базовый класс `button`.
+
+**CSS-переменные:**
+- `--button-transition`: `all ease 0.1s`
+- `--button-border`: `1px solid transparent`
+- `--button-padding`: `0.4rem 0.8rem`
+- `--button-line-height`: `1.5`
+- `--button-radius`: `5px`
+- `--button-bg-color`: `var(--primary600)`
+- `--button-text-color`: `#fff`
+- `--button-hover-bg-color`: `var(--primary750)`
+- `--button-hover-text-color`: `#fff`
+- `--button-focus-bg-color`: `var(--primary500)`
+- `--button-focus-text-color`: `#fff`
+- `--button-focus-shadow`: `0 0 0 2px var(--primary200)`
+- `--button-focus-border`: `solid 1px var(--primary200)`
+- `--button-disabled-bg-color`: `var(--gray200)`
+- `--button-disabled-text-color`: `var(--gray600)`
+
+**Цветовые модификаторы**. Формат: `button-{цвет}` (например, `button-red`) как второй класс к `button`.
+
+**Поддерживаемые цвета:** `primary`, `gray`, `red`, `pink`, `purple`, `violet`, `indigo`, `blue`, `cyan`, `teal`, `green`, `lime`, `yellow`, `orange`, `brown`.
+
+**CSS-переменные для каждого цвета:**
+- `--{цвет}600`: основной цвет
+- `--{цвет}750`: цвет при наведении
+- `--{цвет}500`: цвет при активации
+- `--{цвет}200`: цвет границы/тени
+
+**Специальные кнопки**
+- **`button-outline1`** Светлый контурный вариант (белый фон + цветной текст/граница).
+- **`button-outline2`** Прозрачный контурный вариант (прозрачный фон + цветной текст/граница).
+
+**Примеры использования**
+```html
+<!-- Основная кнопка -->
+<button class="button">Submit</button>
+
+<!-- Цветная кнопка -->
+<button class="button button-red">Delete</button>
+
+<!-- Контурная кнопка -->
+<button class="button button-outline1">Cancel</button>
+```
+
+
+
+## Классы стилизации форм
+
+**Класс:** `form-input` задает общие стили для полей ввода.
+
+**CSS-переменные:**
+```sass
+--form-input-padding: 4px 6px;
+--form-input-border: 1px solid var(--primary200);
+--form-input-border-radius: 3px;
+--form-input-background: #fff;
+--form-input-color; // не задан
+
+// подсказка
+--placeholder-color: var(--primary500)
+
+// состояние disabled
+--form-input-disabled-color: var(--gray500);
+--form-input-disabled-background: var(--gray200);
+--form-input-disabled-border-color: var(--gray300);
+
+// состояние focus
+--form-input-focus-color: var(--primary800);
+--form-input-focus-background: var(--white);
+--form-input-focus-border-color: var(--primary300);
+--form-input-focus-shadow: 0 0 0 0.1rem hsla(var(--primary-hue), 100%, 70%, 0.7);
+
+// состояние invalid (срабатывает автоматически с помощью js-кода)
+--form-invalid-shadow: 0 0 0 0.1rem hsla(var(--red-hue), 100%, 70%, 0.4);
+--form-invalid-border: 1px solid var(--red300);
+```
+
+Для некоторых типов элементов форм по умолчанию задан `accent-color`, что позволяет использовать классы цветов `t-ЦВЕТ` для кастомизации поля (если это поддерживает браузер).
+```css
+input[type=checkbox],
+input[type=radio],
+input[type=range],
+progress,
+meter {
+  accent-color: currentColor;
+}
+```
+
+**Примеры использования**
+```html
+<input type="text" class="form-input" placeholder="Имя">
+<textarea class="form-input"></textarea>
+
+<select class="form-input">
+    <option>Choose an option</option>
+    <option>Slack</option>
+    <option>Skype</option>
+    <option>Hipchat</option>
+</select>
+
+<!-- стандартные поля, стилизуемые через accent-color -->
+<input type="checkbox" class="t-orange500 dark:t-green400"> Standard (t-orange500 dark:t-green400)
+<input type="radio"class="t-orange500 dark:t-green400"> Standard (t-orange500 dark:t-green400)
+```
+
+**Примечание.** Если элемент формы используется в flex/grid-сетке, то для задания его ширины следует использовать классы ширины `wXXX`.
+
+
+
+## Специфичные (vendor) классы
+
+Для адаптивного обрамления видео YouTube можно использовать класс `video-r`:
+```html
+<div class="video-r"> код видео </div>
+```
+
+Стиль для Alpine.JS:
+```css
+[x-cloak] {display: none !important}
+```
+
+Стили, которые задают правый отступ для иконок Bootstrap Icons:
+```css
+.bi::before,
+[class*=" bi-"]::before,
+[class^=bi-]::before {
+    margin-right: 7px !important;
+}
+```
+
+Стили для кастомизации оформления сервиса подсветки кода https://highlightjs.org/
+```css
+.hljs {
+    background: var(--pre-bg-color) !important;
+    color: var(--pre-text-color) !important;
+}
+```
+
+
+
+## Верстка Material Design
+
+Концепция Material Design предполагает использование палитры `primary` при верстке. Обрати внимание, что в Berry CSS в качестве основной палитры используется только `primary`, но нет `secondary` (акцентная палитра), поскольку в её качестве нужно использовать любую другую доступную, например `red`, `blue`, `gray` и т.д. Всё это есть в Berry CSS.
+
+При выполнении верстки старайся использовать именно цвета `primary`, поскольку многие классы и переменные Berry CSS уже адаптированы к ней. Например кнопка `<button class="button">` настроен на цвета `primary`. То же самое касается цветов теней, градаций, элементов форм и т.д. Поэтому когда ты верстаешь в палитре `primary`, то тебе достаточно только соблюдать яркостную градацию, не задумываясь о том, какие это реально цвета.
+
+Например, если пользователь хочет получить пример блока, то вместо `<div class="t-red500 bg-red100">текст</div>`, лучше использовать `<div class="t-primary500 bg-primary100">текст</div>`. Таким образом цвета будут автоматически подстроены под текущий цвет палитры `primary`.
+
+> Исключение — это когда пользователь явно указывает, что хочет получить оттенки красного (или любого другого).
+
+Цветовые палитры в Berry CSS настраиваются в виде оттенка vue и насыщенности saturation модели HSL (см. раздел «Базовая структура цветов»). Поэтому, **если верстка выполнена в палитре `primary`, то всегда можно сменить её цветовой тон**.
+
+Делается это с помощью css-переменных. Для всего сайта это можно сделать в секции `:root`, либо в конкретном блоке индивидуально. В этом примере явно указывается значение `hue` и `saturation`.
+
+```sass
+:root {
+    --primary-hue: 123deg; // hue
+    --primary-sat: 41%; // saturation
+}
+```
+
+В этом примере можно изменить цвет `primary` на уже существующую палитру `red`:
+
+```css
+:root {
+    --primary-hue: var(--red-hue);
+    --primary-sat: var(--red-sat);
+}
+```
+
+Если пользователь не уточняет конкретные цвета, то делай верстку именно в палитре `primary`.
+
+Если пользователь предлагает конкретные цвета, то уточни нужно ли явно использовать указанную цветовую палитру, или лучше сделать в `primary`, а потом переопределить цвет через css-переменные.
+
+Преимущество верстки в палитре `primary` в том, что для смены цвета не требуется менять готовый html-код.
+
+### Контраст цветов
+
+При верстке Material Design тебе нужно следить за степенью яркостной контрастности. Предполагается, что цвета, которые имеют разницу в 100 единиц, например `primary300` и `primary400`, имеют примерно 10% разность в яркости (см. раздел «Базовая структура цветов»: «яркостная шкала»). С точки зрения читабельности текста (рекомендация WCAG), текст должен иметь разницу примерно 40-50%, что соответствует разности в 400..500 единиц Berry CSS, например `primary300` и `primary700` будут иметь хороший контраст.
+
+- Разница в 100-200 по Berry CSS (10%-20% lightness) — слабый контраст.
+- Разница в 300-400 (30%-40%) — хороший контраст.
+- Разница 500 и больше — высокая читаемость.
+
+```html
+<div class="t-primary100 bg-primary200 pad15 rounded5">
+  Контрастность +100 (близкие цвета)
+</div>
+
+<div class="t-primary100 bg-primary600 pad15 rounded5">
+  Контрастность +500 (высокий контраст)
+</div>
+```
+
+### Material Design в Dark-режиме
+
+Ты должен знать, что dark-режим в Berry CSS можно использовать двояко. Первый вариант — при верстке явно указывать цвета классами `dark:`. Это позволяет практически полностью кастомизировать любой элемент. Проблема такого подхода в том, что требуется указывать довольно много dark-классов.
+
+Поэтому есть второй вариант — это переопределить css-переменные для dark-режима. В этом случае классы автоматически изменят своё отображение.
+
+По умолчанию для dark-режима используй такие css-правила:
+
+```sass
+.dark {
+    --body-bg: var(--primary950);
+    --body-color: var(--primary300);
+
+    --link-color: var(--primary500);
+    --link-hover-color: var(--primary600);
+
+    --form-input-background: var(--primary900);
+    --form-input-color: var(--primary200);
+    --form-input-border: 1px solid var(--primary750);
+
+    --form-input-focus-border-color: var(--primary600);
+    --form-input-focus-shadow: 0 0 0 0.1rem var(--primary700);
+    --form-input-focus-background: var(--primary750);
+    --form-input-focus-color: var(--primary150);
+
+    --button-bg-color: var(--primary700);
+    --button-text-color: var(--primary100);
+
+    --button-disabled-bg-color: var(--gray600);
+    --button-disabled-text-color: var(--gray200);
+
+    --pre-bg-color: var(--primary800);
+    --pre-text-color: var(--primary200);
+
+    --pre-border-top: var(--primary700) solid 1px;
+    --pre-border-right: var(--primary700) double 3px;
+    --pre-border-bottom: var(--primary700) solid 1px;
+    --pre-border-left: var(--primary700) double 3px;
+
+    --code-background: var(--primary550);
+    --mark-background-color: var(--yellow700);
+    --mark-text-color: var(--yellow100);
+
+    --var-background-color:  var(--orange650);
+    --var-text-color:  var(--orange100);
+
+    --kbd-background-color:  var(--green650);
+    --kbd-text-color:  var(--green100);
+
+    --samp-background-color:  var(--green800);
+    --samp-text-color:  var(--green200);
+
+    --table-th-background   : var(--primary700);
+    --table-tr-border-bottom: var(--primary600) 1px solid;
+    --table-th-border-top   : var(--primary600) 1px solid;
+    --table-th-border-bottom: var(--primary600) 1px solid;
+    --table-th-border-right : var(--primary600) 1px solid;
+    --table-tr-hover-bg: var(--primary750);
+
+    --table-td-border-right: var(--primary600) 1px solid;
+
+    --table-striped-odd-bg : var(--primary650);
+    --table-striped-even-bg: var(--primary600);
+
+    --hr-border: 1px solid var(--primary300);
+
+    --bordered: var(--primary600) 1px solid;
+
+    --thumbnail-border: var(--primary700) 1px solid;
+}
+```
+
+Таким образом, тебе не нужно указывать dark-классы в полях форм, таблицах, тэгах `pre`, `var`, `kbd` и т.п. Некоторые классы Berry CSS уже настроены на автоматическое использование dark-режима, например «Классы теней», «Классы для градиентов».
+
+Если пользователь явно желает использовать свои настройки dark-режима, то предложи ему вариант с переопределением css-переменных, как указано выше.
+
+### Использование палитры gray в Material Design в Dark-режиме
+
+В dark-режиме, когда используется темный фон, то на нём не очень красиво смотрится палитра `gray` (оттенки серого). Поэтому, если ты верстаешь с учетом dark-режима, то старайся избегать цветов палитры `gray` (оттенки серого). Если пользователь явно не указывает на эту палитру, то вместо неё используй оттенки `primary`.
+
+### Использование фиксированных цветов
+
+Если пользователь указывает явный цвет, скажем в hex-формате, то уточни нужно ли этот цвет использовать через css-переменную. Если это так, то верстка таким цветом будет намного проще и удобней.
+
+Например пользователь желает использовать для цвет `#257C73`. Предложи ему использовать css-переменную `--color1`:
+
+```css
+:root {
+    --color1: #257C73;
+}
+```
+
+После этого используй готовые классы Berry CSS: `t-color1`, `bg-color1`, `dark:t-color1`, `dark:bg-color1`, `hover-t-color1`, `hover-bg-color1` и т.д. То есть все те же классы, где используются цвета Berry CSS.
+
+Если у пользователя есть несколько фиксированных цветов, то предложи ему использовать сразу несколько готовых css-переменных: `--color1`, `--color2`, `--color3` ... `--color9`.
+
+### Переопределение цветовых палитр
+
+Если пользователь желает использовать готовую палитру, например `red`, но желает немного изменить её тон, то предложи ему это сделать через css-переменные `--{цвет}-hue` и `--{цвет}-sat`, например для красной палитры:
+
+```css
+:root {
+    --red-hue: 8deg;
+    --red-sat: 42%;
+}
+```
+
+Это автоматически переопределит всю яркостную палитру `red` под цветовой тон пользователя. При этом ты всё также используешь классы для палитры `red`.
+
+
+"Контрольная фраза: Berry CSS анализ завершён."
+
+**Конец файла**
