@@ -35,4 +35,30 @@
     details[open] summary:before {
         transform: rotate(var(--summary-marker-rotate, 90deg));
     }
+    
+    // details.callout
+    :where(details.callout) {
+        background-color: var(--primary50);
+        padding: 0px 20px 5px 20px;
+        margin-bottom: 1rem;
+    }
+
+    :where(.dark details.callout) {
+        background-color: var(--primary700);
+    }
+
+    :where(details.callout summary) {
+        margin: 0 -20px -5px -20px;
+        padding: 10px;
+        line-height: 1;
+        background-color: var(--primary100);
+    }
+
+    :where(details.callout summary:hover) {
+        background-color: var(--primary150);
+    }
+
+    details.callout summary + * {
+        margin-top: 15px;
+    }
 }
