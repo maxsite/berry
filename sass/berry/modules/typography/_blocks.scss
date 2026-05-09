@@ -19,6 +19,7 @@
         "blockquote-link-decoration": $blockquote-link-decoration,
         "blockquote-link-hover-color": $blockquote-link-hover-color,
         "blockquote-link-hover-decoration": $blockquote-link-hover-decoration,
+        "blockquote-p-margin" : $blockquote-p-margin,
         
         "pre-bg-color": $pre-bg-color,
         "pre-text-color": $pre-text-color,
@@ -40,6 +41,10 @@
         color        : var(--blockquote-color);
         border-radius: var(--blockquote-border-radius);
         background   : var(--blockquote-background);
+        
+        p {
+            margin: var(--blockquote-p-margin);
+        }
         
         a {
             color: var(--blockquote-link-color);

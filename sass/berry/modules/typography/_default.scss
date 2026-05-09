@@ -114,6 +114,9 @@ $blockquote-padding      : 10px 0 10px 25px !default;
 $blockquote-border-radius: 8px !default;
 $blockquote-background   : null !default;
 
+// blockquote p
+$blockquote-p-margin     : 5px 0 !default;
+
 $blockquote-link-color           : var(--primary600) !default;
 $blockquote-link-decoration      : underline !default;
 $blockquote-link-hover-color     : var(--primary700) !default;

@@ -6720,6 +6720,7 @@ p {
   --blockquote-link-decoration: underline;
   --blockquote-link-hover-color: var(--primary700);
   --blockquote-link-hover-decoration: none;
+  --blockquote-p-margin: 5px 0;
   --pre-bg-color: var(--primary50);
   --pre-text-color: var(--primary800);
   --pre-padding: 10px 15px 10px 25px;
@@ -6740,6 +6741,9 @@ blockquote {
   color: var(--blockquote-color);
   border-radius: var(--blockquote-border-radius);
   background: var(--blockquote-background);
+}
+blockquote p {
+  margin: var(--blockquote-p-margin);
 }
 blockquote a {
   color: var(--blockquote-link-color);
