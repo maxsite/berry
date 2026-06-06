@@ -97,7 +97,8 @@
         color        : var(--code-text-color, $code-text-color);
         padding      : var(--code-padding, $code-padding);
         border-radius: var(--code-border-radius, $code-border-radius);
-        white-space  : nowrap;
+        // white-space  : nowrap;
+        white-space  : pre-wrap;
         display      : inline-block;
     }
 

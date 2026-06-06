@@ -6788,7 +6788,7 @@ code {
   color: var(--code-text-color, inherit);
   padding: var(--code-padding, 0 5px);
   border-radius: var(--code-border-radius, 3px);
-  white-space: nowrap;
+  white-space: pre-wrap;
   display: inline-block;
 }
 
