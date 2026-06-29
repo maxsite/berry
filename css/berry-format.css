@@ -433,8 +433,20 @@ template {
   background-size: contain;
 }
 
+.bg-size-auto {
+  background-size: auto;
+}
+
 .bg-no-repeat {
   background-repeat: no-repeat;
+}
+
+.bg-repeat-x {
+  background-repeat: repeat-x;
+}
+
+.bg-repeat-y {
+  background-repeat: repeat-y;
 }
 
 .bg-position-center {
@@ -445,8 +457,36 @@ template {
   background-position: var(--bg-position, 50% 50%);
 }
 
+.bg-position-x-left {
+  background-position-x: left;
+}
+
+.bg-position-x-center {
+  background-position-x: center;
+}
+
+.bg-position-x-right {
+  background-position-x: right;
+}
+
+.bg-position-y-top {
+  background-position-y: top;
+}
+
+.bg-position-y-center {
+  background-position-y: center;
+}
+
+.bg-position-y-bottom {
+  background-position-y: bottom;
+}
+
 .bg-fixed {
   background-attachment: fixed;
+}
+
+.bg-scroll {
+  background-attachment: scroll;
 }
 
 .badge,

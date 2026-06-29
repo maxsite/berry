@@ -8,28 +8,62 @@
 
 @if map.get($modules, 'background') {
 
+    // Размеры
     .#{$pf}bg-size-cover {
         background-size: cover;
     }
-
     .#{$pf}bg-size-contain {
         background-size: contain;
     }
+    .#{$pf}bg-size-auto {
+        background-size: auto;
+    }
 
+    // Повторение
     .#{$pf}bg-no-repeat {
         background-repeat: no-repeat;
     }
+    .#{$pf}bg-repeat-x {
+        background-repeat: repeat-x;
+    }
+    .#{$pf}bg-repeat-y {
+        background-repeat: repeat-y;
+    }
 
+    // Позиционирование (базовое и через переменную)
     .#{$pf}bg-position-center {
         background-position: center;
     }
-
     .#{$pf}bg-position-var {
         background-position: var(--bg-position, 50% 50%);
     }
 
+    // Позиционирование по осям
+    .#{$pf}bg-position-x-left {
+        background-position-x: left;
+    }
+    .#{$pf}bg-position-x-center {
+        background-position-x: center;
+    }
+    .#{$pf}bg-position-x-right {
+        background-position-x: right;
+    }
+    .#{$pf}bg-position-y-top {
+        background-position-y: top;
+    }
+    .#{$pf}bg-position-y-center {
+        background-position-y: center;
+    }
+    .#{$pf}bg-position-y-bottom {
+        background-position-y: bottom;
+    }
+
+    // Поведение при скролле
     .#{$pf}bg-fixed {
         background-attachment: fixed;
     }
-
+    .#{$pf}bg-scroll {
+        background-attachment: scroll;
+    }
 }
+
