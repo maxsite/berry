@@ -18,9 +18,23 @@
         grid-template-rows   : var(--grid-rows, none);
     }
 
+    .#{$pf}grid-item, 
     .#{$pf}grid-item-var {
         grid-column: var(--grid-item-column, auto / auto);
         grid-row   : var(--grid-item-row, auto / auto);
+        order      : var(--order, 0);
+    }
+    
+    .#{$pf}grid-area {
+        grid-area  : var(--grid-area, auto);
+    }
+    
+    // Order utilities
+    .#{$pf}order-first { order: -9999; }
+    .#{$pf}order-last  { order: 9999; }
+
+    @for $i from 0 through 12 {
+        .#{$pf}order#{$i} { order: $i; }
     }
 
     // 12-колоночная сетка .grid-colX
@@ -44,9 +58,15 @@
                 grid-template-rows   : var(--grid-rows-#{$postfix}, none);
             }
 
+            .#{$pf}grid-item-#{$postfix},
             .#{$pf}grid-item-var-#{$postfix} {
                 grid-column: var(--grid-item-column-#{$postfix}, auto / auto);
                 grid-row   : var(--grid-item-row-#{$postfix}, auto / auto);
+                order      : var(--order-#{$postfix}, var(--order, 0));
+            }
+            
+            .#{$pf}grid-area-#{$postfix} {
+                grid-area  : var(--grid-area-#{$postfix}, auto);
             }
             
             // 12-колоночная сетка .grid-colX-tablet
@@ -58,10 +78,18 @@
                     grid-template-rows   : var(--grid-rows-#{$postfix}, none);
                 }
             }
+            
+            // Order responsive utilities
+            .#{$pf}order-first-#{$postfix} { order: -9999; }
+            .#{$pf}order-last-#{$postfix}  { order: 9999; }
+
+            @for $i from 0 through 12 {
+                .#{$pf}order#{$i}-#{$postfix} { order: $i; }
+            }
         }
     }
     
-    @each $var in (0, 5, 7, 10, 15, 20, 25, 30, 40, 50, 100) {
+    @each $var in (0, 2, 4, 5, 7, 10, 15, 20, 25, 30, 40, 50, 100) {
         .#{$pf}gap#{$var} {
             gap: #{$var}px;
         }
@@ -73,7 +101,5 @@
         .#{$pf}row-gap#{$var} {
             row-gap: #{$var}px;
         }
-        
-        
     }
 }
