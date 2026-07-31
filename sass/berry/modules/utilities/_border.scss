@@ -79,6 +79,23 @@
             border-left-style : $var;
         }
     }
+    
+    // class="bor-primary200 dark:bor-custom" style="--bor-custom-dark: 4px solid var(--primary500);"
+        .bor-custom {
+        border: var(--bor-custom);
+    }
+    
+    .bor-custom:hover{
+        border: var(--bor-custom-hover, var(--bor-custom));
+    }
+    
+    .dark .dark\:bor-custom {
+        border: var(--bor-custom-dark);
+    }
+    
+    .dark .dark\:bor-custom:hover {
+        border: var(--bor-custom-dark-hover, var(--bor-custom-dark));
+    }
 
     // width
     @each $var in $border_list {
