@@ -779,6 +779,22 @@ template {
   border-left-style: double;
 }
 
+.bor-custom {
+  border: var(--bor-custom);
+}
+
+.bor-custom:hover {
+  border: var(--bor-custom-hover, var(--bor-custom));
+}
+
+.dark .dark\:bor-custom {
+  border: var(--bor-custom-dark);
+}
+
+.dark .dark\:bor-custom:hover {
+  border: var(--bor-custom-dark-hover, var(--bor-custom-dark));
+}
+
 .bor1 {
   border-width: 1px;
 }
@@ -1317,9 +1333,75 @@ template {
   grid-template-rows: var(--grid-rows, none);
 }
 
+.grid-item,
 .grid-item-var {
   grid-column: var(--grid-item-column, auto/auto);
   grid-row: var(--grid-item-row, auto/auto);
+  order: var(--order, 0);
+}
+
+.grid-area {
+  grid-area: var(--grid-area, auto);
+}
+
+.order-first {
+  order: -9999;
+}
+
+.order-last {
+  order: 9999;
+}
+
+.order0 {
+  order: 0;
+}
+
+.order1 {
+  order: 1;
+}
+
+.order2 {
+  order: 2;
+}
+
+.order3 {
+  order: 3;
+}
+
+.order4 {
+  order: 4;
+}
+
+.order5 {
+  order: 5;
+}
+
+.order6 {
+  order: 6;
+}
+
+.order7 {
+  order: 7;
+}
+
+.order8 {
+  order: 8;
+}
+
+.order9 {
+  order: 9;
+}
+
+.order10 {
+  order: 10;
+}
+
+.order11 {
+  order: 11;
+}
+
+.order12 {
+  order: 12;
 }
 
 .grid-1col {
@@ -1413,9 +1495,14 @@ template {
     grid-template-columns: var(--grid-columns-tablet, none);
     grid-template-rows: var(--grid-rows-tablet, none);
   }
+  .grid-item-tablet,
   .grid-item-var-tablet {
     grid-column: var(--grid-item-column-tablet, auto/auto);
     grid-row: var(--grid-item-row-tablet, auto/auto);
+    order: var(--order-tablet, var(--order, 0));
+  }
+  .grid-area-tablet {
+    grid-area: var(--grid-area-tablet, auto);
   }
   .grid-1col-tablet {
     display: grid;
@@ -1489,6 +1576,51 @@ template {
     gap: var(--grid-gap-tablet, 0);
     grid-template-rows: var(--grid-rows-tablet, none);
   }
+  .order-first-tablet {
+    order: -9999;
+  }
+  .order-last-tablet {
+    order: 9999;
+  }
+  .order0-tablet {
+    order: 0;
+  }
+  .order1-tablet {
+    order: 1;
+  }
+  .order2-tablet {
+    order: 2;
+  }
+  .order3-tablet {
+    order: 3;
+  }
+  .order4-tablet {
+    order: 4;
+  }
+  .order5-tablet {
+    order: 5;
+  }
+  .order6-tablet {
+    order: 6;
+  }
+  .order7-tablet {
+    order: 7;
+  }
+  .order8-tablet {
+    order: 8;
+  }
+  .order9-tablet {
+    order: 9;
+  }
+  .order10-tablet {
+    order: 10;
+  }
+  .order11-tablet {
+    order: 11;
+  }
+  .order12-tablet {
+    order: 12;
+  }
 }
 .gap0 {
   gap: 0px;
@@ -1500,6 +1632,30 @@ template {
 
 .row-gap0 {
   row-gap: 0px;
+}
+
+.gap2 {
+  gap: 2px;
+}
+
+.column-gap2 {
+  column-gap: 2px;
+}
+
+.row-gap2 {
+  row-gap: 2px;
+}
+
+.gap4 {
+  gap: 4px;
+}
+
+.column-gap4 {
+  column-gap: 4px;
+}
+
+.row-gap4 {
+  row-gap: 4px;
 }
 
 .gap5 {
