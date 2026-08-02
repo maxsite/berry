@@ -122,23 +122,53 @@
         text-align: justify;
     }
 
+    .#{$pf}t-wrap-balance,
+    .#{$pf}text-wrap-balance {
+        text-wrap: balance;
+    }
+    
+    
     // wrap's
     .#{$pf}t-nowrap,
     .#{$pf}text-nowrap {
-        white-space: nowrap;
+        // white-space: nowrap; // old
+        text-wrap: nowrap;
     }
-
+    
     .#{$pf}t-wrap,
     .#{$pf}text-wrap {
-        white-space: normal;
+        // white-space: normal; // old
+        text-wrap: wrap;
+    }
+    
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-wrap
+    .#{$pf}t-wrap-balance,
+    .#{$pf}text-wrap-balance {
+        text-wrap: balance;
     }
 
+    .#{$pf}t-wrap-pretty,
+    .#{$pf}text-wrap-pretty {
+        text-wrap: balance;
+        text-wrap: pretty; // not work in FireFox 153!
+    }
+
+    .#{$pf}t-wrap-stable,
+    .#{$pf}text-wrap-stable {
+        text-wrap: stable;
+    }
+    
     .#{$pf}t-pre-wrap {
         white-space: pre-wrap;
     }
+    
+    .#{$pf}t-pre-line {
+        white-space: pre-line;
+    }
 
     .#{$pf}t-break-word {
-        word-wrap: break-word;
+        // word-wrap: break-word; // old
+        overflow-wrap: break-word;
     }
 
     .#{$pf}t-break-all {
@@ -148,6 +178,7 @@
     .#{$pf}t-break-keep {
         word-break: keep-all;
     }
+    
     
     .#{$pf}t-rtl {
         direction: rtl;

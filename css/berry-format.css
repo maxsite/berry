@@ -4812,22 +4812,47 @@ ul.circle {
   text-align: justify;
 }
 
+.t-wrap-balance,
+.text-wrap-balance {
+  text-wrap: balance;
+}
+
 .t-nowrap,
 .text-nowrap {
-  white-space: nowrap;
+  text-wrap: nowrap;
 }
 
 .t-wrap,
 .text-wrap {
-  white-space: normal;
+  text-wrap: wrap;
+}
+
+.t-wrap-balance,
+.text-wrap-balance {
+  text-wrap: balance;
+}
+
+.t-wrap-pretty,
+.text-wrap-pretty {
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+
+.t-wrap-stable,
+.text-wrap-stable {
+  text-wrap: stable;
 }
 
 .t-pre-wrap {
   white-space: pre-wrap;
 }
 
+.t-pre-line {
+  white-space: pre-line;
+}
+
 .t-break-word {
-  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .t-break-all {
