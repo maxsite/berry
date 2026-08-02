@@ -48,8 +48,14 @@
 - **Flex Basis:** `flex-basis{N}px` (N: 50, 100, 150) or `flex-basis-var`.
 - **Grid:** 
     - Container: `grid-{N}col` (N: 1-12) (with `-tablet` variant).
-    - Variables: `grid-var`, `grid-var-tablet`, `grid-item-var`, `grid-item-var-tablet`.
+    - Variables: `grid-var`, `grid-var-tablet`, `grid-item`, `grid-item-tablet`.
     - Gaps: `{gap/column-gap/row-gap}{N}` (N: 0, 5, 7, 10, 15, 20, 25, 30, 40, 50, 100).
+    - Areas: 
+        - `.grid-area {grid-area: var(--grid-area, auto);}`
+        - `.grid-area-tablet {var(--grid-area-tablet, auto);}`
+- **Order**:
+    - `.order-first, .order-first-tablet {order: -9999;} .order-last, .order-last-tablet {order: 9999;}`
+    - `.order{N}`, `.order{N}-tablet` (N: 0-12)
 
 ### C. Borders & Visuals
 - **Borders:** 
@@ -94,7 +100,7 @@
 - **Offset:** `t-underline-offset{N}px` (0, 1, 2, 4, 8) or `t-underline-offset-auto`.
 - **Case:** `t-upper`, `t-lower`, `t-capitalize`, `t-small-caps`.
 - **Alignment:** `t-left`, `t-right`, `t-center`, `t-justify` (with `-tablet` variants).
-- **Wrap/Break:** `t-nowrap`, `t-wrap`, `t-pre-wrap`, `t-break-word`, `t-break-all`, `t-break-keep`, `t-ellipsis`, `t-line-clamp` (with `-tablet` variants).
+- **Wrap/Break:** `t-nowrap`, `t-wrap`, `t-pre-wrap`, `t-pre-line`, `t-wrap-balance`, `t-wrap-stable`, `t-wrap-pretty`, `t-break-word`, `t-break-all`, `t-break-keep`, `t-ellipsis`, `t-line-clamp` (with `-tablet` variants).
 - **Fonts:** `t-mono` and safe fonts (`t-arial`, `t-georgia`, `t-times`, `t-palatino`, `t-arial-black`, `t-comic`, `t-impact`, `t-tahoma`, `t-trebuchet`, `t-verdana`).
 - **Spacing:** `t-tracking{N}` (N: -50, -25, 0, 25, 50, 100, 150, 200).
 - **Others:** `t-hyphens`, `t-rtl`, `t-ltr`, `t-writing-htb`, `t-writing-vrl`, `t-writing-vlr`.
@@ -110,8 +116,8 @@
 ## 4. MODULE: DESIGN (UI Components)
 
 ### A. Buttons
-- **Base:** `.button` (uses variables for colors, padding, radius).
-- **Palette:** `button-{color}` (e.g., `button-red`, `button-primary`, `button-gray`, etc.).
+- **Base:** `.button` (as button-primary) (uses variables for colors, padding, radius).
+- **Palette:** `button-{color}` (e.g., `button-red`, `button-gray`, etc.).
 - **Styles:** `button-outline1` (white bg), `button-outline2` (transparent bg).
 
 ### B. Forms
