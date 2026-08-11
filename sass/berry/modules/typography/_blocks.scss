@@ -71,12 +71,14 @@
         font-size    : var(--pre-font-size);
         font-family  : var(--font-family-monospace);
         white-space  : pre-wrap;
+        overflow-wrap: break-word;
         -moz-tab-size: 4;
         tab-size     : 4;
 
         > code {
             color        : inherit;
             white-space  : pre-wrap;
+            overflow-wrap: break-word;
             font-family  : inherit;
             background   : inherit;
             padding      : 0;
@@ -99,6 +101,7 @@
         border-radius: var(--code-border-radius, $code-border-radius);
         // white-space  : nowrap;
         white-space  : pre-wrap;
+        overflow-wrap: break-word;
         display      : inline-block;
     }
 
