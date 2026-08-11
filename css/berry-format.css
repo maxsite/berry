@@ -6859,14 +6859,6 @@ ul.circle {
   --font-family-monospace: Consolas, PT Mono, Roboto Mono, Liberation Mono, Segoe UI Mono, Courier New, monospace;
 }
 
-:root {
-  color-scheme: light;
-}
-
-.dark {
-  color-scheme: dark;
-}
-
 body {
   font-size: var(--body-size-base, 16px);
   font-family: var(--body-font-family, "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
@@ -6997,12 +6989,14 @@ pre {
   font-size: var(--pre-font-size);
   font-family: var(--font-family-monospace);
   white-space: pre-wrap;
+  overflow-wrap: break-word;
   -moz-tab-size: 4;
   tab-size: 4;
 }
 pre > code {
   color: inherit;
   white-space: pre-wrap;
+  overflow-wrap: break-word;
   font-family: inherit;
   background: inherit;
   padding: 0;
@@ -7018,6 +7012,7 @@ code {
   padding: var(--code-padding, 0 5px);
   border-radius: var(--code-border-radius, 3px);
   white-space: pre-wrap;
+  overflow-wrap: break-word;
   display: inline-block;
 }
 
@@ -7589,6 +7584,10 @@ meter {
 }
 
 :root {
+  color-scheme: light;
+}
+
+:root, .dark {
   --white: #FFFFFF;
   --black: #000000;
   --color1: #1B542C;
@@ -7602,10 +7601,32 @@ meter {
   --color9: #AC323B;
   --primary-hue: 216deg;
   --primary-sat: 33%;
-  --accent-hue-offset: -30deg;
+  --primary-hue-dark: 216deg;
+  --primary-sat-dark: 25%;
+  --accent-hue-offset: 120deg;
   --accent-sat-offset: 0%;
   --accent-hue: calc(var(--primary-hue) + var(--accent-hue-offset));
   --accent-sat: calc(var(--primary-sat) + var(--accent-sat-offset));
+  --accent950: hsl(var(--accent-hue) var(--accent-sat) 9%);
+  --accent900: hsl(var(--accent-hue) var(--accent-sat) 13%);
+  --accent850: hsl(var(--accent-hue) var(--accent-sat) 17%);
+  --accent800: hsl(var(--accent-hue) var(--accent-sat) 21%);
+  --accent750: hsl(var(--accent-hue) var(--accent-sat) 26%);
+  --accent700: hsl(var(--accent-hue) var(--accent-sat) 31%);
+  --accent650: hsl(var(--accent-hue) var(--accent-sat) 36%);
+  --accent600: hsl(var(--accent-hue) var(--accent-sat) 41%);
+  --accent550: hsl(var(--accent-hue) var(--accent-sat) 46%);
+  --accent500: hsl(var(--accent-hue) var(--accent-sat) 50%);
+  --accent450: hsl(var(--accent-hue) var(--accent-sat) 54%);
+  --accent400: hsl(var(--accent-hue) var(--accent-sat) 59%);
+  --accent350: hsl(var(--accent-hue) var(--accent-sat) 65%);
+  --accent300: hsl(var(--accent-hue) var(--accent-sat) 70%);
+  --accent250: hsl(var(--accent-hue) var(--accent-sat) 75%);
+  --accent200: hsl(var(--accent-hue) var(--accent-sat) 81%);
+  --accent150: hsl(var(--accent-hue) var(--accent-sat) 86%);
+  --accent100: hsl(var(--accent-hue) var(--accent-sat) 91%);
+  --accent50: hsl(var(--accent-hue) var(--accent-sat) 96%);
+  --accent: var(--accent500);
   --gray-hue: var(--primary-hue);
   --gray-sat: 7%;
   --red-hue: 5deg;
@@ -15098,4 +15119,10 @@ meter {
 .dark .dark\:bor-pink,
 .dark .dark\:hover-bor-pink:hover {
   border-color: var(--pink);
+}
+
+.dark {
+  color-scheme: dark;
+  --primary-hue: var(--primary-hue-dark) !important;
+  --primary-sat: var(--primary-sat-dark) !important;
 }

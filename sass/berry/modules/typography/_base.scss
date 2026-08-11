@@ -10,13 +10,13 @@
 
     // dark/light mode
     // color: light-dark(var(--primary200), var(--primary700));
-    :root {
-        color-scheme: light; 
-    }
+    // :root {
+    //     color-scheme: light; 
+    // }
 
-    .dark {
-        color-scheme: dark;
-    }
+    // .dark {
+    //     color-scheme: dark;
+    // }
     
     body {
         font-size       : var(--body-size-base, $body-size-base);

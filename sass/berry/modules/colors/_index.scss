@@ -6,7 +6,14 @@ $color_nostep: "white", "black", "color1", "color2", "color3", "color4", "color5
 
 $color_border_list: "color1", "color2", "color3", "color4", "color5", "color6", "color7", "color8", "color9", "primary", "primary50", "primary100", "primary200", "primary300", "primary400", "primary500", "primary600", "primary700", "primary800", "primary900", "white", "black", "gray", "gray50", "gray100", "gray200", "gray300", "gray400", "gray500", "gray600", "gray700", "gray800", "gray900", 'red', 'brown', 'orange', 'yellow', 'lime', 'green', 'teal', 'cyan', 'blue', 'indigo', 'violet', 'purple', 'pink';
 
+
 :root {
+    // dark/light mode
+    // color: light-dark(var(--primary200), var(--primary700));
+    color-scheme: light;
+}
+
+:root, .dark {
     --white: #FFFFFF;
     --black: #000000;
 
@@ -23,14 +30,42 @@ $color_border_list: "color1", "color2", "color3", "color4", "color5", "color6", 
     --primary-hue: 216deg;
     --primary-sat: 33%;
     
+    // for dark
+    --primary-hue-dark: 216deg;
+    --primary-sat-dark: 25%;
+    
     // акцентный accent цвет строится на основе primary
-    // но у accent нет классов и заданных цветов
-    // эти переменные используется только для того, чтобы задавать акценты через hsl()
+    // эти переменные используется для того, чтобы задавать акценты через hsl()
     // color: hsl(var(--accent-hue) var(--accent-sat) 30%);
-    --accent-hue-offset: -30deg;
+    // color: var(--accent500);
+    // color: light-dark(var(--accent700), var(--accent300));
+    // <div class="pad20 t200 bg-primary100 t-primary600 dark:bg-primary600 dark:t-primary300">Lorem ipsum dolor <span style="color: light-dark(var(--accent600), var(--accent300))">accent accent</span> Lorem ipsum dolor</div>
+    
+    --accent-hue-offset: 120deg; // TRIAD
     --accent-sat-offset: 0%;
     --accent-hue: calc(var(--primary-hue) + var(--accent-hue-offset));
     --accent-sat: calc(var(--primary-sat) + var(--accent-sat-offset));
+
+    --accent950: hsl(var(--accent-hue) var(--accent-sat) 9%);
+    --accent900: hsl(var(--accent-hue) var(--accent-sat) 13%);
+    --accent850: hsl(var(--accent-hue) var(--accent-sat) 17%);
+    --accent800: hsl(var(--accent-hue) var(--accent-sat) 21%);
+    --accent750: hsl(var(--accent-hue) var(--accent-sat) 26%);
+    --accent700: hsl(var(--accent-hue) var(--accent-sat) 31%);
+    --accent650: hsl(var(--accent-hue) var(--accent-sat) 36%);
+    --accent600: hsl(var(--accent-hue) var(--accent-sat) 41%);
+    --accent550: hsl(var(--accent-hue) var(--accent-sat) 46%);
+    --accent500: hsl(var(--accent-hue) var(--accent-sat) 50%);
+    --accent450: hsl(var(--accent-hue) var(--accent-sat) 54%);
+    --accent400: hsl(var(--accent-hue) var(--accent-sat) 59%);
+    --accent350: hsl(var(--accent-hue) var(--accent-sat) 65%);
+    --accent300: hsl(var(--accent-hue) var(--accent-sat) 70%);
+    --accent250: hsl(var(--accent-hue) var(--accent-sat) 75%);
+    --accent200: hsl(var(--accent-hue) var(--accent-sat) 81%);
+    --accent150: hsl(var(--accent-hue) var(--accent-sat) 86%);
+    --accent100: hsl(var(--accent-hue) var(--accent-sat) 91%);
+    --accent50:  hsl(var(--accent-hue) var(--accent-sat) 96%);
+    --accent:    var(--accent500);
     
     --gray-hue: var(--primary-hue);
     --gray-sat: 7%;    
@@ -183,4 +218,11 @@ $color_border_list: "color1", "color2", "color3", "color4", "color5", "color6", 
     .dark .dark\:hover-bor-#{$name}:hover {
         border-color: var(--#{$name});
     }
+}
+
+   
+.dark {
+    color-scheme: dark;
+    --primary-hue: var(--primary-hue-dark) !important;
+    --primary-sat: var(--primary-sat-dark) !important;
 }
