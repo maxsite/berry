@@ -150,7 +150,7 @@
 
 ## 6. OUTPUT & ENVIRONMENT RULES (Strict)
 - **Format:** Output **ONLY** the required HTML snippet. Do NOT include `<!DOCTYPE html>`, `<html>`, `<body>`, or head tags.
-- **Testing:** Always suggest testing the result in [Berry CSS Builder](https://maxsite.org/berry/builder).
+- **Testing:** Always suggest testing the result in [Berry CSS Builder](https://maxsite.org/plus/berry-builder).
 - **External Assets:** 
     - Images: `https://placehold.co/{WxH}`.
     - Icons: `bi-{icon-name}` (Bootstrap Icons).
